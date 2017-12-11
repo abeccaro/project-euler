@@ -7,6 +7,7 @@
 
 using namespace std;
 using namespace chrono;
+using namespace primes;
 
 /**
  * Specifies values, solves problem and outputs solution and calculation time.
@@ -17,7 +18,7 @@ int main() {
 
     high_resolution_clock::time_point start = high_resolution_clock::now();
 
-    int largestPrimeFactor = Primes::primeFactors(NUMBER).back();
+    int largestPrimeFactor = primeFactors(NUMBER).back();
 
     double time = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000000.0;
 

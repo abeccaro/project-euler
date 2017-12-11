@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <vector>
 #include "../../Utilities/GeneralUtilities.h"
 
 using namespace std;
@@ -14,21 +15,18 @@ using namespace general_utilities;
  * @return The exit code
  */
 int main() {
+    const int MAX_DIVISOR = 20;
+
     high_resolution_clock::time_point start = high_resolution_clock::now();
 
-    int largestPalindrome = 0;
-
-    for (int i = 100; i < 1000; i++) {
-        for (int j = i; j < 1000; j++) {
-            int n = i * j;
-            if (n > largestPalindrome && isPalindrome(n))
-                largestPalindrome = n;
-        }
-    }
+    vector<int> divisors;
+    for (int i = MAX_DIVISOR; i >= 2; i--)
+        divisors.push_back(i);
+    long result = lcm(divisors);
 
     double time = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000000.0;
 
-    cout << "The largest palindrome made from the product of two 3-digit numbers is " << largestPalindrome << endl;
+    cout << "The smallest positive number that is evenly divisible by all of the numbers from 1 to 20 is " << result << endl;
     cout << "Calculation took " << time << " seconds" << endl;
 
     return 0;

@@ -10,7 +10,7 @@
 
 using namespace std;
 
-namespace Primes {
+namespace primes {
     /**
      * Calculates all given number prime factors.
      * Complexity: O(√n)

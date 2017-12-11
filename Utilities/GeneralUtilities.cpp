@@ -7,7 +7,7 @@
 
 using namespace std;
 
-namespace GeneralUtilities {
+namespace general_utilities {
     bool isPalindrome(int n) {
         vector<int> dig = digits(n);
         vector<int> reversedDig(dig.size());
@@ -29,5 +29,27 @@ namespace GeneralUtilities {
 
         reverse(digits.begin(), digits.end());
         return digits;
+    }
+
+    long lcm(const vector<int> &numbers) {
+        long product = 1;
+        for (int i : numbers)
+            product *= i;
+
+        for (int i : numbers) {
+            long n = product / i;
+            bool dividesAll = true;
+
+            for (int j : numbers)
+                if (n % j != 0) {
+                    dividesAll = false;
+                    break;
+                }
+
+            if (dividesAll)
+                product = n;
+        }
+
+        return product;
     }
 }

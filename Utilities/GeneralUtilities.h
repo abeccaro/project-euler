@@ -10,7 +10,7 @@
 
 using namespace std;
 
-namespace GeneralUtilities {
+namespace general_utilities {
     /**
      * Checks if given number is palindrome or not.
      * @param n The number to check
@@ -24,4 +24,12 @@ namespace GeneralUtilities {
      * @return The vector of ordered digits
      */
     vector<int> digits(int n);
+
+    /**
+     * Calculates lowest common multiple of given numbers.
+     * This might not be so efficient for many numbers.
+     * @param numbers The numbers
+     * @return The lcm of given numbers
+     */
+    long lcm(const vector<int> &numbers);
 }

@@ -7,7 +7,7 @@
 
 using namespace std;
 
-namespace Primes {
+namespace primes {
     /*
      * Calculates all given number prime factors using division trial.
      * Complexity: O(√n).
