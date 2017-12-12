@@ -19,5 +19,19 @@ namespace series {
      * @param upperBound The upper bound
      * @return The vector with the series
      */
-    vector<int> fibonacciUpTo(int upperBound);
+    vector<int> fibonacciUpTo(unsigned long upperBound);
+
+    /**
+     * Generates the first n primes.
+     * @param n The number of primes to generate
+     * @return The vector with the series
+     */
+    vector<int> primes(unsigned long n);
+
+    /**
+     * Generates primes up to number upperBound.
+     * @param upperBound The upper bound
+     * @return The vector with the series
+     */
+    vector<int> primesUpTo(unsigned long upperBound);
 };
