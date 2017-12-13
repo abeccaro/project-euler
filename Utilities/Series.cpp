@@ -4,6 +4,7 @@
 
 #include "Series.h"
 #include <cmath>
+#include <iostream>
 
 using namespace std;
 
@@ -37,47 +38,33 @@ namespace series {
     }
 
     vector<int> primes(unsigned long n) {
-        vector<int> ps(n);
-        int count = 0;
-
-        ps[count++] = 2;
-
-        for (int i = 3; count < n; i += 2) {
-            bool prime = true;
-
-            // Look for divisors of i up to sqrt(i)
-            for (int j = 1; prime && j < count && ps[j] * ps[j] <= i; j++)
-                if (i % ps[j] == 0)
-                    prime = false;
-
-            // If loop terminated, and this number is prime,
-            // then add it to the list:
-            if (prime)
-                ps[count++] = i;
-        }
-
+        double upperBound = n * (log(n) + log(log(n)));
+        vector<int> ps = primesUpTo(static_cast<unsigned long>(upperBound));
+        ps.resize(n);
         return ps;
     }
 
     vector<int> primesUpTo(unsigned long upperBound) {
-        vector<bool> primesCheck(upperBound, true);
+        vector<bool> primesCheck(upperBound / 2, true);
         vector<int> primes;
-        double root = sqrt(upperBound);
+        double root = sqrt(upperBound) / 2;
 
         // 2
         if (upperBound >= 2)
             primes.push_back(2);
 
         // setting false all multiples of primes
-        for(int i = 3; i < root; i += 2)
-            if (primesCheck[i])
-                for (int j = i * i; j < upperBound; j += 2 * i)
-                    primesCheck[j] = false;
+        for(int i = 1; i < root; i ++)
+            if (primesCheck[i]) {
+                int prime = i * 2 + 1;
+                for (int multiple = prime * prime; multiple < upperBound; multiple += 2 * prime)
+                    primesCheck[(multiple - 1) / 2] = false;
+            }
 
         // adding primes to vector
-        for (int i = 3; i < upperBound; i += 2)
+        for (int i = 1; i < primesCheck.size(); i++)
             if (primesCheck[i])
-                primes.push_back(i);
+                primes.push_back(2 * i + 1);
 
         return primes;
     }
