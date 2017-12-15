@@ -4,11 +4,12 @@
 
 #include "GeneralUtilities.h"
 #include <algorithm>
+#include <cmath>
 
 using namespace std;
 
 namespace general_utilities {
-    bool isPalindrome(int n) {
+    bool isPalindrome(unsigned long n) {
         vector<int> dig = digits(n);
         vector<int> reversedDig(dig.size());
 
@@ -17,7 +18,7 @@ namespace general_utilities {
         return dig == reversedDig;
     }
 
-    vector<int> digits(int n) {
+    vector<int> digits(unsigned long n) {
         vector<int> digits;
 
         while (n > 9) {
@@ -31,16 +32,16 @@ namespace general_utilities {
         return digits;
     }
 
-    long lcm(const vector<int> &numbers) {
-        long product = 1;
-        for (int i : numbers)
+    unsigned long lcm(const vector<unsigned long> &numbers) {
+        unsigned long product = 1;
+        for (unsigned long i : numbers)
             product *= i;
 
-        for (int i : numbers) {
-            long n = product / i;
+        for (unsigned long i : numbers) {
+            unsigned long n = product / i;
             bool dividesAll = true;
 
-            for (int j : numbers)
+            for (unsigned long j : numbers)
                 if (n % j != 0) {
                     dividesAll = false;
                     break;
@@ -51,5 +52,22 @@ namespace general_utilities {
         }
 
         return product;
+    }
+
+    vector<unsigned long> divisors(unsigned long n) {
+        vector<unsigned long> divisors;
+        double root = sqrt(n);
+
+        for (unsigned long i = 1; i < root; i++) {
+            if (n % i == 0) {
+                divisors.push_back(i);
+                divisors.push_back(n / i);
+            }
+        }
+
+        if (root == (unsigned long) root)
+            divisors.push_back((unsigned long) root);
+
+        return divisors;
     }
 }

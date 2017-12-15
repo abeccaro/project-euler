@@ -19,7 +19,7 @@ int main() {
 
     high_resolution_clock::time_point start = high_resolution_clock::now();
 
-    vector<int> divisors;
+    vector<unsigned long> divisors;
     for (int i = MAX_DIVISOR; i >= 2; i--)
         divisors.push_back(i);
     long result = lcm(divisors);

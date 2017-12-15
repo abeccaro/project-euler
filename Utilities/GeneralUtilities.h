@@ -16,14 +16,14 @@ namespace general_utilities {
      * @param n The number to check
      * @return true if the number is palindrome, false otherwise
      */
-    bool isPalindrome(int n);
+    bool isPalindrome(unsigned long n);
 
     /**
      * Divides given number in a vector of ordered digits.
      * @param n The number to divide
      * @return The vector of ordered digits
      */
-    vector<int> digits(int n);
+    vector<int> digits(unsigned long n);
 
     /**
      * Calculates lowest common multiple of given numbers.
@@ -31,5 +31,12 @@ namespace general_utilities {
      * @param numbers The numbers
      * @return The lcm of given numbers
      */
-    long lcm(const vector<int> &numbers);
+    unsigned long lcm(const vector<unsigned long> &numbers);
+
+    /**
+     * Finds all divisors of n
+     * @param n The number
+     * @return The vector of divisors
+     */
+    vector<unsigned long> divisors(unsigned long n);
 }

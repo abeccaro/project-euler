@@ -71,13 +71,6 @@ int main() {
     high_resolution_clock::time_point start = high_resolution_clock::now();
 
     vector<vector<int>> matrix = readIntMatrix(projectPath + "Problems/Problem11/input.txt");
-
-//    for (vector<int> row : matrix) {
-//        for (int n : row)
-//            cout << n << " ";
-//        cout << endl;
-//    }
-
     long product = maxAdjacentProduct(matrix, SIZE);
 
     double time = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000000.0;
