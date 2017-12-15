@@ -4,10 +4,20 @@
 
 #include <iostream>
 #include <vector>
-#include "../../Utilities/Series.h"
+#include "../../Utilities/Series/Fibonacci.h"
 
 using namespace std;
 using namespace chrono;
+using namespace series;
+
+/**
+ * Checks if given number is even.
+ * @param n The number to check
+ * @return True if n is even, false otherwise
+ */
+bool isEven(unsigned long n) {
+    return n % 2 == 0;
+}
 
 /**
  * Specifies values, solves problem and outputs solution and calculation time.
@@ -18,11 +28,11 @@ int main() {
 
     high_resolution_clock::time_point start = high_resolution_clock::now();
 
-    vector<int> fibonacci = series::fibonacciUpTo(UPPER_BOUND);
+    Fibonacci fib;
+    vector<unsigned long> fibonacci = fib.getUpTo(UPPER_BOUND, isEven);
     long sum = 0;
-    for (int f : fibonacci)
-        if (f % 2 == 0)
-            sum += f;
+    for (unsigned long f : fibonacci)
+        sum += f;
 
     double time = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000000.0;
 

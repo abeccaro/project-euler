@@ -3,7 +3,7 @@
 //
 
 #include <iostream>
-#include "../../Utilities/Series.h"
+#include "../../Utilities/Series/Primes.h"
 
 using namespace std;
 using namespace chrono;
@@ -18,10 +18,11 @@ int main() {
 
     high_resolution_clock::time_point start = high_resolution_clock::now();
 
-    vector<int> primes = primesUpTo(UPPER_BOUND);
-    long sum = 0;
-    for (int p : primes)
-        sum += p;
+    Primes p;
+    vector<unsigned long> primes = p.getUpTo(UPPER_BOUND);
+    unsigned long sum = 0;
+    for (unsigned long prime : primes)
+        sum += prime;
 
     double time = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000000.0;
 
