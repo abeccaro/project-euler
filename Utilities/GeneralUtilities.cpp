@@ -5,6 +5,7 @@
 #include "GeneralUtilities.h"
 #include <algorithm>
 #include <cmath>
+#include <iostream>
 
 using namespace std;
 
@@ -69,5 +70,30 @@ namespace general_utilities {
             divisors.push_back((unsigned long) root);
 
         return divisors;
+    }
+
+    unsigned long factorial(unsigned long n) {
+        if (n == 0)
+            return 1;
+
+        unsigned long result = 1;
+        for (unsigned long i = 2; i <= n; i++)
+            result *= i;
+
+        return result;
+    }
+
+    unsigned long binomialCoefficient(unsigned long n, unsigned long k) {
+        unsigned long num = 1;
+
+        for (unsigned long i = n; i > n - k; i--) {
+            if (num * i < num)
+                cout << "Overflow" << endl;
+            num *= i;
+        }
+
+        unsigned long den = factorial(k);
+
+        return num / den; // safe integer division, result is always integer
     }
 }

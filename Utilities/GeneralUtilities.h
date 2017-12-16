@@ -39,4 +39,19 @@ namespace general_utilities {
      * @return The vector of divisors
      */
     vector<unsigned long> divisors(unsigned long n);
+
+    /**
+     * Calculates the factorial of given number
+     * @param n The number
+     * @return The factorial
+     */
+    unsigned long factorial(unsigned long n);
+
+    /**
+     * Calculates the binomial coefficient
+     * @param n The first number
+     * @param k The second number
+     * @return The binomial coefficient
+     */
+    unsigned long binomialCoefficient(unsigned long n, unsigned long k);
 }
