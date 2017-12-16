@@ -35,6 +35,6 @@ int main() {
 
     double time = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000000.0;
 
-    cout << "The solution is " << result << endl;
+    cout << "The first triangular number to have more than 500 divisors is " << result << endl;
     cout << "Calculation took " << time << " seconds" << endl;
 }
