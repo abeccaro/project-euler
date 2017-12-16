@@ -3,29 +3,32 @@
 //
 
 #include <iostream>
-#include "../../Utilities/Series/Primes.h"
+#include <series/primes.hpp>
 
 using namespace std;
 using namespace chrono;
-using namespace series;
+using timer = high_resolution_clock;
+using series::primes;
+
+using numtype = unsigned long;
 
 /**
  * Specifies values, solves problem and outputs solution and calculation time.
  * @return The exit code
  */
 int main() {
-    const int UPPER_BOUND = 2000000;
+    const numtype UPPER_BOUND = 2000000;
 
-    high_resolution_clock::time_point start = high_resolution_clock::now();
+    timer::time_point start = timer::now();
 
-    Primes p;
-    vector<unsigned long> primes = p.getUpTo(UPPER_BOUND);
-    unsigned long sum = 0;
-    for (unsigned long prime : primes)
+    primes<numtype> p;
+    vector<numtype> primes = p.get_while([UPPER_BOUND](numtype n) { return n <= UPPER_BOUND; });
+    numtype sum = 0;
+    for (numtype prime : primes)
         sum += prime;
 
-    double time = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000000.0;
+    double time = duration_cast<microseconds>(timer::now() - start).count() / 1000000.0;
 
-    cout << "The sum of all the primes below two million is " << sum << endl;
+    cout << "The sum of all the primes below " << UPPER_BOUND << " is " << sum << endl;
     cout << "Calculation took " << time << " seconds" << endl;
 }

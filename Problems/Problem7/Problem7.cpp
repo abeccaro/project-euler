@@ -3,25 +3,28 @@
 //
 
 #include <iostream>
-#include "../../Utilities/Series/Primes.h"
+#include "series/primes.hpp"
 
 using namespace std;
 using namespace chrono;
-using namespace series;
+using timer = high_resolution_clock;
+using series::primes;
+
+using numtype = unsigned int;
 
 /**
  * Specifies values, solves problem and outputs solution and calculation time.
  * @return The exit code
  */
 int main() {
-    const int POSITION = 10001;
+    const numtype POSITION = 10001;
 
-    high_resolution_clock::time_point start = high_resolution_clock::now();
+    timer::time_point start = timer::now();
 
-    Primes p;
-    long prime = p[POSITION-1];
+    primes<numtype> p;
+    numtype prime = p[POSITION-1];
 
-    double time = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000000.0;
+    double time = duration_cast<microseconds>(timer::now() - start).count() / 1000000.0;
 
     cout << "The " << POSITION << "th prime is " << prime << endl;
     cout << "Calculation took " << time << " seconds" << endl;

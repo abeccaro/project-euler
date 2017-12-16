@@ -3,46 +3,40 @@
 //
 
 #include <iostream>
-#include "../../Utilities/InputUtilities.h"
+#include <generics.hpp>
+#include "input.hpp"
 
 using namespace std;
 using namespace chrono;
-using namespace input_utilities;
+using timer = high_resolution_clock;
+using namespace input;
+using generics::digits;
+
+using numtype = cpp_int;
 
 /**
  * Specifies values, solves problem and outputs solution and calculation time.
  * @return The exit code
  */
 int main() {
-    const int DIGITS = 50;
+    const unsigned long DIGITS = 10;
 
-    high_resolution_clock::time_point start = high_resolution_clock::now();
+    timer::time_point start = timer::now();
 
-    vector<vector<int>> numbers = readIntMatrix(projectPath + "Problems/Problem13/input.txt");
+    vector<numtype> numbers = read_vector<numtype>(projectPath + "Problems/Problem13/input.txt");
 
-    int remainder = 0;
-    vector<int> result(DIGITS);
+    numtype sum = 0;
+    for (numtype n : numbers)
+        sum += n;
 
-    for (int i = DIGITS - 1; i >= 0; i--) {
-        int  sum = remainder;
+    vector<unsigned short> first_digits = digits(sum);
+    first_digits.resize(DIGITS);
 
-        for (vector<int> n : numbers)
-            sum += n[i];
+    double time = duration_cast<microseconds>(timer::now() - start).count() / 1000000.0;
 
-        result[i] = sum % 10;
-        remainder = sum / 10;
-    }
-
-    while (remainder > 0) {
-        result.insert(result.begin(), remainder % 10);
-        remainder /= 10;
-    }
-
-    double time = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000000.0;
-
-    cout << "The first 10 digits of the sum are ";
-    for (int i = 0; i < 10; i++)
-        cout << result[i];
+    cout << "The first " << DIGITS << " digits of the sum are ";
+    for (int i = 0; i < DIGITS; i++)
+        cout << first_digits[i];
     cout << endl;
     cout << "Calculation took " << time << " seconds" << endl;
 }

@@ -3,24 +3,27 @@
 //
 
 #include <iostream>
-#include "../../Utilities/Primes.h"
+#include "primes.hpp"
 
 using namespace std;
 using namespace chrono;
-using namespace primes;
+using timer = high_resolution_clock;
+using primes::primeFactors;
+
+using numtype = unsigned long;
 
 /**
  * Specifies values, solves problem and outputs solution and calculation time.
  * @return The exit code
  */
 int main() {
-    const long NUMBER = 600851475143;
+    const numtype NUMBER = 600851475143;
 
-    high_resolution_clock::time_point start = high_resolution_clock::now();
+    timer::time_point start = timer::now();
 
-    int largestPrimeFactor = primeFactors(NUMBER).back();
+    numtype largestPrimeFactor = primeFactors(NUMBER).back();
 
-    double time = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000000.0;
+    double time = duration_cast<microseconds>(timer::now() - start).count() / 1000000.0;
 
     cout << "The largest prime factor of " << NUMBER << " is " << largestPrimeFactor << endl;
     cout << "Calculation took " << time << " seconds" << endl;

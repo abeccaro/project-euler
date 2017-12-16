@@ -4,27 +4,30 @@
 
 #include <iostream>
 #include <vector>
-#include "../../Utilities/GeneralUtilities.h"
+#include "generics.hpp"
 
 using namespace std;
 using namespace chrono;
-using namespace general_utilities;
+using timer = high_resolution_clock;
+using generics::lcm;
+
+using numtype = unsigned long;
 
 /**
  * Specifies values, solves problem and outputs solution and calculation time.
  * @return The exit code
  */
 int main() {
-    const int MAX_DIVISOR = 20;
+    const numtype MAX_DIVISOR = 20;
 
-    high_resolution_clock::time_point start = high_resolution_clock::now();
+    timer::time_point start = timer::now();
 
-    vector<unsigned long> divisors;
-    for (int i = MAX_DIVISOR; i >= 2; i--)
+    vector<numtype> divisors;
+    for (numtype i = MAX_DIVISOR; i >= 2; i--)
         divisors.push_back(i);
-    long result = lcm(divisors);
+    numtype result = lcm(divisors);
 
-    double time = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000000.0;
+    double time = duration_cast<microseconds>(timer::now() - start).count() / 1000000.0;
 
     cout << "The smallest positive number that is evenly divisible by all of the numbers from 1 to 20 is " << result << endl;
     cout << "Calculation took " << time << " seconds" << endl;

@@ -3,28 +3,32 @@
 //
 
 #include <iostream>
+#include <boost/multiprecision/cpp_int.hpp>
 
 using namespace std;
 using namespace chrono;
+using timer = high_resolution_clock;
+
+using numtype = unsigned int;
 
 /**
  * Specifies values, solves problem and outputs solution and calculation time.
  * @return The exit code
  */
 int main() {
-    const int NUMBERS = 100;
+    const numtype NUMBERS = 100;
 
-    high_resolution_clock::time_point start = high_resolution_clock::now();
+    timer::time_point start = timer::now();
 
-    int sumOfSquares = 0, squareOfSum = 0;
+    numtype sumOfSquares = 0, squareOfSum = 0;
 
-    for (int i = 1; i <= NUMBERS; i++) {
+    for (numtype i = 1; i <= NUMBERS; i++) {
         sumOfSquares += i * i;
         squareOfSum += i;
     }
     squareOfSum *= squareOfSum;
 
-    double time = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000000.0;
+    double time = duration_cast<microseconds>(timer::now() - start).count() / 1000000.0;
 
     cout << "The difference between the sum of the squares of the first one hundred natural numbers and the square of the sum is " << squareOfSum - sumOfSquares << endl;
     cout << "Calculation took " << time << " seconds" << endl;

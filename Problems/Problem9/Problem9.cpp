@@ -6,26 +6,29 @@
 
 using namespace std;
 using namespace chrono;
+using timer = high_resolution_clock;
+
+using numtype = unsigned int;
 
 /**
  * Specifies values, solves problem and outputs solution and calculation time.
  * @return The exit code
  */
 int main() {
-    const int SUM = 1000;
+    const numtype SUM = 1000;
 
-    high_resolution_clock::time_point start = high_resolution_clock::now();
+    timer::time_point start = timer::now();
 
-    int product = 0;
-    for (int a = 1; a <= SUM / 3; a++) {
-        for (int b = a + 1; b < SUM / 2; b++) {
-            int c = SUM - a - b;
+    numtype product = 0;
+    for (numtype a = 1; a <= SUM / 3; a++) {
+        for (numtype b = a + 1; b < SUM / 2; b++) {
+            numtype c = SUM - a - b;
             if (a * a + b * b == c * c)
                 product = a * b * c;
         }
     }
 
-    double time = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000000.0;
+    double time = duration_cast<microseconds>(timer::now() - start).count() / 1000000.0;
 
     cout << "The product of the Pythagorean triplet for which a + b + c = 1000 is " << product << endl;
     cout << "Calculation took " << time << " seconds" << endl;

@@ -3,11 +3,14 @@
 //
 
 #include <iostream>
-#include "../../Utilities/InputUtilities.h"
+#include "input.hpp"
 
 using namespace std;
 using namespace chrono;
-using namespace input_utilities;
+using timer = high_resolution_clock;
+using namespace input;
+
+using numtype = unsigned int;
 
 /**
  * Calculates max product of 'size' adjacent numbers in given vector.
@@ -15,7 +18,7 @@ using namespace input_utilities;
  * @param size The number of terms in the products
  * @return The maximum product
  */
-long maxAdjacentProduct(const vector<vector<int>>& matrix, const int size) {
+numtype maxAdjacentProduct(const vector<vector<numtype>>& matrix, const numtype size) {
     long maxProd = numeric_limits<long>::min();
 
     for (int i = 0; i < matrix.size(); i++) {
@@ -66,15 +69,15 @@ long maxAdjacentProduct(const vector<vector<int>>& matrix, const int size) {
  * @return The exit code
  */
 int main() {
-    const int SIZE = 4;
+    const numtype SIZE = 4;
 
-    high_resolution_clock::time_point start = high_resolution_clock::now();
+    timer::time_point start = timer::now();
 
-    vector<vector<int>> matrix = readIntMatrix(projectPath + "Problems/Problem11/input.txt");
-    long product = maxAdjacentProduct(matrix, SIZE);
+    vector<vector<numtype>> matrix = read_matrix<numtype>(projectPath + "Problems/Problem11/input.txt");
+    numtype product = maxAdjacentProduct(matrix, SIZE);
 
-    double time = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000000.0;
+    double time = duration_cast<microseconds>(timer::now() - start).count() / 1000000.0;
 
-    cout << "The solution is " << product << endl;
+    cout << "The greatest product of four adjacent numbers in the same direction in given grid is " << product << endl;
     cout << "Calculation took " << time << " seconds" << endl;
 }

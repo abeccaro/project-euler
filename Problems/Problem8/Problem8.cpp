@@ -3,12 +3,14 @@
 //
 
 #include <iostream>
-#include <limits>
-#include "../../Utilities/InputUtilities.h"
+#include "input.hpp"
 
 using namespace std;
 using namespace chrono;
-using namespace input_utilities;
+using timer = high_resolution_clock;
+using namespace input;
+
+using numtype = unsigned long;
 
 /**
  * Calculates max product of 'length' adjacent numbers in given vector.
@@ -16,10 +18,10 @@ using namespace input_utilities;
  * @param length The number of terms in the products
  * @return The maximum product
  */
-long maxProductOfAdjacent(const vector<int> &vector, const int length) {
-    long maxProduct = numeric_limits<long>::min();
+numtype maxProductOfAdjacent(const vector<numtype> &vector, const numtype length) {
+    numtype maxProduct = numeric_limits<numtype>::min();
     for (int i = 0; i <= vector.size() - length; i++) {
-        long product = 1;
+        numtype product = 1;
         for (int j = 0; j < length; j++)
             product *= vector[i+j];
         if (product > maxProduct)
@@ -33,14 +35,14 @@ long maxProductOfAdjacent(const vector<int> &vector, const int length) {
  * @return The exit code
  */
 int main() {
-    const int DIGITS = 13;
+    const numtype DIGITS = 13;
 
-    high_resolution_clock::time_point start = high_resolution_clock::now();
+    timer::time_point start = timer::now();
 
-    vector<int> digits = readInts(projectPath + "Problems/Problem8/input.txt");
-    long product = maxProductOfAdjacent(digits, DIGITS);
+    vector<numtype> digits = read_vector<numtype>(projectPath + "Problems/Problem8/input.txt");
+    numtype product = maxProductOfAdjacent(digits, DIGITS);
 
-    double time = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000000.0;
+    double time = duration_cast<microseconds>(timer::now() - start).count() / 1000000.0;
 
     cout << "The solution is " << product << endl;
     cout << "Calculation took " << time << " seconds" << endl;

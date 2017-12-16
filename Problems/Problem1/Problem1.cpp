@@ -6,6 +6,9 @@
 
 using namespace std;
 using namespace chrono;
+using timer = high_resolution_clock;
+
+using numtype = unsigned int;
 
 /**
  * Calculates the sum of all multiples of given number below given upperBound.
@@ -13,10 +16,10 @@ using namespace chrono;
  * @param upperBound The upper bound
  * @return The sum of multiples
  */
-int multiplesSum(int n, int upperBound) {
-    int sum = 0;
+numtype multiplesSum(numtype n, numtype upperBound) {
+    numtype sum = 0;
 
-    for (int i = 1; n * i < upperBound; i++)
+    for (numtype i = 1; n * i < upperBound; i++)
         sum += n * i;
 
     return sum;
@@ -27,15 +30,15 @@ int multiplesSum(int n, int upperBound) {
  * @return The exit code
  */
 int main() {
-    const int N1 = 3;
-    const int N2 = 5;
-    const int UPPER_BOUND = 1000;
+    const numtype N1 = 3;
+    const numtype N2 = 5;
+    const numtype UPPER_BOUND = 1000;
 
-    high_resolution_clock::time_point start = high_resolution_clock::now();
+    timer::time_point start = timer::now();
 
-    int result = multiplesSum(N1, UPPER_BOUND) + multiplesSum(N2, UPPER_BOUND) - multiplesSum(N1 * N2, UPPER_BOUND);
+    numtype result = multiplesSum(N1, UPPER_BOUND) + multiplesSum(N2, UPPER_BOUND) - multiplesSum(N1 * N2, UPPER_BOUND);
     
-    double time = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000000.0;
+    double time = duration_cast<microseconds>(timer::now() - start).count() / 1000000.0;
 
     cout << "The sum of all multiples of 3 and multiples of 5 below 1000 is "<< result << endl;
     cout << "Calculation took " << time << " seconds" << endl;
