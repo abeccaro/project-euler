@@ -7,7 +7,7 @@
 #include <vector>
 #include <boost/multiprecision/cpp_int.hpp>
 
-using std::vector;
+using namespace std;
 using namespace boost::multiprecision;
 
 namespace generics {
@@ -45,6 +45,20 @@ namespace generics {
         reverse_copy(dig.begin(), dig.end(), reversed_dig.begin());
 
         return dig == reversed_dig;
+    }
+
+    /**
+     * Calculates the greatest common divisor of given numbers.
+     * @param a The first number
+     * @param b The second number
+     * @return The gcd of given numbers
+     */
+    template<class T>
+    T gcd(const T& a, const T& b) {
+        if (b == 0)
+            return a;
+
+        return gcd(b, a % b);
     }
 
     /**
@@ -132,6 +146,26 @@ namespace generics {
         T den = factorial(k);
 
         return num / den; // safe integer division, result is always integer
+    }
+
+    template<class T>
+    bool areCoprime(const T& a, const T& b) {
+        return gcd(a,b) == 1;
+    }
+
+    /**
+     * Calculates the multiplicative order of n modulus mod.
+     * Note that n and mod have to be coprimes. This is assumed by function.
+     * @param n The number
+     * @param mod The modulus
+     * @return The multiplicative order
+     */
+    template<class T>
+    T multiplicative_order(const T& n, const T& mod) {
+        unsigned long exp = 1;
+        while ((T) pow(n, exp) % mod != 1)
+            exp++;
+        return exp;
     }
 }
 
