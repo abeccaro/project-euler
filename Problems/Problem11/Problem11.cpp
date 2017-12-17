@@ -73,7 +73,7 @@ int main() {
 
     timer::time_point start = timer::now();
 
-    vector<vector<numtype>> matrix = read_matrix<numtype>(projectPath + "Problems/Problem11/input.txt");
+    vector<vector<numtype>> matrix = read_matrix<numtype>(project_path + "Problems/Problem11/input.txt");
     numtype product = maxAdjacentProduct(matrix, SIZE);
 
     double time = duration_cast<microseconds>(timer::now() - start).count() / 1000000.0;

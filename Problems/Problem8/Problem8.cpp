@@ -39,7 +39,7 @@ int main() {
 
     timer::time_point start = timer::now();
 
-    vector<numtype> digits = read_vector<numtype>(projectPath + "Problems/Problem8/input.txt");
+    vector<numtype> digits = read_vector<numtype>(project_path + "Problems/Problem8/input.txt");
     numtype product = maxProductOfAdjacent(digits, DIGITS);
 
     double time = duration_cast<microseconds>(timer::now() - start).count() / 1000000.0;

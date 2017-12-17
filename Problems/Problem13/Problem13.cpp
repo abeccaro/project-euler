@@ -23,7 +23,7 @@ int main() {
 
     timer::time_point start = timer::now();
 
-    vector<numtype> numbers = read_vector<numtype>(projectPath + "Problems/Problem13/input.txt");
+    vector<numtype> numbers = read_vector<numtype>(project_path + "Problems/Problem13/input.txt");
 
     numtype sum = 0;
     for (numtype n : numbers)

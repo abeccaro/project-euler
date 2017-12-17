@@ -14,7 +14,7 @@ using namespace std;
 using boost::multiprecision::cpp_int;
 
 namespace input {
-    const string projectPath = "/Users/Becks/Programmazione/project-euler/";
+    const string project_path = "/Users/Becks/Programmazione/project-euler/";
 
     /**
      * Reads a vector of numbers from specified file.
