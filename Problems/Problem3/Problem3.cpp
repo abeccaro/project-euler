@@ -8,7 +8,7 @@
 using namespace std;
 using namespace chrono;
 using timer = high_resolution_clock;
-using primes::primeFactors;
+using primes::prime_factors;
 
 using numtype = unsigned long;
 
@@ -21,7 +21,7 @@ int main() {
 
     timer::time_point start = timer::now();
 
-    numtype largestPrimeFactor = primeFactors(NUMBER).back();
+    numtype largestPrimeFactor = prime_factors(NUMBER).back();
 
     double time = duration_cast<microseconds>(timer::now() - start).count() / 1000000.0;
 

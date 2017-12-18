@@ -6,9 +6,11 @@
 
 #include <vector>
 #include <boost/multiprecision/cpp_int.hpp>
+#include <generics.hpp>
 
 using std::vector;
 using boost::multiprecision::cpp_int;
+using generics::divisors;
 
 namespace primes {
     /**
@@ -18,7 +20,7 @@ namespace primes {
      * @return The vector of prime factors
      */
     template<class T>
-    vector<T> primeFactors(T n) {
+    vector<T> prime_factors(T n) {
         vector<T> factors;
 
         if (n % 2 == 0)
@@ -45,8 +47,8 @@ namespace primes {
      */
     template<class T>
     vector<T> primes(unsigned long n) {
-        double upperBound = n * (log(n) + log(log(n)));
-        vector<T> ps = primesUpTo((T) upperBound);
+        double upper_bound = n * (log(n) + log(log(n)));
+        vector<T> ps = primes_up_to((T) upper_bound);
         ps.resize(n);
         return ps;
     }
@@ -58,29 +60,39 @@ namespace primes {
      * @return The vector with the series
      */
     template<class T>
-    vector<T> primesUpTo(T upperBound) {
-        vector<bool> primesCheck((unsigned long) (upperBound / 2), true);
+    vector<T> primes_up_to(T upper_bound) {
+        vector<bool> primes_check((unsigned long) (upper_bound / 2), true);
         vector<T> primes;
-        auto root = sqrt(upperBound) / 2;
+        auto root = sqrt(upper_bound) / 2;
 
         // 2
-        if (upperBound >= 2)
+        if (upper_bound >= 2)
             primes.emplace_back(2);
 
         // setting false all multiples of primes
         for(unsigned long i = 1; i < root; i ++)
-            if (primesCheck[i]) {
+            if (primes_check[i]) {
                 T prime = i * 2 + 1;
-                for (T multiple = prime * prime; multiple < upperBound; multiple += 2 * prime)
-                    primesCheck[(unsigned long) ((multiple - 1) / 2)] = false;
+                for (T multiple = prime * prime; multiple < upper_bound; multiple += 2 * prime)
+                    primes_check[(unsigned long) ((multiple - 1) / 2)] = false;
             }
 
         // adding primes to vector
-        for (unsigned long i = 1; i < primesCheck.size(); i++)
-            if (primesCheck[i])
+        for (unsigned long i = 1; i < primes_check.size(); i++)
+            if (primes_check[i])
                 primes.emplace_back(2 * i + 1);
 
         return primes;
+    }
+
+    /**
+     * Checks if given number is prime.
+     * @param n The number to check
+     * @return True if given number is prime, false otherwise
+     */
+    template<class T>
+    bool is_prime(T n) {
+        return divisors(n).size() == 2;
     }
 }
 
