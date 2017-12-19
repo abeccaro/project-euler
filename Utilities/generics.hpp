@@ -22,7 +22,7 @@ namespace generics {
         T copy = n;
 
         while (copy > 9) {
-            unsigned short d = (unsigned short) (copy % 10);
+            auto d = (unsigned short) (copy % 10);
             digits.push_back(d);
             copy /= 10;
         }
@@ -30,6 +30,22 @@ namespace generics {
 
         reverse(digits.begin(), digits.end());
         return digits;
+    }
+
+    /**
+     * Creates the number formed by concatenating given digits.
+     * @param digits The ordered digits
+     * @return The number
+     */
+    template<class T>
+    T fromDigits(const vector<unsigned short>& digits) {
+        T result = 0;
+        unsigned long length = digits.size();
+
+        for (unsigned long i = 0; i < length; i++)
+            result += digits[length - i - 1] * pow(10, i);
+
+        return result;
     }
 
     /**
@@ -166,6 +182,33 @@ namespace generics {
         while ((T) pow(n, exp) % mod != 1)
             exp++;
         return exp;
+    }
+
+    /**
+     * Calculates all the rotation of given number, e.g.: 197 -> [197, 971, 719].
+     * The first is given number itself (0-digits rotation)
+     * @param n The number
+     * @return All the rotations
+     */
+    template<class T>
+    vector<T> rotations(T n) {
+        vector<unsigned short> digs = digits(n);
+        unsigned long length = digs.size();
+
+        vector<T> result(length);
+        result[0] = n;
+
+        for (unsigned long i = 1; i < length; i++) {
+            vector<unsigned short> ds(length);
+
+            copy(digs.begin() + i, digs.end(), ds.begin());
+            unsigned long copied = length - i;
+            copy(digs.begin(), digs.begin() + i, ds.begin() + copied);
+
+            result[i] = fromDigits<T>(ds);
+        }
+
+        return result;
     }
 }
 
