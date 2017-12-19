@@ -38,7 +38,7 @@ namespace generics {
      * @return The number
      */
     template<class T>
-    T fromDigits(const vector<unsigned short>& digits) {
+    T from_digits(const vector<unsigned short> &digits) {
         T result = 0;
         unsigned long length = digits.size();
 
@@ -205,7 +205,7 @@ namespace generics {
             unsigned long copied = length - i;
             copy(digs.begin(), digs.begin() + i, ds.begin() + copied);
 
-            result[i] = fromDigits<T>(ds);
+            result[i] = from_digits<T>(ds);
         }
 
         return result;
