@@ -26,10 +26,10 @@ bool is_digit_cancelling(numtype n, numtype d) {
     numtype d2 = d % 10;
     numtype gcd_nd = gcd(n, d);
 
-    return n1 == d1 && n / gcd_nd == n2 / gcd(n2, d2) && d / gcd_nd == d2 / gcd(n2, d2) ||
-           n1 == d2 && n / gcd_nd == n2 / gcd(n2, d1) && d / gcd_nd == d1 / gcd(n2, d1) ||
-           n2 == d1 && n / gcd_nd == n1 / gcd(n1, d2) && d / gcd_nd == d2 / gcd(n1, d2) ||
-           n2 == d2 && n / gcd_nd == n1 / gcd(n1, d1) && d / gcd_nd == d1 / gcd(n1, d1);
+    return (n1 == d1 && n / gcd_nd == n2 / gcd(n2, d2) && d / gcd_nd == d2 / gcd(n2, d2)) ||
+           (n1 == d2 && n / gcd_nd == n2 / gcd(n2, d1) && d / gcd_nd == d1 / gcd(n2, d1)) ||
+           (n2 == d1 && n / gcd_nd == n1 / gcd(n1, d2) && d / gcd_nd == d2 / gcd(n1, d2)) ||
+           (n2 == d2 && n / gcd_nd == n1 / gcd(n1, d1) && d / gcd_nd == d1 / gcd(n1, d1));
 
 }
 

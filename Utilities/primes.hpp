@@ -9,7 +9,7 @@
 #include <generics.hpp>
 
 using std::vector;
-using boost::multiprecision::cpp_int;
+using namespace template_conditions;
 using generics::divisors;
 
 namespace primes {
@@ -19,22 +19,23 @@ namespace primes {
      * @param n The number
      * @return The vector of prime factors
      */
-    template<class T>
-    vector<T> prime_factors(T n) {
+    template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
+    vector<T> prime_factors(const T& n) {
         vector<T> factors;
+        T copy(n);
 
-        if (n % 2 == 0)
+        if (copy % 2 == 0)
             factors.emplace_back(2);
 
-        for (T i = 3; i * i <= n; i = i+2) {
-            if (n % i == 0)
+        for (T i = 3; i * i <= copy; i = i+2) {
+            if (copy % i == 0)
                 factors.emplace_back(i);
-            while (n % i == 0)
-                n /= i;
+            while (copy % i == 0)
+                copy /= i;
         }
 
-        if (n > 2)
-            factors.push_back(n);
+        if (copy > 2)
+            factors.push_back(copy);
 
         return factors;
     }
@@ -45,8 +46,10 @@ namespace primes {
      * @param n The number of primes to generate
      * @return The vector with the series
      */
-    template<class T>
-    vector<T> primes(unsigned long n) {
+    template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
+    vector<T> primes(const unsigned long& n) {
+        assert (n > 0 && "Number of primes must be positive");
+
         double upper_bound = n * (log(n) + log(log(n)));
         vector<T> ps = primes_up_to((T) upper_bound);
         ps.resize(n);
@@ -59,15 +62,16 @@ namespace primes {
      * @param upperBound The upper bound
      * @return The vector with the series
      */
-    template<class T>
-    vector<T> primes_up_to(T upper_bound) {
+    template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
+    vector<T> primes_up_to(const T& upper_bound) {
         vector<bool> primes_check((unsigned long) (upper_bound / 2), true);
         vector<T> primes;
-        auto root = sqrt(upper_bound) / 2;
 
-        // 2
-        if (upper_bound >= 2)
-            primes.emplace_back(2);
+        if (upper_bound < 2)
+            return primes;
+        primes.emplace_back(2);
+
+        auto root = sqrt(upper_bound) / 2;
 
         // setting false all multiples of primes
         for(unsigned long i = 1; i < root; i ++)
@@ -90,7 +94,7 @@ namespace primes {
      * @param n The number to check
      * @return True if given number is prime, false otherwise
      */
-    template<class T>
+    template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
     bool is_prime(T n) {
         return divisors(n).size() == 2;
     }

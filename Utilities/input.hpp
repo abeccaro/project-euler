@@ -9,22 +9,24 @@
 #include <fstream>
 #include <sstream>
 #include <boost/multiprecision/cpp_int.hpp>
+#include "template_conditions.hpp"
 
 using namespace std;
-using boost::multiprecision::cpp_int;
+using namespace template_conditions;
 
 namespace input {
-    const string project_path = "/Users/Becks/Programmazione/project-euler/";
+    const string PROJECT_PATH = "/Users/Becks/Programmazione/project-euler/";
 
     /**
-     * Reads a vector of numbers from specified file.
+     * Reads a vector of elements from specified file.
      * @param filename The path of input file
-     * @return the vector of ints
+     * @return the vector of elements
      */
-    template<class T>
+    template<class T, class = typename enable_if<is_any_integral<T>::value || is_convertible<T, string>::value>::type>
     vector<T> read_vector(const string &filename) {
         vector<T> numbers;
         ifstream file(filename);
+        assert(file && "Specified file does not exist");
 
         string line;
         while (file >> line) {
@@ -41,14 +43,15 @@ namespace input {
     }
 
     /**
-     * Reads a matrix of numbers from specified file.
+     * Reads a matrix of elements from specified file.
      * @param filename The path of input file
-     * @return The matrix of ints
+     * @return The matrix of elements
      */
-    template<class T>
+    template<class T, class = typename enable_if<is_any_integral<T>::value || is_convertible<T, string>::value>::type>
     vector<vector<T>> read_matrix(const string &filename) {
         vector<vector<T>> matrix;
         ifstream file(filename);
+        assert(file && "Specified file does not exist");
 
         string line;
         while(getline(file, line)) {

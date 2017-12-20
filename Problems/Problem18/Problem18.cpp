@@ -33,7 +33,7 @@ numtype best_path_sum(const vector<vector<numtype>> &triangle, const numtype& ro
 int main() {
     timer::time_point start = timer::now();
 
-    vector<vector<numtype>> triangle = read_matrix<numtype>(project_path + "Problems/Problem18/input.txt");
+    vector<vector<numtype>> triangle = read_matrix<numtype>(PROJECT_PATH + "Problems/Problem18/input.txt");
 
     numtype result = best_path_sum(triangle);
 
