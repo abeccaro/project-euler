@@ -5,13 +5,12 @@
 #define PROJECT_EULER_PRIMES_H
 
 #include "lazy_series.hpp"
-#include <boost/multiprecision/cpp_int.hpp>
+#include "template_conditions.hpp"
 
-using std::vector;
-using namespace boost::multiprecision;
+using template_conditions::is_any_integral;
 
 namespace series {
-    template<class T>
+    template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
     /**
      * Lazy series implementation for prime numbers.
      * It is less performant than utilities function primes::get and primes::getUpTo.

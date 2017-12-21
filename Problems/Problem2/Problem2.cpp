@@ -23,10 +23,10 @@ int main() {
     timer::time_point start = timer::now();
 
     fibonacci<numtype> fib;
-    auto lessThanUB = [UPPER_BOUND](numtype n) {return n <= UPPER_BOUND;};
-    auto isEven = [](numtype n) {return n % 2 == 0;};
+    auto less_than_ub = [UPPER_BOUND](numtype n) {return n <= UPPER_BOUND;};
+    auto is_even = [](numtype n) {return n % 2 == 0;};
 
-    vector<numtype> fibonacci = fib.get_while(lessThanUB, isEven);
+    vector<numtype> fibonacci = fib.get_while(less_than_ub, is_even);
 
     numtype sum = 0;
     for (const numtype &f : fibonacci)

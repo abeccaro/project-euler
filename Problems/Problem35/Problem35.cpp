@@ -16,8 +16,6 @@ using series::primes;
 
 using numtype = unsigned int;
 
-
-
 /**
  * Specifies values, solves problem and outputs solution and calculation time.
  * @return The exit code

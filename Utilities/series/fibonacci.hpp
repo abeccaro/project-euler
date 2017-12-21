@@ -5,12 +5,12 @@
 #define PROJECT_EULER_FIBONACCI_H
 
 #include "lazy_series.hpp"
-#include <boost/multiprecision/cpp_int.hpp>
+#include "template_conditions.hpp"
 
-using boost::multiprecision::cpp_int;
+using template_conditions::is_any_integral;
 
 namespace series {
-    template<class T>
+    template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
     /**
      * lazy_series implementation for fibonacci sequence.
      */
