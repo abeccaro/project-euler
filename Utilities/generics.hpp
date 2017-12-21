@@ -243,6 +243,60 @@ namespace generics {
 
         return result;
     }
+
+    /**
+     * Converts given number from base 10 to given base
+     * @param n The number
+     * @param base The base to convert the number to
+     * @return The converted number's digits
+     */
+    template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
+    vector<unsigned short> to_base(T n, unsigned short base) {
+        assert (base > 0 && "Base must be positive");
+
+        vector<unsigned short> digits;
+        T copy = n;
+
+        while (copy > 0) {
+            digits.push_back(copy % base);
+            copy = copy / base;
+        }
+
+        reverse(digits.begin(), digits.end());
+        return digits;
+    };
+
+    /**
+     * Converts given number from given base to base 10
+     * @param n The number
+     * @param base The number's base
+     * @return The number base 10
+     */
+    template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
+    T from_base(T n, unsigned short base) {
+        assert (base > 0 && "Base must be positive");
+
+        T result = 0;
+        vector<unsigned short> digs = digits(n);
+        unsigned long size = digs.size();
+
+        for (unsigned long i = 0; i < size; i++)
+            result += digs[size-i-1] * pow(base, i);
+
+        return result;
+    };
+
+    /**
+     * Converts given number from a base to another base
+     * @param n The number
+     * @param from The current base
+     * @param to The base to convert the number to
+     * @return The converted number's digits
+     */
+    template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
+    vector<unsigned short> to_base(T n, unsigned short from, unsigned short to) {
+        from_base(from_digits<T>(to_base(n, 2)), 2);
+    };
 }
 
 #endif //PROJECT_EULER_GENERICS_H
