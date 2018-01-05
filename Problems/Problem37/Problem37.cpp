@@ -16,6 +16,11 @@ using namespace generics;
 using numtype = unsigned int;
 
 
+/**
+ * Checks if given number is truncatable from left to right
+ * @param n The number
+ * @return True if the number is truncatable from left to right, false otherwise.
+ */
 bool is_truncatable_from_left(const numtype& n) {
     vector<unsigned short> digs = digits(n);
 
@@ -28,6 +33,11 @@ bool is_truncatable_from_left(const numtype& n) {
     return is_prime(digs[0]);
 }
 
+/**
+ * Checks if given number is truncatable from right to left
+ * @param n The number
+ * @return True if the number is truncatable from right to left, false otherwise.
+ */
 bool is_truncatable_from_right(const numtype& n) {
     numtype copy = n;
 
@@ -40,6 +50,11 @@ bool is_truncatable_from_right(const numtype& n) {
     return is_prime(copy);
 }
 
+/**
+ * Checks if given number is truncatable from both sides
+ * @param n The number
+ * @return True if the number is truncatable from both sides, false otherwise.
+ */
 bool is_truncatable_from_both_sides(const numtype& n) {
     return is_truncatable_from_left(n) && is_truncatable_from_right(n);
 }
@@ -49,7 +64,7 @@ bool is_truncatable_from_both_sides(const numtype& n) {
  * @return The exit code
  */
 int main() {
-    const numtype N = 11; // # of numbers to find
+    const numtype N = 11; // number of primes to find
 
     timer::time_point start = timer::now();
 
