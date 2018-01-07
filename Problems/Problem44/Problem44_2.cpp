@@ -1,10 +1,9 @@
 /*
  * Created by Alex Beccaro on 07/01/18.
  *
- * N.B.: this program doesn't actually checks that the solution is correct, as it assumes that the pair with pentagonal
- *       sum and difference and the smallest p_k has actually the smallest D for p_k > p_j. This assumption is done
- *       based on the fact that requested properties are quite rare so it's very unlikely to have another couple with
- *       higher p_k and lower D and doing the check would require a lot of time.
+ * N.B.: other version based on project euler forum post on this problem (https://projecteuler.net/thread=44#3218).
+ *       This version allows to find a solution that is sure to be correct.
+ *       Explanation can be found following the post link.
  */
 
 #include <iostream>
@@ -29,6 +28,18 @@ bool is_pentagonal(numtype n) {
 }
 
 /**
+ * Checks if given number is the double of a pentagonal number
+ * @param n The number to check
+ * @return True if n is the double of a pentagonal number, false otherwise
+ */
+bool is_double_pentagonal(numtype n) {
+    if (n % 2 != 0)
+        return false;
+
+    return is_pentagonal(n / 2);
+}
+
+/**
  * Specifies values, solves problem and outputs solution and calculation time.
  * @return The exit code
  */
@@ -38,13 +49,10 @@ int main() {
     figurate_number<numtype> p(5);
     numtype result = 0;
 
-    for (numtype k = 1; result == 0; k++) {
-        for (numtype j = 0; j < k; j++)
-            if (is_pentagonal(p[k] + p[j]) && is_pentagonal(p[k] - p[j])) {
-                result = p[k] - p[j];
-                break;
-            }
-    }
+    for (numtype m = 1; result == 0; m++)
+        for (numtype k = 0; k < m; k++)
+            if (is_double_pentagonal(p[m] + p[k]) && is_double_pentagonal(p[m] - p[k]))
+                result = p[k];
 
     double time = duration_cast<microseconds>(timer::now() - start).count() / 1000000.0;
 
