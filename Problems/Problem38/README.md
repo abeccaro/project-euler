@@ -1,8 +1,8 @@
 Take the number 192 and multiply it by each of 1, 2, and 3:
 
-192 × 1 = 192
-192 × 2 = 384
-192 × 3 = 576
+192 × 1 = 192<br/>
+192 × 2 = 384<br/>
+192 × 3 = 576<br/>
 
 By concatenating each product we get the 1 to 9 pandigital, 192384576. We will call 192384576 the concatenated product of 192 and (1,2,3)
 
