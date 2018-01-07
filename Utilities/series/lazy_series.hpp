@@ -178,7 +178,7 @@ namespace series {
              * @return The new Iterator
              */
             iterator operator + (int n) const {
-                return {series, index + n};
+                return iterator(series, index + n);
             }
 
             /**
@@ -187,7 +187,7 @@ namespace series {
              * @return The new Iterator
              */
             iterator operator - (int n) const {
-                return {series, index - n};
+                return iterator(series, index - n);
             }
 
             /**
