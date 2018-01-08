@@ -51,6 +51,7 @@ int main() {
 
     double time = duration_cast<microseconds>(timer::now() - start).count() / 1000000.0;
 
-    cout << "The solution is " << result << endl;
+    cout << "The sum of all the positive integers which cannot be written as the sum of two abundant numbers is "
+         << result << endl;
     cout << "Calculation took " << time << " seconds" << endl;
 }
