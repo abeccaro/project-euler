@@ -20,7 +20,7 @@ int main() {
     timer::time_point start = timer::now();
 
     numtype result = 0;
-    vector<string> words = read_vector<string>(PROJECT_PATH + "Problems/Problem42/input.txt");
+    vector<string> words = read_vector<string>(PROJECT_PATH + "Problems/1-50/Problem42/input.txt");
 
     for (string word : words) {
         numtype score = 0;

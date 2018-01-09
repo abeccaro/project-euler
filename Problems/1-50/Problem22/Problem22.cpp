@@ -19,7 +19,7 @@ using numtype = unsigned long;
 int main() {
     timer::time_point start = timer::now();
 
-    vector<string> names = read_vector<string>(PROJECT_PATH + "Problems/Problem22/input.txt");
+    vector<string> names = read_vector<string>(PROJECT_PATH + "Problems/1-50/Problem22/input.txt");
     sort(names.begin(), names.end());
 
     numtype sum = 0;
