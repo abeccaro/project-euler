@@ -21,10 +21,10 @@ int main() {
 
     timer::time_point start = timer::now();
 
-    vector<unsigned short> dig = digits(factorial(NUMBER));
+    vector<unsigned int> dig = digits(factorial(NUMBER));
 
     numtype result = 0;
-    for (auto d : dig)
+    for (const auto& d : dig)
         result += d;
 
     double time = duration_cast<microseconds>(timer::now() - start).count() / 1000000.0;

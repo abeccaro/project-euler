@@ -29,10 +29,10 @@ int main() {
 
     numtype result = 0;
     for (numtype i = 10; i < upper_bound; i++) {
-        vector<unsigned short> digs = digits(i);
+        vector<unsigned int> digs = digits(i);
         numtype sum = 0;
 
-        for(unsigned short d : digs)
+        for(const auto& d : digs)
             sum += (numtype) pow(d, EXPONENT);
 
         if (sum == i)

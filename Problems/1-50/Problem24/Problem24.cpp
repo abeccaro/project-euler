@@ -27,7 +27,7 @@ int main() {
     double time = duration_cast<microseconds>(timer::now() - start).count() / 1000000.0;
 
     cout << "The " << PERMUTATION << "th permutation in lexicographic order is ";
-    for (numtype d : digits)
+    for (const auto& d : digits)
         cout << d;
     cout << endl;
     cout << "Calculation took " << time << " seconds" << endl;

@@ -25,8 +25,8 @@ int main() {
 
     for (numtype i = 1; i < UPPER_BOUND; i++) {
         if (is_palindrome(i)) {
-            vector<unsigned short> digs = to_base(i, 2);
-            vector<unsigned short> rev_digs(digs.size());
+            vector<unsigned int> digs = to_base(i, 2);
+            vector<unsigned int> rev_digs(digs.size());
 
             reverse_copy(digs.begin(), digs.end(), rev_digs.begin());
 

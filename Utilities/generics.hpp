@@ -10,6 +10,9 @@
 using namespace std;
 using namespace template_conditions;
 
+using uint = unsigned int;
+using ulong = unsigned long;
+
 namespace generics {
     /**
      * Divides given number in a vector of ordered digits.
@@ -17,16 +20,16 @@ namespace generics {
      * @return The vector of ordered digits
      */
     template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
-    vector<unsigned short> digits(const T& n) {
-        vector<unsigned short> digits;
+    vector<uint> digits(const T& n) {
+        vector<uint> digits;
         T copy = n >= 0 ? n : -n;
 
         while (copy > 9) {
-            auto d = (unsigned short) (copy % 10);
+            auto d = (uint) (copy % 10);
             digits.push_back(d);
             copy /= 10;
         }
-        digits.push_back((unsigned short) copy);
+        digits.push_back((uint) copy);
 
         reverse(digits.begin(), digits.end());
         return digits;
@@ -38,14 +41,14 @@ namespace generics {
      * @return The number
      */
     template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
-    T from_digits(const vector<unsigned short> &digits) {
-        assert(all_of(digits.begin(), digits.end(), [](unsigned short n){return n < 10;}) &&
+    T from_digits(const vector<uint> &digits) {
+        assert(all_of(digits.begin(), digits.end(), [](uint n){return n < 10;}) &&
                        "At least a non digit number (> 10)");
 
         T result = 0;
-        unsigned long length = digits.size();
+        ulong length = digits.size();
 
-        for (unsigned long i = 0; i < length; i++)
+        for (ulong i = 0; i < length; i++)
             result += digits[length - i - 1] * pow(10, i);
 
         return result;
@@ -58,8 +61,8 @@ namespace generics {
      */
     template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
     bool is_palindrome(const T& n) {
-        vector<unsigned short> dig = digits(n);
-        vector<unsigned short> reversed_dig(dig.size());
+        vector<uint> dig = digits(n);
+        vector<uint> reversed_dig(dig.size());
 
         reverse_copy(dig.begin(), dig.end(), reversed_dig.begin());
 
@@ -211,7 +214,7 @@ namespace generics {
         assert(mod > 1 && "Modulo must be greater than 1");
         assert(areCoprime(base, mod) && "Multiplicative order is not defined for given values");
 
-        unsigned long exp = 1;
+        ulong exp = 1;
         while ((T) pow(base, exp) % mod != 1)
             exp++;
         return exp;
@@ -225,17 +228,17 @@ namespace generics {
      */
     template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
     vector<T> rotations(const T& n) {
-        vector<unsigned short> digs = digits(n);
-        unsigned long length = digs.size();
+        vector<uint> digs = digits(n);
+        ulong length = digs.size();
 
         vector<T> result(length);
         result[0] = n;
 
-        for (unsigned long i = 1; i < length; i++) {
-            vector<unsigned short> ds(length);
+        for (ulong i = 1; i < length; i++) {
+            vector<uint> ds(length);
 
             copy(digs.begin() + i, digs.end(), ds.begin());
-            unsigned long copied = length - i;
+            ulong copied = length - i;
             copy(digs.begin(), digs.begin() + i, ds.begin() + copied);
 
             result[i] = from_digits<T>(ds);
@@ -251,10 +254,10 @@ namespace generics {
      * @return The converted number's digits
      */
     template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
-    vector<unsigned short> to_base(T n, unsigned short base) {
+    vector<uint> to_base(T n, uint base) {
         assert (base > 0 && "Base must be positive");
 
-        vector<unsigned short> digits;
+        vector<uint> digits;
         T copy = n;
 
         while (copy > 0) {
@@ -273,14 +276,14 @@ namespace generics {
      * @return The number base 10
      */
     template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
-    T from_base(T n, unsigned short base) {
+    T from_base(T n, uint base) {
         assert (base > 0 && "Base must be positive");
 
         T result = 0;
-        vector<unsigned short> digs = digits(n);
-        unsigned long size = digs.size();
+        vector<uint> digs = digits(n);
+        ulong size = digs.size();
 
-        for (unsigned long i = 0; i < size; i++)
+        for (ulong i = 0; i < size; i++)
             result += digs[size-i-1] * pow(base, i);
 
         return result;
@@ -294,7 +297,7 @@ namespace generics {
      * @return The converted number's digits
      */
     template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
-    vector<unsigned short> to_base(T n, unsigned short from, unsigned short to) {
+    vector<uint> to_base(T n, uint from, uint to) {
         from_base(from_digits<T>(to_base(n, 2)), 2);
     };
 }

@@ -24,7 +24,7 @@ enum suit { diamonds, clubs, hearts, spades };
 struct card {
 public:
     suit suit; // the suit
-    unsigned short value; // the value
+    unsigned int value; // the value
 
     card() = default;
 
@@ -42,7 +42,7 @@ public:
             case '7':
             case '8':
             case '9':
-                value = (unsigned short) s[0] - 48;
+                value = (unsigned int) s[0] - 48;
                 break;
             case 'T':
                 value = 10;
@@ -116,7 +116,7 @@ public:
      */
     unsigned int score() {
         sort(cards.begin(), cards.end());
-        unsigned short hc = cards.back().value;
+        unsigned int hc = cards.back().value;
         bool s = is_straight();
         bool f = is_flush();
 
@@ -133,9 +133,9 @@ public:
             return 9498; // Straight
 
         // counting repetitions (poker, tris and couples)
-        unsigned short n_v1 = 0, v1, n_v2 = 0, v2;
-        for (unsigned short i = 2; i < 15; i++) {
-            unsigned short c = count_if(cards.begin(), cards.end(), [i](card c){return c.value == i;});
+        unsigned int n_v1 = 0, v1, n_v2 = 0, v2;
+        for (unsigned int i = 2; i < 15; i++) {
+            unsigned int c = count_if(cards.begin(), cards.end(), [i](card c){return c.value == i;});
             if (c > n_v1 || (c == n_v1 && i > v1)) {
                 if (n_v1 > 0) {
                     n_v2 = n_v1;
@@ -185,7 +185,7 @@ public:
      * @return true if this hand is a straight, false otherwise
      */
     bool is_straight() const {
-        for (unsigned short i = 1; i < 5; i++)
+        for (unsigned int i = 1; i < 5; i++)
             if (cards[i-1].value != cards[i].value - 1)
                 return false;
         return true;
@@ -204,8 +204,8 @@ int main() {
     vector<vector<string>> cards = read_matrix<string>(PROJECT_PATH + "Problems/51-100/Problem54/input.txt");
     vector<hand> hands(cards.size() * 2);
 
-    for (unsigned i = 0; i < hands.size(); i++)
-        for (unsigned short j = 0; j < 5; j++)
+    for (unsigned int i = 0; i < hands.size(); i++)
+        for (unsigned int j = 0; j < 5; j++)
             hands[i].add((card) cards[i / 2][i % 2 == 0 ? j : j + 5]);
 
     for (int i = 0; i < hands.size(); i += 2)

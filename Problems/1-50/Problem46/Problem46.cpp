@@ -29,7 +29,7 @@ int main() {
             vector<numtype> primes = p.get_while([i](numtype n){return n < i;});
             bool found = false;
 
-            for (numtype prime: primes) {
+            for (const auto& prime : primes) {
                 numtype x = (i - prime) / 2;
                 auto root = sqrt(x);
                 if (root == (numtype) root) {

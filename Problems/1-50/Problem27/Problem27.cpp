@@ -29,7 +29,7 @@ int main() {
     numtype max_a, max_b;
 
     for (numtype a = -1000; a < UPPER_BOUND; a++)
-        for (numtype b : primes) {
+        for (const auto& b : primes) {
             numtype count = 0;
 
             for (numtype n = 0; is_prime(n * n + a * n + b); n++)

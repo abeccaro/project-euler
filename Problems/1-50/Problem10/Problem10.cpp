@@ -24,7 +24,7 @@ int main() {
     primes<numtype> p;
     vector<numtype> primes = p.get_while([UPPER_BOUND](numtype n) { return n <= UPPER_BOUND; });
     numtype sum = 0;
-    for (numtype prime : primes)
+    for (const auto& prime : primes)
         sum += prime;
 
     double time = duration_cast<microseconds>(timer::now() - start).count() / 1000000.0;

@@ -25,7 +25,7 @@ int main() {
     numtype sum = 0;
     for (numtype i = 0; i < names.size(); i++) {
         numtype score = 0;
-        for (char letter : names[i])
+        for (const auto& letter : names[i])
             score += letter - 'A' + 1;
         sum += score * (i + 1);
     }

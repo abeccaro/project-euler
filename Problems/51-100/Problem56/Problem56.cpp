@@ -33,7 +33,7 @@ int main() {
             auto digs = digits(n);
 
             numtype sum = 0;
-            for (auto d : digs)
+            for (const auto& d : digs)
                 sum += d;
 
             if (sum > result)

@@ -52,8 +52,8 @@ vector<vector<bool>> masks(unsigned long size) {
 
     vector<vector<bool>> v_result;
     for (const vector<bool>& vec : v) {
-        unsigned short sum = 0;
-        for (bool b : vec)
+        unsigned int sum = 0;
+        for (const auto& b : vec)
             if (b)
                 sum++;
         if (sum > 0 && sum % 3 == 0)
@@ -70,15 +70,15 @@ vector<vector<bool>> masks(unsigned long size) {
  * @param mask The mask to use
  * @return The size of generated family
  */
-numtype get_family_size(const vector<unsigned short>& digs, const vector<bool>& mask) {
+unsigned long get_family_size(const vector<unsigned int>& digs, const vector<bool>& mask) {
     vector<numtype> family;
 
-    for (unsigned short i = 0; i < 10; i++) {
-        vector<unsigned short> member(digs.size());
+    for (unsigned int i = 0; i < 10; i++) {
+        vector<unsigned int> member(digs.size());
 
         auto it = mask.begin();
         auto m_it = member.begin();
-        for (auto d : digs) {
+        for (const auto& d : digs) {
             if (d < 3)
                 *m_it = (*it++) ? i : d;
             else
@@ -104,12 +104,12 @@ numtype get_family_size(const vector<unsigned short>& digs, const vector<bool>& 
  * @return true if exists a family of number with at least 8 primes, false otherwise
  */
 bool has_required_family(const numtype& number) {
-    vector<unsigned short> digs = digits(number);
+    vector<unsigned int> digs = digits(number);
 
-    unsigned long mask_size = count_if(digs.begin(), digs.end(), [](unsigned short d){return d < 3;});
+    unsigned long mask_size = count_if(digs.begin(), digs.end(), [](unsigned int d){return d < 3;});
     auto m = masks(mask_size);
 
-    for (const auto &mask : m)
+    for (const auto& mask : m)
         if (get_family_size(digs, mask) >= 8)
             return true;
     return false;
@@ -127,7 +127,7 @@ int main() {
     primes<numtype> p;
     numtype result = 0;
 
-    for (numtype prime : p) {
+    for (const auto& prime : p) {
         if (prime < LOWER_BOUND)
             continue;
 

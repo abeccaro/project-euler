@@ -11,9 +11,13 @@
 
 using namespace std;
 
+using ulong = unsigned long;
+
 namespace series {
     template <class T>
     class lazy_series {
+        using test = function<bool (T)>;
+
     public:
         /**
          * Lazy series iterator class. Referenced elements are constant
@@ -26,7 +30,7 @@ namespace series {
             /**
              * The index of current number
              */
-            unsigned long index;
+            ulong index;
 
             /**
              * The lazy series
@@ -38,7 +42,7 @@ namespace series {
              * @param pointer The pointer to the series
              * @param i The index. Defaults to 0 (first element)
              */
-            explicit iterator(const lazy_series<T>* pointer, unsigned long i = 0) :
+            explicit iterator(const lazy_series<T>* pointer, ulong i = 0) :
                     series(const_cast<lazy_series<T>*>(pointer)), index(i) {};
 
         public:
@@ -177,7 +181,7 @@ namespace series {
              * @param n The number of elements
              * @return The new Iterator
              */
-            iterator operator + (int n) const {
+            iterator operator + (ulong n) const {
                 return iterator(series, index + n);
             }
 
@@ -186,7 +190,7 @@ namespace series {
              * @param n The number of elements
              * @return The new Iterator
              */
-            iterator operator - (int n) const {
+            iterator operator - (ulong n) const {
                 return iterator(series, index - n);
             }
 
@@ -195,7 +199,7 @@ namespace series {
              * @param n The number of elements
              * @return This iterator reference
              */
-            iterator& operator += (int n) {
+            iterator& operator += (ulong n) {
                 index += n;
                 return *this;
             }
@@ -205,7 +209,7 @@ namespace series {
              * @param n The number of elements
              * @return This iterator reference
              */
-            iterator& operator -= (int n) {
+            iterator& operator -= (ulong n) {
                 index -= n;
                 return *this;
             }
@@ -235,7 +239,7 @@ namespace series {
              * @param n The offset
              * @return The element n positions after the one referenced by this iterator
              */
-            const T& operator [] (unsigned long n) const {
+            const T& operator [] (ulong n) const {
                 return (*series)[index + n];
             }
 
@@ -254,8 +258,8 @@ namespace series {
          * @param index The index of the requested element
          * @return The n-th element of the series
          */
-        const T& operator[](unsigned long index) {
-            for (unsigned long i = numbers.size(); i <= index; i++)
+        const T& operator[](ulong index) {
+            for (ulong i = numbers.size(); i <= index; i++)
                 numbers.push_back(next_element());
 
             return numbers[index];
@@ -282,7 +286,7 @@ namespace series {
          * Returns the number of already evaluated elements
          * @return The number of already evaluated elements
          */
-        unsigned long size() {
+        ulong size() {
             return numbers.size();
         }
 
@@ -294,7 +298,7 @@ namespace series {
          * @param n The number of elements
          * @return The vector of elements
          */
-        vector<T> get(unsigned long n) {
+        vector<T> get(ulong n) {
             if (numbers.size() < n)
                 numbers.reserve(n);
 
@@ -311,7 +315,7 @@ namespace series {
          * @param filter The filter function
          * @return The vector of the elements
          */
-        vector<T> get(unsigned long n, const function<bool (T)>& filter) {
+        vector<T> get(ulong n, const test& filter) {
             if (numbers.size() < n)
                 numbers.reserve(n);
 
@@ -325,25 +329,25 @@ namespace series {
 
         /**
          * Gets all the elements before the first one to fail given test
-         * @param test The test function
+         * @param check The test function
          * @return The vector of elements
          */
-        vector<T> get_while(const function<bool(T)> &test) {
+        vector<T> get_while(const test& check) {
             vector<T> result;
-            for (iterator it = begin(); test(*it); it++)
+            for (iterator it = begin(); check(*it); it++)
                 result.push_back(*it);
             return result;
         }
 
         /**
          * Gets all the elements before the first one to fail given test
-         * @param test The test function
-         * @param test The filter function
+         * @param check The test function
+         * @param filter The filter function
          * @return The vector of elements
          */
-        vector<T> get_while(const function<bool(T)> &test, const function<bool(T)> &filter) {
+        vector<T> get_while(const test& check, const test& filter) {
             vector<T> result;
-            for (iterator it = begin(); test(*it); it++)
+            for (iterator it = begin(); check(*it); it++)
                 if (filter(*it))
                     result.push_back(*it);
             return result;
@@ -351,25 +355,25 @@ namespace series {
 
         /**
          * Gets all the elements before the first one to pass given test
-         * @param test The test function
+         * @param check The test function
          * @return The vector of elements
          */
-        vector<T> get_until(const function<bool(T)> &test) {
+        vector<T> get_until(const test& check) {
             vector<T> result;
-            for (iterator it = begin(); !test(*it); it++)
+            for (iterator it = begin(); !check(*it); it++)
                 result.push_back(*it);
             return result;
         }
 
         /**
          * Gets all the elements before the first one to pass given test
-         * @param test The test function
-         * @param test The filter function
+         * @param check The check function
+         * @param filter The filter function
          * @return The vector of elements
          */
-        vector<T> get_until(const function<bool(T)> &test, const function<bool(T)> &filter) {
+        vector<T> get_until(const test& check, const test& filter) {
             vector<T> result;
-            for (iterator it = begin(); !test(*it); it++)
+            for (iterator it = begin(); !check(*it); it++)
                 if (filter(*it))
                     result.push_back(*it);
             return result;
@@ -377,27 +381,27 @@ namespace series {
 
         /**
          * Gets the first element that pass given test
-         * @param test The test function
+         * @param check The test function
          * @return The first element that pass given test
          */
-        T get_first(const function<bool(T)> &test) {
+        T get_first(const test& check) {
             for (iterator it = begin(); ; it++)
-                if (test(*it))
+                if (check(*it))
                     return *it;
         }
 
         /**
          * Gets the first n elements that pass given test
-         * @param test The test function
+         * @param check The test function
          * @param n The number of elements to return
          * @return The first n elements that pass given test
          */
-        vector<T> get_first(const function<bool(T)> &test, unsigned long n) {
-            unsigned long count = 0;
+        vector<T> get_first(const test& check, ulong n) {
+            ulong count = 0;
             vector<T> elements(n);
 
             for (iterator it = begin(); count < n; it++)
-                if (test(*it)) {
+                if (check(*it)) {
                     elements.push_back(*it);
                     count++;
                 }

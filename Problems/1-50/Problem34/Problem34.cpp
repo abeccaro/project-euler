@@ -29,9 +29,9 @@ int main() {
 
     for (numtype i = 10; i < UPPER_BOUND; i++) {
         numtype sum = 0;
-        vector<unsigned short> digs = digits(i);
+        vector<unsigned int> digs = digits(i);
 
-        for (unsigned short digit : digs)
+        for (const auto& digit : digs)
             sum += factorials[digit];
 
         if (sum == i)

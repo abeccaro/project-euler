@@ -29,7 +29,7 @@ int main() {
     vector<numtype> primes = p.get_while([UPPER_BOUND](numtype n){return n < UPPER_BOUND;});
 
     numtype result = 0;
-    for (numtype prime : primes) {
+    for (const auto& prime : primes) {
         vector<numtype> rots = rotations(prime);
 
         if (all_of(rots.begin() + 1, rots.end(), [](numtype n){return is_prime(n);}))

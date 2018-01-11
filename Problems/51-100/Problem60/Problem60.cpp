@@ -11,7 +11,7 @@ using timer = high_resolution_clock;
 using namespace primes;
 using namespace generics;
 
-using numtype = unsigned long;
+using numtype = unsigned int;
 
 /**
  * Adds to n the first prime taken from p > lb that concatenated with any element of n in both ways gives a prime.
@@ -21,14 +21,14 @@ using numtype = unsigned long;
  * @return true if a new element is added, false otherwise
  */
 bool add_next(const vector<numtype>& p, vector<numtype>& n, const numtype& lb) {
-    for (numtype prime : p) {
+    for (const auto& prime : p) {
         if (prime <= lb)
             continue;
 
         bool ok = true;
-        for (numtype num : n) {
-            vector<unsigned short> p_digs = digits(prime);
-            vector<unsigned short> n_digs = digits(num);
+        for (const auto& num : n) {
+            auto p_digs = digits(prime);
+            auto n_digs = digits(num);
             numtype p_size = p_digs.size();
 
             p_digs.insert(p_digs.end(), n_digs.begin(), n_digs.end());
@@ -85,7 +85,7 @@ int main() {
     auto sol = find_quintuplet(UPPER_BOUND);
 
     numtype result = 0;
-    for (numtype p : sol)
+    for (const auto& p : sol)
         result += p;
 
     double time = duration_cast<microseconds>(timer::now() - start).count() / 1000000.0;

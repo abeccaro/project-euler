@@ -8,7 +8,7 @@ using namespace std;
 using namespace chrono;
 using timer = high_resolution_clock;
 
-using numtype = unsigned short;
+using numtype = unsigned int;
 
 /**
  * Calculates the number of letters used for a given number up to 1000.

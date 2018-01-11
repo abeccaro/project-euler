@@ -28,21 +28,21 @@ int main() {
     timer::time_point start = timer::now();
 
     unordered_set<numtype> pandigital_products;
-    const vector<unsigned short> all_digits = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    const vector<unsigned int> all_digits = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
     for (numtype i = 2; i <= 98; i++)
         for (numtype j = 123; j <= 4987; j++) {
             numtype prod = i * j;
             numtype combined = combine(combine(prod, j), i);
 
-            vector<unsigned short> digs = digits(combined);
+            vector<unsigned int> digs = digits(combined);
             sort(digs.begin(), digs.end());
             if (digs == all_digits)
                 pandigital_products.insert(prod);
         }
 
     numtype result = 0;
-    for (numtype n : pandigital_products)
+    for (const auto& n : pandigital_products)
         result += n;
 
 

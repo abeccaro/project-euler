@@ -26,10 +26,10 @@ int main() {
     vector<numtype> numbers = read_vector<numtype>(PROJECT_PATH + "Problems/1-50/Problem13/input.txt");
 
     numtype sum = 0;
-    for (numtype n : numbers)
+    for (const auto& n : numbers)
         sum += n;
 
-    vector<unsigned short> first_digits = digits(sum);
+    vector<unsigned int> first_digits = digits(sum);
     first_digits.resize(DIGITS);
 
     double time = duration_cast<microseconds>(timer::now() - start).count() / 1000000.0;

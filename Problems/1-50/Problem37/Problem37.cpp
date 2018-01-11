@@ -22,7 +22,7 @@ using numtype = unsigned int;
  * @return True if the number is truncatable from left to right, false otherwise.
  */
 bool is_truncatable_from_left(const numtype& n) {
-    vector<unsigned short> digs = digits(n);
+    vector<unsigned int> digs = digits(n);
 
     while (digs.size() > 1) {
         if (!is_prime(from_digits<numtype>(digs)))
@@ -72,7 +72,7 @@ int main() {
     vector<numtype> numbers = p.get(N, [](numtype n){return n >= 10 && is_truncatable_from_both_sides(n);});
 
     numtype result = 0;
-    for (numtype n : numbers)
+    for (const auto& n : numbers)
         result += n;
 
     double time = duration_cast<microseconds>(timer::now() - start).count() / 1000000.0;

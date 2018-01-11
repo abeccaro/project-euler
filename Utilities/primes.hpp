@@ -47,11 +47,11 @@ namespace primes {
      * @return The vector with the series
      */
     template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
-    vector<T> primes(const unsigned long& n) {
+    vector<T> primes(const T& n) {
         assert (n > 0 && "Number of primes must be positive");
 
-        double upper_bound = n * (log(n) + log(log(n)));
-        vector<T> ps = primes_up_to((T) upper_bound);
+        auto upper_bound = (T) (n * (log(n) + log(log(n))));
+        vector<T> ps = primes_up_to(upper_bound);
         ps.resize(n);
         return ps;
     }
@@ -64,7 +64,7 @@ namespace primes {
      */
     template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
     vector<T> primes_up_to(const T& upper_bound) {
-        vector<bool> primes_check((unsigned long) (upper_bound / 2), true);
+        vector<bool> primes_check((ulong) (upper_bound / 2), true);
         vector<T> primes;
 
         if (upper_bound < 2)
@@ -74,15 +74,16 @@ namespace primes {
         auto root = sqrt(upper_bound) / 2;
 
         // setting false all multiples of primes
-        for(unsigned long i = 1; i < root; i ++)
+        for(ulong i = 1; i < root; i ++)
             if (primes_check[i]) {
                 T prime = i * 2 + 1;
                 for (T multiple = prime * prime; multiple < upper_bound; multiple += 2 * prime)
-                    primes_check[(unsigned long) ((multiple - 1) / 2)] = false;
+                    // FIXME: cast might be lossy! (very very high values)
+                    primes_check[(ulong) ((multiple - 1) / 2)] = false;
             }
 
         // adding primes to vector
-        for (unsigned long i = 1; i < primes_check.size(); i++)
+        for (ulong i = 1; i < primes_check.size(); i++)
             if (primes_check[i])
                 primes.emplace_back(2 * i + 1);
 
@@ -95,7 +96,7 @@ namespace primes {
      * @return True if given number is prime, false otherwise
      */
     template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
-    bool is_prime(T n) {
+    bool is_prime(const T& n) {
         return divisors(n).size() == 2;
     }
 }

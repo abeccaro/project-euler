@@ -9,6 +9,8 @@
 
 using template_conditions::is_any_integral;
 
+using ulong = unsigned long;
+
 namespace series {
     template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
     /**
@@ -35,22 +37,24 @@ namespace series {
          * @return The next prime number
          */
         T next_element() final {
-            unsigned long size = this->numbers.size();
-            unsigned long n = size + 1;
+            ulong size = this->numbers.size();
+            ulong n = size + 1;
             T ub = n < 6 ? 14 : (T) (n * (log(n) + log(log(n))));
 
-            prime_checks.resize((unsigned long) ub / 2, true);
+            prime_checks.resize((ulong) (ub / 2), true);
             auto root = sqrt(ub);
 
-            for (int i = 1; this->numbers[i] < root && i < size; i++) {
+            for (ulong i = 1; this->numbers[i] < root && i < size; i++) {
                 while (next_multiples[i] < ub) {
-                    prime_checks[(unsigned long) (next_multiples[i] / 2)] = false;
+                    // FIXME: cast might be lossy! (very very high values)
+                    prime_checks[(ulong) (next_multiples[i] / 2)] = false;
                     next_multiples[i] += 2 * this->numbers[i];
                 }
             }
 
             for (T i = this->numbers.back() + 2; ; i += 2)
-                if (prime_checks[(unsigned long) (i / 2)]) {
+                // FIXME: cast might be lossy (very very high values)
+                if (prime_checks[(ulong) (i / 2)]) {
                     next_multiples.emplace_back(i * i);
                     return i;
                 }

@@ -25,7 +25,7 @@ int main() {
     vector<numtype> divisors_sums(UPPER_BOUND);
     for (numtype i = 2; i < UPPER_BOUND; i++) {
         vector<numtype> divs = divisors(i);
-        for (numtype div : divs)
+        for (const auto& div : divs)
             divisors_sums[i] += div;
         divisors_sums[i] -= i;
     }

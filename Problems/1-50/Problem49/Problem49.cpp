@@ -51,7 +51,7 @@ int main() {
 
     string result;
 
-    for (numtype prime : primes_4_digs) {
+    for (const auto& prime : primes_4_digs) {
         vector<numtype> perm_primes = permutation_primes(prime);
 
         if (perm_primes.size() >= 3 && prime != EXCEPT)

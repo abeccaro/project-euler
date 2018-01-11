@@ -17,7 +17,7 @@ using numtype = unsigned int;
  * @param month The month
  * @return The number of days
  */
-numtype days_in_month(unsigned short year, unsigned short month) {
+numtype days_in_month(unsigned int year, unsigned int month) {
     switch (month) {
         case 2: return year % 4 == 0 ? 29 : 28;
         case 4:
@@ -57,8 +57,8 @@ int main() {
     vector<numtype> days_in_months;
     days_in_months.reserve(1200);
 
-    for (unsigned short y = 1901; y <= 2000; y++)
-        for (unsigned short m = 1; m <= 12; m++)
+    for (unsigned int y = 1901; y <= 2000; y++)
+        for (unsigned int m = 1; m <= 12; m++)
             days_in_months.push_back(days_in_month(y, m));
 
     numtype result = count_sundays(days_in_months, 2); // 1 Jan 1901 was a Tuesday

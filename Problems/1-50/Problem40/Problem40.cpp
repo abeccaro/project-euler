@@ -11,7 +11,7 @@ using namespace chrono;
 using timer = high_resolution_clock;
 using generics::digits;
 
-using numtype = unsigned short;
+using numtype = unsigned int;
 
 /**
  * Specifies values, solves problem and outputs solution and calculation time.
@@ -20,10 +20,10 @@ using numtype = unsigned short;
 int main() {
     timer::time_point start = timer::now();
 
-    vector<unsigned short> d;
+    vector<unsigned int> d;
 
     for (numtype i = 1; d.size() < 1000000; i++) {
-        vector<unsigned short> digs = digits(i);
+        vector<unsigned int> digs = digits(i);
         d.insert(d.end(), digs.begin(), digs.end());
     }
 

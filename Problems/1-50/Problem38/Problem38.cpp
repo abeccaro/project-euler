@@ -21,13 +21,13 @@ int main() {
     timer::time_point start = timer::now();
 
     numtype max = 0;
-    const vector<unsigned short> all_digits = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    const vector<unsigned int> all_digits = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
     for (numtype i = 1; i < 10000; i++) {
-        vector<unsigned short> product_digits;
+        vector<unsigned int> product_digits;
 
         for (numtype j = 1; product_digits.size() < 9; j++) {
-            vector<unsigned short> partial_product = digits(i * j);
+            vector<unsigned int> partial_product = digits(i * j);
 
             product_digits.insert(product_digits.end(), partial_product.begin(), partial_product.end());
         }

@@ -27,7 +27,7 @@ int main() {
     for (numtype i = 1; i < UPPER_BOUND; i++) {
         vector<numtype> divs = divisors(i);
         numtype sum = 0;
-        for (numtype div : divs)
+        for (const auto& div : divs)
             sum += div;
         sum -= i;
         if (sum > i)

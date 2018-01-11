@@ -22,9 +22,9 @@ int main() {
     numtype result = 0;
     vector<string> words = read_vector<string>(PROJECT_PATH + "Problems/1-50/Problem42/input.txt");
 
-    for (string word : words) {
+    for (const auto& word : words) {
         numtype score = 0;
-        for (char letter : word)
+        for (const auto& letter : word)
             score += letter - 'A' + 1;
 
         // x is triangular iff 8x + 1 is a square

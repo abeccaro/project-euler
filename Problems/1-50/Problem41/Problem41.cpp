@@ -20,7 +20,7 @@ using numtype = unsigned long;
  * @return The exit code
  */
 int main() {
-    vector<unsigned short> ALL_DIGITS = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    vector<unsigned int> ALL_DIGITS = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
     timer::time_point start = timer::now();
 
@@ -28,8 +28,8 @@ int main() {
 
     // 9,8,6,5,3,2 -digit pandigitals cannot be primes (always dividable by 3)
     // so only 7,4,1 -digit numbers are tested
-    for (unsigned short n = 7; n > 0; n -= 3) {
-        vector<unsigned short> permutation(n);
+    for (unsigned int n = 7; n > 0; n -= 3) {
+        vector<unsigned int> permutation(n);
         copy(ALL_DIGITS.begin(), ALL_DIGITS.begin() + n, permutation.begin());
 
         numtype max = 0;

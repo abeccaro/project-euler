@@ -18,7 +18,7 @@ using numtype = unsigned long;
  * @param digs The ordered digits of pandigital number
  * @return True if it satisfies all properties, false otherwise
  */
-bool has_required_properties(const vector<unsigned short>& digs) {
+bool has_required_properties(const vector<unsigned int>& digs) {
     if (digs[3] % 2 != 0)
         return false;
 
@@ -28,11 +28,12 @@ bool has_required_properties(const vector<unsigned short>& digs) {
     if (digs[5] % 5 != 0)
         return false;
 
-    vector<unsigned short> v1 = {digs[4], digs[5], digs[6]};
+    vector<unsigned int> v1 = {digs[4], digs[5], digs[6]};
     if (from_digits<numtype>(v1) % 7 != 0)
         return false;
 
-    if (abs(digs[6] - digs[5] - digs[7]) % 11 != 0)
+    int x = (int) digs[6] - digs[5] - digs[7];
+    if (abs(x) % 11 != 0)
         return false;
 
     v1 = {digs[6], digs[7], digs[8]};
@@ -53,7 +54,7 @@ bool has_required_properties(const vector<unsigned short>& digs) {
 int main() {
     timer::time_point start = timer::now();
 
-    vector<unsigned short> pandigital = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+    vector<unsigned int> pandigital = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
     numtype result = 0;
 
     auto iterations = factorial<numtype>(10);

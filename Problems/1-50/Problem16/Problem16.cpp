@@ -24,10 +24,10 @@ int main() {
 
     timer::time_point start = timer::now();
 
-    vector<unsigned short> dig = digits<numtype>(pow(BASE, POWER));
+    vector<unsigned int> dig = digits<numtype>(pow(BASE, POWER));
 
     numtype result = 0;
-    for (auto n : dig)
+    for (const auto& n : dig)
         result += n;
 
     double time = duration_cast<microseconds>(timer::now() - start).count() / 1000000.0;
