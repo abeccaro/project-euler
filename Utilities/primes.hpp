@@ -172,8 +172,8 @@ namespace primes {
         if (n < 4759123141)
             return miller_rabin(n, {2, 7, 61});
         if (n < 3071837692357849)
-            return miller_rabin(n, {2, 75088, 642735, 203659041, 3613982119});
-        return miller_rabin(n, {2, 325, 9375, 28178, 450775, 9780504, 1795265022});
+            return miller_rabin(n, {2, 75088, 642735, 203659041, (T) 3613982119});
+        return miller_rabin(n, {2, 325, 9375, 28178, 450775, 9780504, (T) 1795265022});
     }
 }
 

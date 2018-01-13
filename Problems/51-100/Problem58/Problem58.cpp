@@ -10,7 +10,7 @@ using namespace chrono;
 using timer = high_resolution_clock;
 using primes::is_prime;
 
-using numtype = unsigned int;
+using numtype = unsigned long;
 
 /**
  * Specifies values, solves problem and outputs solution and calculation time.

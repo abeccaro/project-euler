@@ -13,7 +13,7 @@ using primes::is_prime;
 using series::primes;
 using namespace generics;
 
-using numtype = unsigned int;
+using numtype = unsigned long;
 
 
 /**

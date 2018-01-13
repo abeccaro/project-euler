@@ -12,7 +12,7 @@ using timer = high_resolution_clock;
 using primes::is_prime;
 using series::primes;
 
-using numtype = unsigned int;
+using numtype = unsigned long;
 
 /**
  * Specifies values, solves problem and outputs solution and calculation time.

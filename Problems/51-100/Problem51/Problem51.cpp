@@ -13,7 +13,7 @@ using namespace generics;
 using primes::is_prime;
 using series::primes;
 
-using numtype = unsigned int;
+using numtype = unsigned long;
 
 /**
  * Generates all masks with multiples of 3 elements out of n

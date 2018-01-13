@@ -11,7 +11,7 @@ using timer = high_resolution_clock;
 using namespace primes;
 using namespace generics;
 
-using numtype = unsigned int;
+using numtype = unsigned long;
 
 /**
  * Adds to n the first prime taken from p > lb that concatenated with any element of n in both ways gives a prime.
