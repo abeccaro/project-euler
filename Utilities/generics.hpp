@@ -22,7 +22,10 @@ namespace generics {
     template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
     vector<uint> digits(const T& n) {
         vector<uint> digits;
-        T copy = n >= 0 ? n : -n;
+        T copy = n;
+
+        if (copy < 0)
+            copy *= -1;
 
         while (copy > 9) {
             auto d = (uint) (copy % 10);
