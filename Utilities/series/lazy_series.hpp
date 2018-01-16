@@ -231,7 +231,7 @@ namespace series {
              * @return The pointer to referenced element
              */
             const T* operator -> () const {
-                return (*series)[index];
+                return &(*series)[index];
             };
 
             /**

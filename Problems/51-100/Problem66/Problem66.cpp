@@ -4,11 +4,13 @@
 
 #include <iostream>
 #include <fraction.hpp>
+#include <series/sqrt_convergents.hpp>
 
 using namespace std;
 using namespace chrono;
 using timer = high_resolution_clock;
 using namespace fractions;
+using series::sqrt_convergents;
 
 using numtype = uint256_t;
 
@@ -25,39 +27,16 @@ int main() {
     numtype max_x = 0;
 
     for (numtype n = 2; n <= UPPER_BOUND; n++) {
-        vector<numtype> period;
-
-        auto a = (numtype) sqrt(n);
-        numtype a_0 = a;
-        numtype m = 0;
-        numtype d = 1;
-
-        if (a * a == n) // perfect square
+        auto root = (numtype) sqrt(n);
+        if (root * root == n) // perfect square
             continue;
 
-        // calculate period
-        do {
-            m = d * a - m;
-            d = (n - m * m) / d;
-            a = (a_0 + m) / d;
+        sqrt_convergents<numtype> c(n);
 
-            period.push_back(a);
-        } while(period.back() != a_0 * 2);
+        for (auto j = c.begin(); j < c.end(); j++) {
+            numtype x = j->get_numerator();
+            numtype y = j->get_denominator();
 
-        // calculate convergents until it finds one that's a solution
-        fraction<numtype>::set_auto_reduce(false);
-        for (ulong i = 1; ; i++) {
-            fraction<numtype> convergent(period[(i-1) % period.size()]);
-
-            for (ulong j = i - 1; j > 0; j--) {
-                convergent.invert();
-                convergent += period[(j-1) % period.size()];
-            }
-            convergent.invert();
-            convergent += a_0;
-
-            numtype x = convergent.get_numerator();
-            numtype y = convergent.get_denominator();
             if (x * x - (n * y * y) == 1) {
                 if (x > max_x) {
                     max_x = x;
