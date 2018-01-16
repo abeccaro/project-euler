@@ -78,7 +78,6 @@ namespace fractions {
 
             T g = generics::gcd<T>(abs(num), den);
             if (g != 1) {
-                cout << "reduced" << endl;
                 num /= g;
                 den /= g;
             }
