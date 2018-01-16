@@ -303,6 +303,17 @@ namespace generics {
     vector<uint> to_base(T n, uint from, uint to) {
         from_base(from_digits<T>(to_base(n, 2)), 2);
     };
+
+    /**
+     * Template version of std::abs that allows unsigned types to have a non ambiguous call.
+     * This is needed in some template instantiations.
+     * @param n The number
+     * @return The absolute value of n
+     */
+    template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
+    T abs(T n) {
+        return n < 0 ? -n : n;
+    };
 }
 
 #endif //PROJECT_EULER_GENERICS_H

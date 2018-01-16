@@ -36,6 +36,13 @@ namespace fractions {
         fraction(T n) : num(n), den(1) {}
 
         /**
+         * Constructor for integer numbers
+         * @param n The number to represent as fraction
+         */
+        template<class U, class = typename enable_if<is_convertible<U, T>::value>::type>
+        fraction(U n) : num(n), den(1) {}
+
+        /**
          * Complete constructor for a fraction
          * @param n The numerator
          * @param d The denominator
@@ -62,15 +69,16 @@ namespace fractions {
          */
         void reduce() {
             if (num < 0 && den < 0) {
-                num = fabs(num);
-                den = fabs(den);
+                num = abs(num);
+                den = abs(den);
             } else if (den < 0) {
-                den = fabs(den);
+                den = abs(den);
                 num *= -1;
             }
 
-            T g = generics::gcd<T>(fabs(num), den);
+            T g = generics::gcd<T>(abs(num), den);
             if (g != 1) {
+                cout << "reduced" << endl;
                 num /= g;
                 den /= g;
             }
@@ -80,6 +88,8 @@ namespace fractions {
          * Inverts this fraction
          */
         void invert() {
+            assert(num != 0 && "Can't invert 0");
+
             T temp = num;
             num = den;
             den = temp;
