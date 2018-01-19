@@ -3,7 +3,7 @@
 //
 
 #include <gtest/gtest.h>
-#include "../src/problems/1-50/13/problem13.hpp"
+#include "../../src/problems/1-50/13/problem13.hpp"
 
 using problems::problem13;
 

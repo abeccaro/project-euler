@@ -24,7 +24,7 @@ SET(FILES main.cpp)
 foreach(i RANGE 1 20)
     SET(NAME "problem${i}")
     SET(SRC_PATH "src/problems/1-50/${i}/")
-    LIST(APPEND FILES ${SRC_PATH}${NAME}.cpp ${SRC_PATH}${NAME}.hpp tests/test_${NAME}.cpp)
+    LIST(APPEND FILES ${SRC_PATH}${NAME}.cpp ${SRC_PATH}${NAME}.hpp tests/1-50/test_${NAME}.cpp)
 endforeach(${i})
 
 add_executable(run_all_tests ${FILES})
