@@ -21,7 +21,7 @@ include_directories(lib/googletest-master/googletest/include)
 SET(FILES main.cpp)
 
 # problems 1-50
-foreach(i RANGE 1 20)
+foreach(i RANGE 1 30)
     SET(NAME "problem${i}")
     SET(SRC_PATH "src/problems/1-50/${i}/")
     LIST(APPEND FILES ${SRC_PATH}${NAME}.cpp ${SRC_PATH}${NAME}.hpp tests/1-50/test_${NAME}.cpp)
