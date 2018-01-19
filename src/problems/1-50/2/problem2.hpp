@@ -12,7 +12,12 @@ namespace problems {
 
     class problem2 {
     public:
-        static uint solve(uint = 4000000);
+        /**
+         * Solves problem
+         * @param ub The upper bound
+         * @return The solution
+         */
+        static uint solve(uint ub = 4000000);
     };
 }
 

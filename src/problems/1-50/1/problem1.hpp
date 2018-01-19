@@ -12,10 +12,21 @@ namespace problems {
 
     class problem1 {
     public:
-        static uint solve(uint = 1000);
+        /**
+         * Solves problem
+         * @param ub The upper bound
+         * @return The solution
+         */
+        static uint solve(uint ub = 1000);
 
     private:
-        static uint multiplesSum(uint, uint);
+        /**
+         * Calculates the sum of all multiples of given number below given upper bound.
+         * @param n The number
+         * @param ub The upper bound
+         * @return The sum of multiples
+         */
+        static uint multiplesSum(uint n, uint ub);
     };
 }
 

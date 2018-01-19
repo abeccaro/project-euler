@@ -12,7 +12,12 @@ namespace problems {
 
     class problem6 {
     public:
-        static ulong solve(ulong = 100);
+        /**
+         * Solves problem
+         * @param n The number
+         * @return The solution
+         */
+        static ulong solve(ulong n = 100);
     };
 }
 

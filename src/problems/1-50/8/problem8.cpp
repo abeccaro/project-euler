@@ -8,10 +8,6 @@
 using namespace input;
 
 namespace problems {
-/**
- * Specifies values, solves problem and outputs solution and calculation time.
- * @return The exit code
- */
     ulong problem8::solve(uint digits) {
         vector<uint> numbers = read_vector<uint>(PROBLEMS_FOLDER + "1-50/8/input.txt");
 

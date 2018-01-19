@@ -6,10 +6,6 @@
 #include <primes.hpp>
 
 namespace problems {
-    /**
-     * Specifies values, solves problem and outputs solution and calculation time.
-     * @return The exit code
-     */
     ulong problem10::solve(uint ub) {
         vector<uint> p = primes::primes_up_to(ub);
 

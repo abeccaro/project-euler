@@ -11,7 +11,12 @@ using ulong = unsigned long;
 namespace problems {
     class problem8 {
     public:
-        static ulong solve(uint = 13);
+        /**
+         * Solves problem
+         * @param digits The number of adjacent digits to sum
+         * @return The solution
+         */
+        static ulong solve(uint digits = 13);
     };
 }
 

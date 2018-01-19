@@ -8,10 +8,6 @@
 using generics::is_palindrome;
 
 namespace problems {
-    /**
-     * Specifies values, solves problem and outputs solution and calculation time.
-     * @return The exit code
-     */
     uint problem4::solve(uint digits) {
         uint largest_palindrome = 0;
         uint lb = pow(10, digits-1);

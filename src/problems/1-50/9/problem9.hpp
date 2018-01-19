@@ -6,12 +6,16 @@
 #define PROJECT_EULER_PROBLEM9_HPP
 
 using uint = unsigned int;
-using ulong = unsigned long;
 
 namespace problems {
     class problem9 {
     public:
-        static ulong solve(uint = 1000);
+        /**
+         * Solves problem
+         * @param sum The sum of pythagorean triplet
+         * @return The solution
+         */
+        static uint solve(uint sum = 1000);
     };
 }
 

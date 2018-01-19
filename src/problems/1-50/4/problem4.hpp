@@ -12,7 +12,12 @@ namespace problems {
 
     class problem4 {
     public:
-        static uint solve(uint = 3);
+        /**
+         * Solves problem
+         * @param digits The number of digits of factors
+         * @return The solution
+         */
+        static uint solve(uint digits = 3);
     };
 }
 

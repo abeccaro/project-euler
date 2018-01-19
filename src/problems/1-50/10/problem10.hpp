@@ -11,7 +11,12 @@ using ulong = unsigned long;
 namespace problems {
     class problem10 {
     public:
-        static ulong solve(uint = 2000000);
+        /**
+         * Solves problem
+         * @param ub The upper bound of primes to sum
+         * @return The solution
+         */
+        static ulong solve(uint ub = 2000000);
     };
 }
 

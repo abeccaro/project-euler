@@ -12,7 +12,12 @@ namespace problems {
 
     class problem5 {
     public:
-        static ulong solve(ulong = 20);
+        /**
+         * Solves problem
+         * @param max_divisor The highest divisor of requested number
+         * @return The solution
+         */
+        static ulong solve(ulong max_divisor = 20);
     };
 }
 

@@ -13,7 +13,12 @@ namespace problems {
 
     class problem7 {
     public:
-        static uint solve(ulong = 10001);
+        /**
+         * Solves problem
+         * @param position The ordinal of requested prime
+         * @return The solution
+         */
+        static uint solve(ulong position = 10001);
     };
 }
 
