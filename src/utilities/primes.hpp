@@ -90,6 +90,8 @@ namespace primes {
 
         if (copy % 2 == 0)
             factors.emplace_back(2);
+        while (copy % 2 == 0)
+            copy /= 2;
 
         for (T i = 3; i * i <= copy; i = i+2) {
             if (copy % i == 0)

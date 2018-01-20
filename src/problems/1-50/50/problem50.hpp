@@ -12,6 +12,7 @@ namespace problems {
     public:
         /**
          * Solves problem
+         * @param ub The upper bound for primes to consider
          * @return The solution
          */
         static uint solve(uint ub = 1000000);
