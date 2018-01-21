@@ -27,5 +27,12 @@ foreach(i RANGE 1 50)
     LIST(APPEND FILES ${SRC_PATH}${NAME}.cpp ${SRC_PATH}${NAME}.hpp tests/1-50/test_${NAME}.cpp)
 endforeach(${i})
 
+# problems 51-100
+foreach(i RANGE 51 60)
+    SET(NAME "problem${i}")
+    SET(SRC_PATH "src/problems/51-100/${i}/")
+    LIST(APPEND FILES ${SRC_PATH}${NAME}.cpp ${SRC_PATH}${NAME}.hpp tests/51-100/test_${NAME}.cpp)
+endforeach(${i})
+
 add_executable(run_all_tests ${FILES})
 target_link_libraries(run_all_tests gtest gtest_main lib)
