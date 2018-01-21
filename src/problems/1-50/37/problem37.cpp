@@ -5,6 +5,7 @@
 #include "problem37.hpp"
 #include <series/primes.hpp>
 #include <primes.hpp>
+#include <generics.hpp>
 
 using primes::is_prime;
 using series::primes;

@@ -6,11 +6,10 @@
 
 #include <vector>
 #include <boost/multiprecision/cpp_int.hpp>
-#include <generics.hpp>
+#include "template_conditions.hpp"
 
 using std::vector;
 using namespace template_conditions;
-using generics::divisors;
 using namespace boost::multiprecision;
 
 

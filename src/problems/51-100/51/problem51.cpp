@@ -5,6 +5,7 @@
 #include "problem51.hpp"
 #include <primes.hpp>
 #include <series/primes.hpp>
+#include <generics.hpp>
 
 using generics::digits;
 using generics::from_digits;

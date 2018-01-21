@@ -4,6 +4,7 @@
 
 #include "problem60.hpp"
 #include <primes.hpp>
+#include <generics.hpp>
 
 using primes::is_prime;
 using primes::primes_up_to;

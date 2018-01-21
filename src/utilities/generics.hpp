@@ -6,9 +6,11 @@
 
 #include <vector>
 #include "template_conditions.hpp"
+#include "primes.hpp"
 
 using namespace std;
 using namespace template_conditions;
+using primes::prime_factors;
 
 using uint = unsigned int;
 using ulong = unsigned long;
@@ -257,7 +259,7 @@ namespace generics {
      * @return The converted number's digits
      */
     template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
-    vector<uint> to_base(T n, uint base) {
+    vector<uint> to_base(const T& n, uint base) {
         assert (base > 0 && "Base must be positive");
 
         vector<uint> digits;
@@ -279,7 +281,7 @@ namespace generics {
      * @return The number base 10
      */
     template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
-    T from_base(T n, uint base) {
+    T from_base(const T& n, uint base) {
         assert (base > 0 && "Base must be positive");
 
         T result = 0;
@@ -300,7 +302,7 @@ namespace generics {
      * @return The converted number's digits
      */
     template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
-    vector<uint> to_base(T n, uint from, uint to) {
+    vector<uint> to_base(const T& n, uint from, uint to) {
         from_base(from_digits<T>(to_base(n, 2)), 2);
     };
 
@@ -311,8 +313,27 @@ namespace generics {
      * @return The absolute value of n
      */
     template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
-    T abs(T n) {
+    T abs(const T& n) {
         return n < 0 ? -n : n;
+    };
+
+    /**
+     * Calculates the number of x <= n coprimes with n
+     * @param n The number
+     * @return The number of x <= n coprimes with n
+     */
+    template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
+    T totient(const T& n) {
+        vector<T> p = prime_factors<T>(n);
+
+        T num = 1;
+        T den = 1;
+        for (const auto& prime : p) {
+            num *= prime - 1;
+            den *= prime;
+        }
+
+        return n * num / den;
     };
 }
 
