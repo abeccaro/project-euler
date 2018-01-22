@@ -11,7 +11,6 @@ using generics::digits;
 
 namespace problems {
     uint problem65::solve(uint n) {
-        fraction<uint512_t>::set_auto_reduce(false);
         fraction<uint512_t> convergent = 1; // general formula: N % 3 == 0 ? 2 * N / 3 : 1
         for (uint i = n - 1; i > 1; i--) {
             convergent.invert();
@@ -22,7 +21,7 @@ namespace problems {
         }
         convergent.invert();
         convergent += 2;
-        fraction<uint512_t>::set_auto_reduce(true);
+        convergent.reduce();
 
         uint result = 0;
         vector<uint> digs = digits(convergent.get_numerator());

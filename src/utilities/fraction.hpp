@@ -364,7 +364,7 @@ namespace fractions {
     };
 
     template<class T, class U>
-    bool fraction<T, U>::auto_reduce = true;
+    bool fraction<T, U>::auto_reduce = false;
 
 
     /**
