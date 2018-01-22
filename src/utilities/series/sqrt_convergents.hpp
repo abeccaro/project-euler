@@ -42,8 +42,8 @@ namespace series {
             uint s = n.size();
 
             T a = coeff[(this->numbers.size() - 1) % coeff.size()];
-            T num = a * n[s-1].get_numerator() + n[s-2].get_numerator();
-            T den = a * n[s-1].get_denominator() + n[s-2].get_denominator();
+            T num = a * n[s-1].numerator() + n[s-2].numerator();
+            T den = a * n[s-1].denominator() + n[s-2].denominator();
 
             return fraction<T>(num, den);
         }

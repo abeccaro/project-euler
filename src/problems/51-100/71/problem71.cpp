@@ -5,12 +5,12 @@
 #include <generics.hpp>
 #include "problem71.hpp"
 
-using generics::areCoprime;
+using generics::are_coprime;
 
 namespace problems {
     uint problem71::solve(uint ub, fraction<ulong> ref) {
-        ulong ref_num = ref.get_numerator();
-        ulong ref_den = ref.get_denominator();
+        ulong ref_num = ref.numerator();
+        ulong ref_den = ref.denominator();
 
         uint result;
         fraction<ulong> min_diff = 1;
@@ -20,7 +20,7 @@ namespace problems {
                 continue;
 
             uint n = d * ref_num / ref_den;
-            while (!areCoprime(n, d))
+            while (!are_coprime(n, d))
                 n--;
             fraction<uint> f(n, d);
 

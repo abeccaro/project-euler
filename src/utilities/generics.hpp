@@ -203,7 +203,7 @@ namespace generics {
      * @return True if given numbers are coprime, false otherwise
      */
     template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
-    bool areCoprime(const T& a, const T& b) {
+    bool are_coprime(const T &a, const T &b) {
         return gcd(a,b) == 1;
     }
 
@@ -217,7 +217,7 @@ namespace generics {
     template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
     T multiplicative_order(const T& base, const T& mod) {
         assert(mod > 1 && "Modulo must be greater than 1");
-        assert(areCoprime(base, mod) && "Multiplicative order is not defined for given values");
+        assert(are_coprime(base, mod) && "Multiplicative order is not defined for given values");
 
         ulong exp = 1;
         while ((T) pow(base, exp) % mod != 1)

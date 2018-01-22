@@ -13,7 +13,7 @@ namespace problems {
         uint result = 1;
 
         for (uint i = 2; i < ub; i++)
-            if (areCoprime<uint>(10, i)) {
+            if (are_coprime<uint>(10, i)) {
                 auto mo = multiplicative_order<cpp_int>(10, i);
                 if (mo > longest) {
                     longest = mo;

@@ -22,8 +22,8 @@ namespace problems {
             sqrt_convergents<uint128_t> c(n);
 
             for (auto j = c.begin(); j < c.end(); j++) {
-                uint256_t x = j->get_numerator();
-                uint256_t y = j->get_denominator();
+                uint256_t x = j->numerator();
+                uint256_t y = j->denominator();
 
                 if (x * x - (n * y * y) == 1) {
                     if (x > max_x) {

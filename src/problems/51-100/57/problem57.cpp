@@ -16,8 +16,8 @@ namespace problems {
         sqrt_convergents<cpp_int> c(2);
 
         for (uint i = 0; i <= convergents; i++) {
-            cpp_int num = c[i].get_numerator();
-            cpp_int den = c[i].get_denominator();
+            cpp_int num = c[i].numerator();
+            cpp_int den = c[i].denominator();
             if (num.str().size() > den.str().size())
                 result++;
         }

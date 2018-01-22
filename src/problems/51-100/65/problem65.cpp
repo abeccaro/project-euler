@@ -24,7 +24,7 @@ namespace problems {
         convergent.reduce();
 
         uint result = 0;
-        vector<uint> digs = digits(convergent.get_numerator());
+        vector<uint> digs = digits(convergent.numerator());
         for (const auto &d : digs)
             result += d;
         return result;
