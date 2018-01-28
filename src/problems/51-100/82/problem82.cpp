@@ -49,6 +49,5 @@ namespace problems {
         for (uint i = 1; i < mem.size(); i++)
             res = min(res, mem[i][0]);
         return res;
-//        return res;
     }
 }
