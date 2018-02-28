@@ -335,6 +335,38 @@ namespace generics {
 
         return n * num / den;
     };
+
+    /**
+     * Generates all possible combinations of k items from given elements.
+     * Elements are supposed all different and are treated as such.
+     * @tparam T The type of elements
+     * @param elements The elements to choose from
+     * @param k The number of elements to choose
+     * @return All the combinations
+     */
+    template<class T>
+    vector<vector<T>> combinations(const vector<T>& elements, ulong k) {
+        vector<vector<T>> combs;
+        ulong n = elements.size();
+
+        string bitmask(k, 1); // k leading 1s
+        bitmask.resize(n, 0); // n-k trailing 0s
+
+        // for each bitmask obtained through permutations of k 1s and n-k 0s choose the elements where there's a 1 in
+        // the bitmask and skip the others
+        do {
+            vector<T> comb(k);
+            uint j = 0;
+
+            for (uint i = 0; i < n; ++i)
+                if (bitmask[i])
+                    comb[j++] = elements[i];
+
+            combs.push_back(comb);
+        } while (std::prev_permutation(bitmask.begin(), bitmask.end()));
+
+        return combs;
+    }
 }
 
 #endif //PROJECT_EULER_GENERICS_H
