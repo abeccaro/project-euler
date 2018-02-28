@@ -70,8 +70,12 @@ namespace problems {
 
         // returning sum of numbers in best path
         uint min_distance = 1000000;
-        for (uint i = 0; i < entries.size(); i++)
+        for (uint i = 0; i < entries.size(); i++) {
             min_distance = min(min_distance, entries[i].back()->distance);
+            for (const auto& e : entries[i])
+                delete e;
+        }
+
         return min_distance;
     }
 

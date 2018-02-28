@@ -76,7 +76,14 @@ namespace problems {
         }
 
         // returning sum of numbers in best path
-        return entries.back().back()->distance;
+        uint result = entries.back().back()->distance;
+
+        // deleting pointers
+        for (const auto& es : entries)
+            for (const auto& e : es)
+                delete e;
+
+        return result;
 
     }
 
