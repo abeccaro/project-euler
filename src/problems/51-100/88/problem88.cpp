@@ -3,8 +3,10 @@
 //
 
 #include "problem88.hpp"
-#include <set>
+#include <unordered_set>
 #include <cmath>
+
+using ulong = unsigned long;
 
 namespace problems {
     void problem88::calculate_mps_recursive(vector<uint>& mps, uint ub, vector<uint>& a, uint sum, uint product) {
@@ -15,9 +17,15 @@ namespace problems {
             a.push_back(last);
 
             // calculate k
-            uint k = a.size() + p - s;
+            ulong k = a.size() + p - s;
 
-            // update mps ok k if necessary
+            // if k is greater then considered ones stop
+            if (k > mps.size()) {
+                a.resize(a.size() - 1);
+                break;
+            }
+
+            // update mps of k if necessary
             mps[k-1] = std::min(mps[k-1], p);
 
             // recursive call
@@ -42,11 +50,11 @@ namespace problems {
     }
 
     uint problem88::solve(uint ub) {
-        vector<uint> mps = calculate_mps(ub);
+        vector<uint> mps2 = calculate_mps(ub);
 
         // remove duplicates
-        std::set<uint> mps_set(std::make_move_iterator(mps.begin()),
-                               std::make_move_iterator(mps.end()));
+        std::unordered_set<uint> mps_set(std::make_move_iterator(mps2.begin()),
+                                         std::make_move_iterator(mps2.end()));
 
         // sum
         uint result = 0;
