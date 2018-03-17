@@ -2,17 +2,18 @@
 // Created by Alex Beccaro on 18/01/18.
 //
 
-#include <gtest/gtest.h>
 #include "../../src/problems/51-100/64/problem64.hpp"
 
-using problems::problem64;
+BOOST_AUTO_TEST_SUITE( Problem64 )
 
-TEST(Problem64, example) {
-    auto res = problem64::solve(13);
-    EXPECT_EQ(res, 4);
-}
+    BOOST_AUTO_TEST_CASE( Example ) {
+        auto res = problems::problem64::solve(13);
+        BOOST_CHECK_EQUAL(res, 4);
+    }
 
-TEST(Problem64, solution) {
-    auto res = problem64::solve();
-    EXPECT_EQ(res, 1322);
-}
+    BOOST_AUTO_TEST_CASE( Solution ) {
+        auto res = problems::problem64::solve();
+        BOOST_CHECK_EQUAL(res, 1322);
+    }
+
+BOOST_AUTO_TEST_SUITE_END()

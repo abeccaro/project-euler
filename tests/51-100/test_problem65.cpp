@@ -2,17 +2,18 @@
 // Created by Alex Beccaro on 18/01/18.
 //
 
-#include <gtest/gtest.h>
 #include "../../src/problems/51-100/65/problem65.hpp"
 
-using problems::problem65;
+BOOST_AUTO_TEST_SUITE( Problem65 )
 
-TEST(Problem65, example) {
-    auto res = problem65::solve(10);
-    EXPECT_EQ(res, 17);
-}
+    BOOST_AUTO_TEST_CASE( Example ) {
+        auto res = problems::problem65::solve(10);
+        BOOST_CHECK_EQUAL(res, 17);
+    }
 
-TEST(Problem65, solution) {
-    auto res = problem65::solve();
-    EXPECT_EQ(res, 272);
-}
+    BOOST_AUTO_TEST_CASE( Solution ) {
+        auto res = problems::problem65::solve();
+        BOOST_CHECK_EQUAL(res, 272);
+    }
+
+BOOST_AUTO_TEST_SUITE_END()
