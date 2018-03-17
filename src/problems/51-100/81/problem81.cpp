@@ -29,14 +29,14 @@ namespace problems {
 
         uint right = best_path_sum(matrix, row, col + 1, mem);
         uint down = best_path_sum(matrix, row + 1, col, mem);
-        uint res = matrix[row][col] + min(right, down);
+        uint res = matrix[row][col] + std::min(right, down);
 
         mem[row][col] = res;
         return res;
     }
 
     uint problem81::solve() {
-        vector<vector<uint>> matrix = read_matrix<uint>(input::PROBLEMS_FOLDER + "51-100/81/input.txt");
+        vector<vector<uint>> matrix = read_matrix<uint>(input::problems_folder + "51-100/81/input.txt");
         vector<vector<uint>> mem(matrix.size());
 
         // 0-initialize memory

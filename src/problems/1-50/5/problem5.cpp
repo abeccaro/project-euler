@@ -9,7 +9,7 @@ using generics::lcm;
 
 namespace problems {
     ulong problem5::solve(ulong max_divisor) {
-        vector<ulong> divisors;
+        std::vector<ulong> divisors;
         for (ulong i = 2; i <= max_divisor; i++)
             divisors.push_back(i);
 

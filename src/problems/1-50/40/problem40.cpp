@@ -9,10 +9,10 @@ using generics::digits;
 
 namespace problems {
     uint problem40::solve() {
-        vector<uint> d;
+        std::vector<uint> d;
 
         for (uint i = 1; d.size() < 1000000; i++) {
-            vector<uint> digs = digits(i);
+            std::vector<uint> digs = digits(i);
             d.insert(d.end(), digs.begin(), digs.end());
         }
 

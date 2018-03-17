@@ -7,7 +7,7 @@
 
 namespace problems {
     ulong problem10::solve(uint ub) {
-        vector<uint> p = primes::primes_up_to(ub);
+        std::vector<uint> p = primes::primes_up_to(ub);
 
         ulong sum = 0;
         for (const auto& prime : p)

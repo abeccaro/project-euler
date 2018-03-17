@@ -13,7 +13,7 @@ using input::read_matrix;
 
 namespace problems {
     vector<uint> problem79::solve() {
-        vector<vector<uint>> codes = read_matrix<uint>(input::PROBLEMS_FOLDER + "51-100/79/input.txt");
+        vector<vector<uint>> codes = read_matrix<uint>(input::problems_folder + "51-100/79/input.txt");
 
         unordered_set<uint> possible_digits;
         // assuming all digits in passcode have been requested at least once

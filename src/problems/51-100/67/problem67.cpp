@@ -7,7 +7,7 @@
 #include <map>
 
 using input::read_matrix;
-using input::PROBLEMS_FOLDER;
+using input::problems_folder;
 
 namespace problems {
     uint problem67::calculate_best_paths(const vector<vector<uint>>& matrix,
@@ -25,13 +25,13 @@ namespace problems {
 
         uint left = calculate_best_paths(matrix, memory, row + 1, col);
         uint right = calculate_best_paths(matrix, memory, row + 1, col + 1);
-        uint best = matrix[row][col] + max(left, right);
+        uint best = matrix[row][col] + std::max(left, right);
         memory[key] = best;
         return best;
     }
 
     uint problem67::solve() {
-        vector<vector<uint>> matrix = read_matrix<uint>(PROBLEMS_FOLDER + "51-100/67/input.txt");
+        vector<vector<uint>> matrix = read_matrix<uint>(problems_folder + "51-100/67/input.txt");
         map<pair<uint, uint>, uint> memory;
 
         return calculate_best_paths(matrix, memory, 0, 0);

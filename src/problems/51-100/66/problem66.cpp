@@ -6,6 +6,8 @@
 #include <fraction.hpp>
 #include <series/sqrt_convergents.hpp>
 
+using boost::multiprecision::uint128_t;
+using boost::multiprecision::uint256_t;
 using fractions::fraction;
 using series::sqrt_convergents;
 

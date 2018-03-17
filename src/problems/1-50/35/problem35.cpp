@@ -12,11 +12,11 @@ using primes::primes_up_to;
 
 namespace problems {
     uint problem35::solve(uint ub) {
-        vector<ulong> primes = primes_up_to((ulong) ub-1);
+        std::vector<ulong> primes = primes_up_to((ulong) ub-1);
 
         uint result = 0;
         for (const auto &prime : primes) {
-            vector<ulong> rots = rotations(prime);
+            std::vector<ulong> rots = rotations(prime);
 
             if (all_of(rots.begin() + 1, rots.end(), [](ulong n) { return is_prime(n); }))
                 result++;

@@ -10,7 +10,7 @@ using namespace input;
 namespace problems {
     uint problem42::solve() {
         uint result = 0;
-        vector<string> words = read_vector<string>(PROBLEMS_FOLDER + "1-50/42/input.txt");
+        std::vector<std::string> words = read_vector<std::string>(problems_folder + "1-50/42/input.txt");
 
         for (const auto &word : words) {
             uint score = 0;

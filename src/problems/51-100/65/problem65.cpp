@@ -6,6 +6,7 @@
 #include "fraction.hpp"
 #include <generics.hpp>
 
+using boost::multiprecision::uint512_t;
 using fractions::fraction;
 using generics::digits;
 
@@ -24,7 +25,7 @@ namespace problems {
         convergent.reduce();
 
         uint result = 0;
-        vector<uint> digs = digits(convergent.numerator());
+        std::vector<uint> digs = digits(convergent.numerator());
         for (const auto &d : digs)
             result += d;
         return result;

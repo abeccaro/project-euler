@@ -7,16 +7,25 @@
 
 #include <vector>
 #include <functional>
-#include <climits>
-
-using namespace std;
 
 using ulong = unsigned long;
 
 namespace series {
     template <class T>
     class lazy_series {
-        using test = function<bool (T)>;
+        using test = std::function<bool (T)>;
+
+    protected:
+        /**
+         * The evaluated numbers
+         */
+        std::vector<T> numbers;
+
+        /**
+         * Function that calculates next element in the series
+         * @return The next element
+         */
+        virtual T next_element() = 0;
 
     public:
         /**
@@ -42,8 +51,7 @@ namespace series {
              * @param pointer The pointer to the series
              * @param i The index. Defaults to 0 (first element)
              */
-            explicit iterator(const lazy_series<T>* pointer, ulong i = 0) :
-                    series(const_cast<lazy_series<T>*>(pointer)), index(i) {};
+            explicit iterator(const lazy_series<T>* pointer, ulong i = 0);
 
         public:
 
@@ -52,18 +60,18 @@ namespace series {
             /**
              * Default constructor, points to a null series
              */
-            iterator() : series(nullptr), index(0) {};
+            iterator();
 
             /**
              * Copy constructor
              * @param it The iterator to copy
              */
-            iterator(const iterator& it) : series(it.series), index(it.index) {};
+            iterator(const iterator& it);
 
             /**
              * Default distructor
              */
-            ~iterator() = default;
+            ~iterator();
 
             //endregion
 
@@ -72,67 +80,51 @@ namespace series {
              * @param it The value to assign
              * @return The reference to this object
              */
-            iterator& operator = (const iterator& it) {
-                series = it.series;
-                index = it.index;
-                return *this;
-            }
+            iterator& operator = (const iterator& it);
 
-            ///region Comparison operators
+            /// region Comparison operators
 
             /**
              * Equality check (not deep)
              * @param it The other iterator
              * @return True if they are equal, false otherwise
              */
-            bool operator == (const iterator& it) const {
-                return series == it.series && index == it.index;
-            }
+            bool operator == (const iterator& it) const;
 
             /**
              * Inequality check
              * @param it The other iterator
              * @return True if they are different, false otherwise
              */
-            bool operator != (const iterator& it) const {
-                return index != it.index || series != it.series;
-            }
+            bool operator != (const iterator& it) const;
 
             /**
              * Returns true if this references an element before the other, false otherwise
              * @param it The other iterator
              * @return True if this references an element before the other, false otherwise
              */
-            bool operator < (const iterator& it) const {
-                return index < it.index;
-            }
+            bool operator < (const iterator& it) const;
 
             /**
             * Returns true if this references an element after the other, false otherwise
             * @param it The other iterator
             * @return True if this references an element after the other, false otherwise
             */
-            bool operator > (const iterator& it) const {
-                return index > it.index;
-            }
+            bool operator > (const iterator& it) const;
 
             /**
             * Returns true if this references an element before or the same as the other, false otherwise
             * @param it The other iterator
             * @return True if this references an element before or the same as the other, false otherwise
             */
-            bool operator <= (const iterator& it) const {
-                return index <= it.index;
-            }
+            bool operator <= (const iterator& it) const;
 
             /**
             * Returns true if this references an element after or the same as the other, false otherwise
             * @param it The other iterator
             * @return True if this references an element after or the same as the other, false otherwise
             */
-            bool operator >= (const iterator& it) const {
-                return index >= it.index;
-            }
+            bool operator >= (const iterator& it) const;
 
             ///endregion
 
@@ -142,106 +134,76 @@ namespace series {
              * Takes this Iterator to the next element before returning
              * @return The updated Iterator reference
              */
-            iterator& operator ++ () {       // prefix ++
-                index++;
-                return *this;
-            }
+            iterator& operator ++ (); // prefix
 
             /**
              * Takes this Iterator to the next element after returning
              * @return The Iterator
              */
-            iterator operator ++ (int) {     // postfix ++
-                lazy_series<T>::iterator it = *this;
-                index++;
-                return it;
-            }
+            iterator operator ++ (int); // postfix
 
             /**
             * Takes this Iterator to the previous element before returning
             * @return The updated Iterator reference
             */
-            iterator& operator -- () {       // prefix --
-                index--;
-                return *this;
-            }
+            iterator& operator -- (); // prefix
 
             /**
              * Takes this Iterator to the previous element after returning
              * @return The Iterator
              */
-            iterator operator -- (int) {     // postfix --
-                lazy_series<T>::iterator it = *this;
-                index--;
-                return it;
-            }
+            iterator operator -- (int); // postfix
 
             /**
              * Creates an Iterator that is n elements ahead of this
              * @param n The number of elements
              * @return The new Iterator
              */
-            iterator operator + (ulong n) const {
-                return iterator(series, index + n);
-            }
+            iterator operator + (ulong n) const;
 
             /**
              * Creates an Iterator that is n elements behind of this
              * @param n The number of elements
              * @return The new Iterator
              */
-            iterator operator - (ulong n) const {
-                return iterator(series, index - n);
-            }
+            iterator operator - (ulong n) const;
 
             /**
              * Shorthand for sum and auto assignment
              * @param n The number of elements
              * @return This iterator reference
              */
-            iterator& operator += (ulong n) {
-                index += n;
-                return *this;
-            }
+            iterator& operator += (ulong n);
 
             /**
              * Shorthand for difference and auto assignment
              * @param n The number of elements
              * @return This iterator reference
              */
-            iterator& operator -= (ulong n) {
-                index -= n;
-                return *this;
-            }
+            iterator& operator -= (ulong n);
 
             ///endregion
 
-            ///region Deferentiation operators
+            ///region Dereferencing operators
 
             /**
-             * Dereferentiation of iterator
+             * Dereferencing of iterator
              * @return The value referenced by this iterator
              */
-            const T& operator * () const {
-                return (*series)[index];
-            }
+            const T& operator * () const;
 
             /**
              * Member pointer access
              * @return The pointer to referenced element
              */
-            const T* operator -> () const {
-                return &(*series)[index];
-            };
+            const T* operator -> () const;
 
             /**
-             * Dereferentiation of iterator with offset
+             * Dereferencing of iterator with offset
              * @param n The offset
              * @return The element n positions after the one referenced by this iterator
              */
-            const T& operator [] (ulong n) const {
-                return (*series)[index + n];
-            }
+            const T& operator [] (ulong n) const;
 
             ///endregion
         };
@@ -250,7 +212,7 @@ namespace series {
         /**
          * Virtual destructor for subclasses
          */
-        virtual ~lazy_series<T>() = default;
+        virtual ~lazy_series<T>();
 
 
         /**
@@ -258,56 +220,35 @@ namespace series {
          * @param index The index of the requested element
          * @return The n-th element of the series
          */
-        const T& operator[](ulong index) {
-            for (ulong i = numbers.size(); i <= index; i++)
-                numbers.push_back(next_element());
-
-            return numbers[index];
-        }
+        const T& operator[](ulong index);
 
         /**
          * Gets the iterator to the first element of the series
          * @return The iterator to the first element of the series
          */
-        iterator begin() const {
-            return iterator(this);
-        }
+        iterator begin() const;
 
         /**
          * Gets the iterator to the last possible element of the series.
          * As series are infinite the iterator to numeric limit of index is returned.
          * @return The iterator to the last possible element of the series
          */
-        iterator end() const {
-            return iterator(this, ULONG_MAX);
-        }
+        iterator end() const;
 
         /**
          * Returns the number of already evaluated elements
          * @return The number of already evaluated elements
          */
-        ulong size() {
-            return numbers.size();
-        }
+        ulong size() const;
 
         ///region Getters
-
 
         /**
          * Gets the first n elements of the series
          * @param n The number of elements
          * @return The vector of elements
          */
-        vector<T> get(ulong n) {
-            if (numbers.size() < n)
-                numbers.reserve(n);
-
-            vector<T> result;
-            for (iterator it = begin(); result.size() < n; it++)
-                result.push_back(*it);
-
-            return result;
-        }
+        std::vector<T> get(ulong n);
 
         /**
          * Gets the first n elements of the series filtered by given function
@@ -315,29 +256,14 @@ namespace series {
          * @param filter The filter function
          * @return The vector of the elements
          */
-        vector<T> get(ulong n, const test& filter) {
-            if (numbers.size() < n)
-                numbers.reserve(n);
-
-            vector<T> result;
-            for (iterator it = begin(); result.size() < n; it++)
-                if (filter(*it))
-                    result.push_back(*it);
-
-            return result;
-        }
+        std::vector<T> get(ulong n, const test& filter);
 
         /**
          * Gets all the elements before the first one to fail given test
          * @param check The test function
          * @return The vector of elements
          */
-        vector<T> get_while(const test& check) {
-            vector<T> result;
-            for (iterator it = begin(); check(*it); it++)
-                result.push_back(*it);
-            return result;
-        }
+        std::vector<T> get_while(const test& check);
 
         /**
          * Gets all the elements before the first one to fail given test
@@ -345,25 +271,14 @@ namespace series {
          * @param filter The filter function
          * @return The vector of elements
          */
-        vector<T> get_while(const test& check, const test& filter) {
-            vector<T> result;
-            for (iterator it = begin(); check(*it); it++)
-                if (filter(*it))
-                    result.push_back(*it);
-            return result;
-        }
+        std::vector<T> get_while(const test& check, const test& filter);
 
         /**
          * Gets all the elements before the first one to pass given test
          * @param check The test function
          * @return The vector of elements
          */
-        vector<T> get_until(const test& check) {
-            vector<T> result;
-            for (iterator it = begin(); !check(*it); it++)
-                result.push_back(*it);
-            return result;
-        }
+        std::vector<T> get_until(const test& check);
 
         /**
          * Gets all the elements before the first one to pass given test
@@ -371,24 +286,14 @@ namespace series {
          * @param filter The filter function
          * @return The vector of elements
          */
-        vector<T> get_until(const test& check, const test& filter) {
-            vector<T> result;
-            for (iterator it = begin(); !check(*it); it++)
-                if (filter(*it))
-                    result.push_back(*it);
-            return result;
-        }
+        std::vector<T> get_until(const test& check, const test& filter);
 
         /**
          * Gets the first element that pass given test
          * @param check The test function
          * @return The first element that pass given test
          */
-        T get_first(const test& check) {
-            for (iterator it = begin(); ; it++)
-                if (check(*it))
-                    return *it;
-        }
+        T get_first(const test& check);
 
         /**
          * Gets the first n elements that pass given test
@@ -396,35 +301,14 @@ namespace series {
          * @param n The number of elements to return
          * @return The first n elements that pass given test
          */
-        vector<T> get_first(const test& check, ulong n) {
-            ulong count = 0;
-            vector<T> elements(n);
-
-            for (iterator it = begin(); count < n; it++)
-                if (check(*it)) {
-                    elements.push_back(*it);
-                    count++;
-                }
-
-            return elements;
-        }
+        std::vector<T> get_first(const test& check, ulong n);
 
         ///endregion
 
 
-    protected:
-        /**
-         * The evaluated numbers
-         */
-        vector<T> numbers;
-
-        /**
-         * Function that calculates next element in the series
-         * @return The next element
-         */
-        virtual T next_element() = 0;
     };
 }
 
+#include "lazy_series.ipp"
 
 #endif //PROJECT_EULER_LAZY_SERIES_H

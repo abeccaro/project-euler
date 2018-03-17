@@ -14,7 +14,7 @@ using boost::multiprecision::uint256_t;
 
 namespace problems {
     vector<uint> problem13::solve(uint d) {
-        vector<uint256_t> numbers = read_vector<uint256_t>(PROBLEMS_FOLDER + "1-50/13/input.txt");
+        vector<uint256_t> numbers = read_vector<uint256_t>(problems_folder + "1-50/13/input.txt");
 
         uint256_t sum = 0;
         for (const auto &n : numbers)

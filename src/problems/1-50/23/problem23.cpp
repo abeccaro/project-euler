@@ -11,9 +11,9 @@ using generics::divisors;
 namespace problems {
     uint problem23::solve(uint ub) {
         // get abundants
-        vector<uint> abundants;
+        std::vector<uint> abundants;
         for (uint i = 1; i < ub; i++) {
-            vector<uint> divs = divisors(i);
+            std::vector<uint> divs = divisors(i);
             uint sum = 0;
             for (const auto &div : divs)
                 sum += div;
@@ -23,7 +23,7 @@ namespace problems {
         }
 
         // mark all the numbers obtained by summing 2 abundants
-        vector<bool> as_sum_of_abundants(ub);
+        std::vector<bool> as_sum_of_abundants(ub);
         for (int i = 0; i < abundants.size(); i++)
             for (int j = i; j < abundants.size(); j++) {
                 uint sum = abundants[i] + abundants[j];

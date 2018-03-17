@@ -7,10 +7,8 @@
 #include "lazy_series.hpp"
 #include "template_conditions.hpp"
 
-using template_conditions::is_any_integral;
-
 namespace series {
-    template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
+    template<class T, class = typename std::enable_if<template_conditions::is_any_integral<T>::value>::type>
     /**
      * lazy_series implementation for fibonacci sequence.
      */
@@ -19,23 +17,17 @@ namespace series {
         /**
          * Default constructor that adds first 2 numbers.
          */
-        fibonacci() {
-            this->numbers.emplace_back(1);
-            this->numbers.emplace_back(1);
-        }
+        fibonacci();
     protected:
         /**
          * Calculates the next number in the sequence as the sum of the last 2 added.
          * @return The next fibonacci number
          */
-        T next_element() final {
-            unsigned long count = this->numbers.size();
-
-            return this->numbers[count-2] + this->numbers[count-1];
-        }
+        T next_element() final;
     };
 
 }
 
+#include "fibonacci.ipp"
 
 #endif //PROJECT_EULER_FIBONACCI_H

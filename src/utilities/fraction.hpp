@@ -4,16 +4,11 @@
 #ifndef PROJECT_EULER_FRACTION_HPP
 #define PROJECT_EULER_FRACTION_HPP
 
-#include "template_conditions.hpp"
-#include "generics.hpp"
-
-using namespace template_conditions;
-using namespace generics;
-
+#include <template_conditions.hpp>
 
 namespace fractions {
 
-    template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
+    template<class T, class = typename std::enable_if<template_conditions::is_any_integral<T>::value>::type>
     class fraction {
 
     private:
@@ -24,75 +19,52 @@ namespace fractions {
 
     public:
 
+        /// region constructors
+
         /**
          * Default constructor for 0.
          */
-        fraction() : num(0), den(1) {}
+        fraction();
 
         /**
          * Constructor for integer numbers
          * @param n The number to represent as fraction
          */
-        fraction(T n) : num(n), den(1) {}
+        fraction(T n);
 
         /**
          * Constructor for integer numbers
          * @param n The number to represent as fraction
          */
-        template<class U, class = typename enable_if<is_convertible<U, T>::value>::type>
-        fraction(U n) : num(n), den(1) {}
+        template<class U, class = typename std::enable_if<std::is_convertible<U, T>::value>::type>
+        fraction(U n);
 
         /**
          * Complete constructor for a fraction
          * @param n The numerator
          * @param d The denominator
          */
-        fraction(T n, T d) : num(n), den(d) {
-            assert(den != 0 && "Denominator can't be 0");
-
-            if (auto_red)
-                reduce();
-        }
+        fraction(T n, T d);
 
         /**
          * Copy constructor
          * @param f The fraction to copy
          */
-        template<class U, class = typename enable_if<is_convertible<U, T>::value>::type>
-        fraction(const fraction<U>& f) : num(f.numerator()), den(f.denominator()) {}
+        template<class U, class = typename std::enable_if<std::is_convertible<U, T>::value>::type>
+        fraction(const fraction<U>& f);
 
-
+        /// endregion constructors
 
         /**
          * Reduces this fraction to lowest terms and adjusts signs (if fraction < 0 then numerator will be negative
          * and denominator positive, otherwise both will be positive).
          */
-        void reduce() {
-            if (num < 0 && den < 0) {
-                num = abs(num);
-                den = abs(den);
-            } else if (den < 0) {
-                den = abs(den);
-                num *= -1;
-            }
-
-            T g = generics::gcd<T>(abs(num), den);
-            if (g != 1) {
-                num /= g;
-                den /= g;
-            }
-        }
+        void reduce();
 
         /**
          * Inverts this fraction
          */
-        void invert() {
-            assert(num != 0 && "Can't invert 0");
-
-            T temp = num;
-            num = den;
-            den = temp;
-        }
+        void invert();
 
 
         ///region getters and setters
@@ -101,55 +73,37 @@ namespace fractions {
          * Sets auto reduction to specified value (true by default).
          * @param b The auto reduction state to set
          */
-        static void auto_reduce(bool b) {
-            auto_red = b;
-        }
+        static void auto_reduce(bool b);
 
         /**
          * Gets the numerator value
          * @return The numerator
          */
-        T numerator() const {
-            return num;
-        }
+        T numerator() const;
 
         /**
          * Gets the denominator value
          * @return The denominator
          */
-        T denominator() const {
-            return den;
-        }
+        T denominator() const;
 
         /**
          * Sets the numerator to specified value
          * @param n The numerator to set
          */
-        void numerator(const T &n) {
-            num = n;
-            if (auto_red)
-                reduce();
-        }
+        void numerator(const T &n);
 
         /**
          * Sets the denominator to specified value
          * @param n The denominator to set
          */
-        void denominator(const T &d) {
-            assert(d != 0 && "Denominator can't be 0");
-
-            den = d;
-            if (auto_red)
-                reduce();
-        }
+        void denominator(const T &d);
 
         /**
          * Returns the value of the function as a single number
          * @return The value
          */
-        double value() const {
-            return (double) *this;
-        }
+        double value() const;
 
         ///endregion
 
@@ -160,195 +114,111 @@ namespace fractions {
          * @param f The value to assign
          * @return The reference to this object
          */
-        fraction& operator = (const fraction<T>& f) {
-            num = f.num;
-            den = f.den;
-            return *this;
-        }
+        fraction<T>& operator = (const fraction<T>& f);
 
         /**
          * Equality check, takes into account possible reductions.
          * @param f The other fraction
          * @return True if they are equal, false otherwise
          */
-        bool operator == (fraction<T> f2) const {
-            fraction f1 = *this;
-            f1.reduce();
-            f2.reduce();
-
-            return f1.num == f2.num && f1.den == f2.den;
-        }
+        bool operator == (fraction<T> f2) const;
 
         /**
          * Inequality check, takes into account possible reductions.
          * @param f The other fraction
          * @return True if they are not equal, false otherwise
          */
-        bool operator != (fraction<T> f2) const {
-            return !(*this == f2);
-        }
+        bool operator != (fraction<T> f2) const;
 
         /**
          * Less than check by value
          * @param f The other fraction
          * @return True if this is less than f, false otherwise
          */
-        bool operator < (const fraction<T>& f) const {
-            return value() < f.value();
-        }
+        bool operator < (const fraction<T>& f) const;
 
         /**
          * Less than or equal check by value
          * @param f The other fraction
          * @return True if this is equal to or less than f, false otherwise
          */
-        bool operator <= (const fraction<T>& f) const {
-            return *this == f || *this < f;
-        }
+        bool operator <= (const fraction<T>& f) const;
 
         /**
          * Greater than check by value
          * @param f The other fraction
          * @return True if this is greater than f, false otherwise
          */
-        bool operator > (const fraction<T>& f) const {
-            return value() > f.value();
-        }
+        bool operator > (const fraction<T>& f) const;
 
         /**
          * Greater than or equal check by value
          * @param f The other fraction
          * @return True if this is equal to or greater than f, false otherwise
          */
-        bool operator >= (const fraction<T>& f) const {
-            return *this == f || *this > f;
-        }
+        bool operator >= (const fraction<T>& f) const;
 
         /**
          * Sum operator.
          * @param other The fraction to add
          * @return The sum of this and other fractions
          */
-        fraction operator +(const fraction<T>& other) const {
-            T d = generics::lcm<T>(den, other.denominator());
-            T n1 = num * d / den;
-            T n2 = other.numerator() * d / other.denominator();
-            fraction res(n1 + n2, d);
-
-            return res;
-        }
+        fraction<T> operator +(const fraction<T>& other) const;
 
         /**
           * Shorthand for sum and auto assignment
           * @param other The fraction to sum
           * @return This fraction reference
           */
-        fraction& operator +=(const fraction<T>& other) {
-            T d = generics::lcm<T>(den, other.denominator());
-            T n1 = num * d / den;
-            T n2 = other.numerator() * d / other.denominator();
-
-            num = n1 + n2;
-            den = d;
-
-            if (auto_red)
-                reduce();
-
-            return *this;
-        }
+        fraction<T>& operator +=(const fraction<T>& other);
 
         /**
          * Difference operator.
          * @param other The fraction to subtract
          * @return The difference of this and other fractions
          */
-        fraction operator -(const fraction<T>& other) const {
-            T d = generics::lcm<T>(den, other.denominator());
-            T n1 = num * d / den;
-            T n2 = other.numerator() * d / other.denominator();
-            fraction res(n1 - n2, d);
-
-            return res;
-        }
+        fraction<T> operator -(const fraction<T>& other) const;
 
         /**
           * Shorthand for difference and auto assignment
           * @param other The fraction to subtract
           * @return This fraction reference
           */
-        fraction& operator -=(const fraction<T>& other) {
-            T d = generics::lcm<T>(den, other.denominator());
-            T n1 = num * d / den;
-            T n2 = other.numerator() * d / other.denominator();
-
-            num = n1 - n2;
-            den = d;
-
-            if (auto_red)
-                reduce();
-
-            return *this;
-        }
+        fraction<T>& operator -=(const fraction<T>& other);
 
         /**
          * Product operator.
          * @param other The fraction to multiply
          * @return The product of this and other fractions
          */
-        fraction operator *(const fraction<T>& other) const {
-            T n = num * other.numerator();
-            T d = den * other.denominator();
-            fraction res(n, d);
-
-            return res;
-        }
+        fraction<T> operator *(const fraction<T>& other) const;
 
         /**
           * Shorthand for product and auto assignment
           * @param other The fraction to multiply
           * @return This fraction reference
           */
-        fraction& operator *=(const fraction<T>& other) {
-            num *= other.numerator();
-            den *= other.denominator();
-
-            if (auto_red)
-                reduce();
-
-            return *this;
-        }
+        fraction<T>& operator *=(const fraction<T>& other);
 
         /**
          * Division operator.
          * @param other The fraction to divide
          * @return The division of this and other fractions
          */
-        fraction operator /(fraction<T> other) const {
-            assert(other != 0 && "Can't divide by 0");
-
-            other.invert();
-            return *this * other;
-        }
+        fraction<T> operator /(fraction<T> other) const;
 
         /**
           * Shorthand for division and auto assignment
           * @param other The fraction to divide
           * @return This fraction reference
           */
-        fraction& operator /=(fraction<T> other) {
-            assert(other != 0 && "Can't divide by 0");
-
-            other.invert();
-            return *this *= other;
-        }
+        fraction<T>& operator /=(fraction<T> other);
 
         /**
          * Negation operator
          * @return The opposite of this fraction
          */
-        fraction operator -() const {
-            return fraction(-num, den);
-        }
+        fraction<T> operator -() const;
 
         ///endregion
 
@@ -356,15 +226,10 @@ namespace fractions {
          * Cast to another type
          * @return The closest representation of this fraction in type U
          */
-        template<class U, class = typename enable_if<is_convertible<T, U>::value>::type>
-        explicit operator U () const {
-            return (U) num / den;
-        }
+        template<class U, class = typename std::enable_if<std::is_convertible<T, U>::value>::type>
+        explicit operator U () const;
 
     };
-
-    template<class T, class U>
-    bool fraction<T, U>::auto_red = false;
 
 
     /**
@@ -374,13 +239,7 @@ namespace fractions {
      * @return The stream with this fraction representation
      */
     template<class T>
-    ostream& operator<<(ostream& os, const fraction<T>& f) {
-        os << f.numerator();
-        T den = f.denominator();
-        if (den != 1)
-            os << "/" << den;
-        return os;
-    }
+    std::ostream& operator<<(std::ostream& os, const fraction<T>& f);
 
     /**
      * Fraction stl extension for pow
@@ -388,10 +247,7 @@ namespace fractions {
      * @param exp The exponent
      */
     template<class T>
-    void pow(fraction<T>& f, const T& exp) {
-        f.numerator(std::pow(f.numerator(), exp));
-        f.denominator(std::pow(f.denominator(), exp));
-    }
+    void pow(fraction<T>& f, const T& exp);
 
     /**
      * Fraction stl extension for max
@@ -400,9 +256,7 @@ namespace fractions {
      * @return f1 if f1 > f2, otherwise f2
      */
     template<class T>
-    fraction<T> max(const fraction<T>& f1, const fraction<T>& f2) {
-        return f1 < f2 ? f2 : f1;
-    }
+    fraction<T> max(const fraction<T>& f1, const fraction<T>& f2);
 
     /**
      * Fraction stl extension for min
@@ -411,9 +265,7 @@ namespace fractions {
      * @return f1 if f1 < f2, otherwise f2
      */
     template<class T>
-    fraction<T> min(const fraction<T>& f1, const fraction<T>& f2) {
-        return f1 < f2 ? f1 : f2;
-    }
+    fraction<T> min(const fraction<T>& f1, const fraction<T>& f2);
 
     /**
      * Fraction stl extension for abs
@@ -421,9 +273,7 @@ namespace fractions {
      * @return The absolute value of f
      */
     template<class T>
-    fraction<T> abs(const fraction<T>& f) {
-        return f < 0 ? -f : f;
-    }
+    fraction<T> abs(const fraction<T>& f);
 
     /**
      * Fraction stl extension for floor
@@ -431,12 +281,7 @@ namespace fractions {
      * @return The nearest integer not greater than f
      */
     template<class T>
-    fraction<T> floor(const fraction<T>& f) {
-        T x = (T) f;
-        if (f == x)
-            return f;
-        return fraction<T>(f < 0 ? x - 1 : x);
-    }
+    fraction<T> floor(const fraction<T>& f);
 
     /**
      * Fraction stl extension for ceil
@@ -444,12 +289,7 @@ namespace fractions {
      * @return The nearest integer not less than f
      */
     template<class T>
-    fraction<T> ceil(const fraction<T>& f) {
-        T x = (T) f;
-        if (f == x)
-            return f;
-        return fraction<T>(f < 0 ? x : x + 1);
-    }
+    fraction<T> ceil(const fraction<T>& f);
 
     /**
      * Fraction stl extension for round
@@ -457,13 +297,10 @@ namespace fractions {
      * @return The nearest integer to f
      */
     template<class T>
-    fraction<T> round(const fraction<T>& f) {
-        double v = f.value();
-        if (v >= 0)
-            return v - (T) v < 0.5 ? floor(f) : ceil(f);
-        return v - (T) v <= -0.5 ? floor(f) : ceil(f);
-    }
+    fraction<T> round(const fraction<T>& f);
 
 }
+
+#include "fraction.ipp"
 
 #endif //PROJECT_EULER_FRACTION_HPP

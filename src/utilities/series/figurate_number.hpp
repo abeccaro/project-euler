@@ -7,10 +7,8 @@
 #include "lazy_series.hpp"
 #include "template_conditions.hpp"
 
-using template_conditions::is_any_integral;
-
 namespace series {
-    template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
+    template<class T, class = typename std::enable_if<template_conditions::is_any_integral<T>::value>::type>
     /**
      * lazy_series implementation for figurate numbers sequence.
      */
@@ -21,23 +19,14 @@ namespace series {
          * 4 for squares, 5 for pentagonal, ...)
          * @param sides The number of sides of the shape
          */
-        explicit figurate_number(T sides) {
-            this->numbers.emplace_back(1);
-
-            next_increment = sides - 1;
-            increment_step = sides - 2;
-        }
+        explicit figurate_number(const T& sides);
 
     protected:
         /**
          * Calculates the next number in the sequence.
          * @return The next number in the sequence
          */
-        T next_element() final {
-            T n = this->numbers.back() + next_increment;
-            next_increment += increment_step;
-            return n;
-        }
+        T next_element() final;
 
     private:
         /**
@@ -52,5 +41,7 @@ namespace series {
     };
 
 }
+
+#include "figurate_number.ipp"
 
 #endif //PROJECT_EULER_FIGURATE_NUMBER_H

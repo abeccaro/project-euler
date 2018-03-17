@@ -17,15 +17,15 @@ namespace problems {
     }
 
     uint problem32::solve() {
-        unordered_set<uint> pandigital_products;
-        const vector<uint> all_digits = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        std::unordered_set<uint> pandigital_products;
+        const std::vector<uint> all_digits = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
         for (uint i = 2; i <= 98; i++)
             for (uint j = 123; j <= 4987; j++) {
                 uint prod = i * j;
                 ulong combined = combine(combine(prod, j), i);
 
-                vector<uint> digs = digits(combined);
+                std::vector<uint> digs = digits(combined);
                 sort(digs.begin(), digs.end());
                 if (digs == all_digits)
                     pandigital_products.insert(prod);

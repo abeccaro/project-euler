@@ -78,7 +78,7 @@ namespace problems {
     uint problem96::solve() {
         uint result = 0;
 
-        vector<vector<uint>> vectors = input::read_matrix<uint>(input::PROBLEMS_FOLDER + "51-100/96/input.txt");
+        vector<vector<uint>> vectors = input::read_matrix<uint>(input::problems_folder + "51-100/96/input.txt");
         vector<sudoku> sudokus(vectors.size());
 
         for (uint i = 0; i < vectors.size(); i++)

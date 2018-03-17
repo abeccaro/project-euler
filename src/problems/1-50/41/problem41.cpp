@@ -14,14 +14,14 @@ using uint = unsigned int;
 
 namespace problems {
     ulong problem41::solve() {
-        vector<uint> ALL_DIGITS = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        std::vector<uint> all_digits = {1, 2, 3, 4, 5, 6, 7, 8, 9};
         ulong result;
 
         // 9,8,6,5,3,2 -digit pandigitals cannot be primes (always dividable by 3)
         // so only 7,4,1 -digit numbers are tested
         for (uint n = 7; n > 0; n -= 3) {
-            vector<uint> permutation(n);
-            copy(ALL_DIGITS.begin(), ALL_DIGITS.begin() + n, permutation.begin());
+            std::vector<uint> permutation(n);
+            copy(all_digits.begin(), all_digits.begin() + n, permutation.begin());
 
             ulong max = 0;
 

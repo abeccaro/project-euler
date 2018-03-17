@@ -17,7 +17,7 @@ namespace problems {
 
         uint result = 0;
         for (uint i = 10; i < upper_bound; i++) {
-            vector<uint> digs = digits(i);
+            std::vector<uint> digs = digits(i);
             uint sum = 0;
 
             for (const auto &d : digs)

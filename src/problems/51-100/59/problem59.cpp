@@ -9,8 +9,8 @@ using namespace input;
 
 namespace problems {
     uint problem59::solve() {
-        vector<uint> words = read_vector<uint>(PROBLEMS_FOLDER + "/51-100/59/input.txt");
-        string pw = "___";
+        std::vector<uint> words = read_vector<uint>(problems_folder + "/51-100/59/input.txt");
+        std::string pw = "___";
         uint result, max_letters = 0;
 
         for (char c1 = 'a'; c1 <= 'z'; c1++) {

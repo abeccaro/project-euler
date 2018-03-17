@@ -14,7 +14,7 @@ using generics::from_digits;
 
 namespace problems {
     bool problem37::is_truncatable_from_left(const ulong &n) {
-        vector<uint> digs = digits(n);
+        std::vector<uint> digs = digits(n);
 
         while (digs.size() > 1) {
             if (!is_prime(from_digits<ulong>(digs)))
@@ -39,13 +39,13 @@ namespace problems {
 
     ulong problem37::solve(ulong n) {
         primes<ulong> p;
-        vector<ulong> numbers = p.get(n, [](ulong p) {
+        std::vector<ulong> numbers = p.get(n, [](ulong p) {
             return p >= 10 && is_truncatable_from_left(p) && is_truncatable_from_right(p);
         });
 
         ulong result = 0;
-        for (const auto &n : numbers)
-            result += n;
+        for (const auto &x : numbers)
+            result += x;
         return result;
     }
 }

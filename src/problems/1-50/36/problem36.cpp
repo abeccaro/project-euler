@@ -13,8 +13,8 @@ namespace problems {
         uint result = 0;
         for (uint i = 1; i < ub; i++)
             if (is_palindrome(i)) {
-                vector<uint> digs = to_base(i, 2);
-                vector<uint> rev_digs(digs.size());
+                std::vector<uint> digs = to_base(i, 2);
+                std::vector<uint> rev_digs(digs.size());
 
                 reverse_copy(digs.begin(), digs.end(), rev_digs.begin());
 

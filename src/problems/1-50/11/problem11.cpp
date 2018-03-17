@@ -11,7 +11,7 @@ using ulong = unsigned long;
 
 namespace problems {
     uint problem11::solve(uint size) {
-        vector<vector<uint>> matrix = read_matrix<uint>(PROBLEMS_FOLDER + "1-50/11/input.txt");
+        std::vector<std::vector<uint>> matrix = read_matrix<uint>(problems_folder + "1-50/11/input.txt");
 
         ulong maxProd = 0;
 
@@ -26,7 +26,7 @@ namespace problems {
                     ulong prod = 1;
                     for (uint k = 0; k < size; k++)
                         prod *= matrix[i][j + k];
-                    maxProd = max(prod, maxProd);
+                    maxProd = std::max(prod, maxProd);
                 }
 
                 // vertical
@@ -34,7 +34,7 @@ namespace problems {
                     ulong prod = 1;
                     for (uint k = 0; k < size; k++)
                         prod *= matrix[i + k][j];
-                    maxProd = max(prod, maxProd);
+                    maxProd = std::max(prod, maxProd);
                 }
 
                 // diagonal bottom-right
@@ -42,7 +42,7 @@ namespace problems {
                     ulong prod = 1;
                     for (uint k = 0; k < size; k++)
                         prod *= matrix[i + k][j + k];
-                    maxProd = max(prod, maxProd);
+                    maxProd = std::max(prod, maxProd);
                 }
 
                 // diagonal top-right
@@ -50,7 +50,7 @@ namespace problems {
                     ulong prod = 1;
                     for (uint k = 0; k < size; k++)
                         prod *= matrix[i - k][j + k];
-                    maxProd = max(prod, maxProd);
+                    maxProd = std::max(prod, maxProd);
                 }
             }
         }

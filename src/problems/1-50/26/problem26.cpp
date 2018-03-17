@@ -5,6 +5,7 @@
 #include "problem26.hpp"
 #include <generics.hpp>
 
+using boost::multiprecision::cpp_int;
 using namespace generics;
 
 namespace problems {

@@ -7,20 +7,18 @@
 #include <boost/multiprecision/cpp_int.hpp>
 #include <boost/multiprecision/cpp_dec_float.hpp>
 
-using namespace std;
-using namespace boost::multiprecision;
-
 namespace template_conditions {
 
-    template<class T>
-    struct is_any_integral : public integral_constant<bool,
-            is_integral<T>::value ||
-            is_convertible<T, cpp_int>::value> {};
+    template<typename T>
+    struct is_any_integral : public std::integral_constant<bool,
+            std::is_integral<T>::value ||
+            std::is_convertible<T, boost::multiprecision::cpp_int>::value> {};
 
-    template<class T>
-    struct is_any_number : public integral_constant<bool,
+    template<typename T>
+    struct is_any_number : public std::integral_constant<bool,
             is_any_integral<T>::value ||
-            is_convertible<T, number<cpp_dec_float<numeric_limits<unsigned int>::max()>>>::value> {};
+            std::is_convertible<T, boost::multiprecision::number<boost::multiprecision::cpp_dec_float<
+                    std::numeric_limits<unsigned int>::max()>>>::value> {};
 
 }
 

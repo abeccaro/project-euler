@@ -9,9 +9,9 @@ using namespace input;
 
 namespace problems {
     ulong problem8::solve(uint digits) {
-        vector<uint> numbers = read_vector<uint>(PROBLEMS_FOLDER + "1-50/8/input.txt");
+        std::vector<uint> numbers = read_vector<uint>(problems_folder + "1-50/8/input.txt");
 
-        ulong maxProduct = numeric_limits<ulong>::min();
+        ulong maxProduct = std::numeric_limits<ulong>::min();
         for (ulong i = 0; i <= numbers.size() - digits; i++) {
             ulong product = 1;
 

@@ -9,7 +9,7 @@ using namespace input;
 
 namespace problems {
     uint problem22::solve() {
-        vector<string> names = read_vector<string>(PROBLEMS_FOLDER + "1-50/22/input.txt");
+        std::vector<std::string> names = read_vector<std::string>(problems_folder + "1-50/22/input.txt");
         sort(names.begin(), names.end());
 
         uint sum = 0;

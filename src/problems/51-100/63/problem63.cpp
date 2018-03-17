@@ -5,6 +5,7 @@
 #include "problem63.hpp"
 #include <generics.hpp>
 
+using boost::multiprecision::uint128_t;
 using generics::digits;
 
 namespace problems {

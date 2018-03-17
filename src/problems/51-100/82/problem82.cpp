@@ -11,7 +11,7 @@ using std::priority_queue;
 
 namespace problems {
     problem82::entry::entry(ulong row, ulong col, uint value) :
-            row(row), col(col), value(value), distance(numeric_limits<uint>::max()) {};
+            row(row), col(col), value(value), distance(std::numeric_limits<uint>::max()) {};
 
     bool problem82::entry_comparer::operator()(const entry* a, const entry* b) {
         return a->distance > b->distance;
@@ -71,7 +71,7 @@ namespace problems {
         // returning sum of numbers in best path
         uint min_distance = 1000000;
         for (uint i = 0; i < entries.size(); i++) {
-            min_distance = min(min_distance, entries[i].back()->distance);
+            min_distance = std::min(min_distance, entries[i].back()->distance);
             for (const auto& e : entries[i])
                 delete e;
         }
@@ -80,7 +80,7 @@ namespace problems {
     }
 
     uint problem82::solve() {
-        vector<vector<uint>> matrix = read_matrix<uint>(input::PROBLEMS_FOLDER + "51-100/82/input.txt");
+        vector<vector<uint>> matrix = read_matrix<uint>(input::problems_folder + "51-100/82/input.txt");
 
         return best_path_sum(matrix);
     }

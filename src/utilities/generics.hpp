@@ -5,12 +5,7 @@
 #define PROJECT_EULER_GENERICS_H
 
 #include <vector>
-#include "template_conditions.hpp"
-#include "primes.hpp"
-
-using namespace std;
-using namespace template_conditions;
-using primes::prime_factors;
+#include <template_conditions.hpp>
 
 using uint = unsigned int;
 using ulong = unsigned long;
@@ -21,58 +16,24 @@ namespace generics {
      * @param n The number to divide
      * @return The vector of ordered digits
      */
-    template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
-    vector<uint> digits(const T& n) {
-        vector<uint> digits;
-        T copy = n;
-
-        if (copy < 0)
-            copy *= -1;
-
-        while (copy > 9) {
-            auto d = (uint) (copy % 10);
-            digits.push_back(d);
-            copy /= 10;
-        }
-        digits.push_back((uint) copy);
-
-        reverse(digits.begin(), digits.end());
-        return digits;
-    }
+    template<class T, class = typename std::enable_if<template_conditions::is_any_integral<T>::value>::type>
+    std::vector<uint> digits(const T& n);
 
     /**
      * Creates the number formed by concatenating given digits.
      * @param digits The ordered digits
      * @return The number
      */
-    template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
-    T from_digits(const vector<uint> &digits) {
-        assert(all_of(digits.begin(), digits.end(), [](uint n){return n < 10;}) &&
-                       "At least a non digit number (> 10)");
-
-        T result = 0;
-        ulong length = digits.size();
-
-        for (ulong i = 0; i < length; i++)
-            result += digits[length - i - 1] * pow(10, i);
-
-        return result;
-    }
+    template<class T, class = typename std::enable_if<template_conditions::is_any_integral<T>::value>::type>
+    T from_digits(const std::vector<uint>& digits);
 
     /**
      * Checks if given number is palindrome or not. It doesn't take into account sign.
      * @param n The number to check
      * @return true if the number is palindrome, false otherwise
      */
-    template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
-    bool is_palindrome(const T& n) {
-        vector<uint> dig = digits(n);
-        vector<uint> reversed_dig(dig.size());
-
-        reverse_copy(dig.begin(), dig.end(), reversed_dig.begin());
-
-        return dig == reversed_dig;
-    }
+    template<class T, class = typename std::enable_if<template_conditions::is_any_integral<T>::value>::type>
+    bool is_palindrome(const T& n);
 
     /**
      * Calculates the greatest common divisor of given numbers.
@@ -80,32 +41,16 @@ namespace generics {
      * @param b The second number
      * @return The gcd of given numbers
      */
-    template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
-    T gcd(const T& a, const T& b) {
-        assert (a >= 0 && b >= 0 && "Numbers can't be negative");
-
-        if (b == 0)
-            return a;
-
-        return gcd(b, a % b);
-    }
+    template<class T, class = typename std::enable_if<template_conditions::is_any_integral<T>::value>::type>
+    T gcd(const T& a, const T& b);
 
     /**
      * Calculates the greatest common divisor of given numbers.
      * @param numbers The numbers
      * @return The gcd of given numbers
      */
-    template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
-    T gcd(const vector<T>& numbers) {
-        assert (numbers.size() > 0 && "At least one number is required");
-
-        T partial_gcd = numbers[0];
-
-        for (auto i = numbers.begin() + 1; i < numbers.end(); i++)
-            partial_gcd = gcd(partial_gcd, *i);
-
-        return partial_gcd;
-    }
+    template<class T, class = typename std::enable_if<template_conditions::is_any_integral<T>::value>::type>
+    T gcd(const std::vector<T>& numbers);
 
     /**
      * Calculates lowest common multiple of given numbers.
@@ -113,67 +58,32 @@ namespace generics {
      * @param b The second number
      * @return The lcm of given numbers
      */
-    template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
-    T lcm(const T& a, const T& b) {
-        return (a * b) / gcd(a, b);
-    };
+    template<class T, class = typename std::enable_if<template_conditions::is_any_integral<T>::value>::type>
+    T lcm(const T& a, const T& b);
 
     /**
      * Calculates lowest common multiple of given numbers.
      * @param numbers The numbers
      * @return The lcm of given numbers
      */
-    template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
-    T lcm(const vector<T> &numbers) {
-        assert (numbers.size() > 0 && "At least one number is required");
-
-        T partial_lcm = numbers[0];
-
-        for (auto i = numbers.begin() + 1; i < numbers.end(); i++)
-            partial_lcm = lcm(partial_lcm, *i);
-
-        return partial_lcm;
-    }
+    template<class T, class = typename std::enable_if<template_conditions::is_any_integral<T>::value>::type>
+    T lcm(const std::vector<T>& numbers);
 
     /**
      * Finds all divisors of n
      * @param n The number
      * @return The vector of divisors
      */
-    template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
-    vector<T> divisors(const T& n) {
-        assert (n > 0 && "Numbers must be positive");
-
-        vector<T> divisors;
-        auto root = sqrt(n);
-
-        for (T i = 1; i < root; i++) {
-            if (n % i == 0) {
-                divisors.push_back(i);
-                divisors.push_back(n / i);
-            }
-        }
-
-        if (root == (T) root)
-            divisors.push_back((T) root);
-
-        return divisors;
-    }
+    template<class T, class = typename std::enable_if<template_conditions::is_any_integral<T>::value>::type>
+    std::vector<T> divisors(const T& n);
 
     /**
      * Calculates the factorial of given number
      * @param n The number
      * @return The factorial
      */
-    template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
-    T factorial(const T& n) {
-        assert(n >= 0 && "Number can't be negative");
-
-        T result = 1;
-        for (T i = 2; i <= n; i++)
-            result *= i;
-        return result;
-    }
+    template<class T, class = typename std::enable_if<template_conditions::is_any_integral<T>::value>::type>
+    T factorial(const T& n);
 
     /**
      * Calculates the binomial coefficient
@@ -181,20 +91,8 @@ namespace generics {
      * @param k The second number
      * @return The binomial coefficient
      */
-    template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
-    T binomial_coefficient(const T& n, const T& k) {
-        assert(n >= 0 && k >= 0 && "Numbers must be positive");
-        assert(n >= k && "Invalid arguments values");
-
-        T num = 1;
-
-        for (T i = n; i > n - k; i--)
-            num *= i;
-
-        T den = factorial(k);
-
-        return num / den; // safe integer division, result is always integer
-    }
+    template<class T, class = typename std::enable_if<template_conditions::is_any_integral<T>::value>::type>
+    T binomial_coefficient(const T& n, const T& k);
 
     /**
      * Checks if given numbers are coprime.
@@ -202,10 +100,8 @@ namespace generics {
      * @param b The second number
      * @return True if given numbers are coprime, false otherwise
      */
-    template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
-    bool are_coprime(const T &a, const T &b) {
-        return gcd(a,b) == 1;
-    }
+    template<class T, class = typename std::enable_if<template_conditions::is_any_integral<T>::value>::type>
+    bool are_coprime(const T& a, const T& b);
 
     /**
      * Calculates the multiplicative order of n modulo mod.
@@ -214,16 +110,8 @@ namespace generics {
      * @param mod The modulo
      * @return The multiplicative order
      */
-    template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
-    T multiplicative_order(const T& base, const T& mod) {
-        assert(mod > 1 && "Modulo must be greater than 1");
-        assert(are_coprime(base, mod) && "Multiplicative order is not defined for given values");
-
-        ulong exp = 1;
-        while ((T) pow(base, exp) % mod != 1)
-            exp++;
-        return exp;
-    }
+    template<class T, class = typename std::enable_if<template_conditions::is_any_integral<T>::value>::type>
+    T multiplicative_order(const T& base, const T& mod);
 
     /**
      * Calculates all the rotation of given number, e.g.: 197 -> [197, 971, 719].
@@ -231,26 +119,8 @@ namespace generics {
      * @param n The number
      * @return All the rotations
      */
-    template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
-    vector<T> rotations(const T& n) {
-        vector<uint> digs = digits(n);
-        ulong length = digs.size();
-
-        vector<T> result(length);
-        result[0] = n;
-
-        for (ulong i = 1; i < length; i++) {
-            vector<uint> ds(length);
-
-            copy(digs.begin() + i, digs.end(), ds.begin());
-            ulong copied = length - i;
-            copy(digs.begin(), digs.begin() + i, ds.begin() + copied);
-
-            result[i] = from_digits<T>(ds);
-        }
-
-        return result;
-    }
+    template<class T, class = typename std::enable_if<template_conditions::is_any_integral<T>::value>::type>
+    std::vector<T> rotations(const T& n);
 
     /**
      * Converts given number from base 10 to given base
@@ -258,21 +128,8 @@ namespace generics {
      * @param base The base to convert the number to
      * @return The converted number's digits
      */
-    template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
-    vector<uint> to_base(const T& n, uint base) {
-        assert (base > 0 && "Base must be positive");
-
-        vector<uint> digits;
-        T copy = n;
-
-        while (copy > 0) {
-            digits.push_back(copy % base);
-            copy = copy / base;
-        }
-
-        reverse(digits.begin(), digits.end());
-        return digits;
-    };
+    template<class T, class = typename std::enable_if<template_conditions::is_any_integral<T>::value>::type>
+    std::vector<uint> to_base(const T& n, uint base);
 
     /**
      * Converts given number from given base to base 10
@@ -280,19 +137,8 @@ namespace generics {
      * @param base The number's base
      * @return The number base 10
      */
-    template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
-    T from_base(const T& n, uint base) {
-        assert (base > 0 && "Base must be positive");
-
-        T result = 0;
-        vector<uint> digs = digits(n);
-        ulong size = digs.size();
-
-        for (ulong i = 0; i < size; i++)
-            result += digs[size-i-1] * pow(base, i);
-
-        return result;
-    };
+    template<class T, class = typename std::enable_if<template_conditions::is_any_integral<T>::value>::type>
+    T from_base(const T& n, uint base);
 
     /**
      * Converts given number from a base to another base
@@ -301,10 +147,8 @@ namespace generics {
      * @param to The base to convert the number to
      * @return The converted number's digits
      */
-    template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
-    vector<uint> to_base(const T& n, uint from, uint to) {
-        from_base(from_digits<T>(to_base(n, 2)), 2);
-    };
+    template<class T, class = typename std::enable_if<template_conditions::is_any_integral<T>::value>::type>
+    std::vector<uint> to_base(const T& n, uint from, uint to);
 
     /**
      * Template version of std::abs that allows unsigned types to have a non ambiguous call.
@@ -312,29 +156,16 @@ namespace generics {
      * @param n The number
      * @return The absolute value of n
      */
-    template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
-    T abs(const T& n) {
-        return n < 0 ? -n : n;
-    };
+    template<class T, class = typename std::enable_if<template_conditions::is_any_integral<T>::value>::type>
+    T abs(const T& n);
 
     /**
      * Calculates the number of x <= n coprimes with n
      * @param n The number
      * @return The number of x <= n coprimes with n
      */
-    template<class T, class = typename enable_if<is_any_integral<T>::value>::type>
-    T totient(const T& n) {
-        vector<T> p = prime_factors<T>(n);
-
-        T num = 1;
-        T den = 1;
-        for (const auto& prime : p) {
-            num *= prime - 1;
-            den *= prime;
-        }
-
-        return n * num / den;
-    };
+    template<class T, class = typename std::enable_if<template_conditions::is_any_integral<T>::value>::type>
+    T totient(const T& n);
 
     /**
      * Generates all possible combinations of k items from given elements.
@@ -345,28 +176,19 @@ namespace generics {
      * @return All the combinations
      */
     template<class T>
-    vector<vector<T>> combinations(const vector<T>& elements, ulong k) {
-        vector<vector<T>> combs;
-        ulong n = elements.size();
+    std::vector<std::vector<T>> combinations(const std::vector<T>& elements, ulong k);
 
-        string bitmask(k, 1); // k leading 1s
-        bitmask.resize(n, 0); // n-k trailing 0s
-
-        // for each bitmask obtained through permutations of k 1s and n-k 0s choose the elements where there's a 1 in
-        // the bitmask and skip the others
-        do {
-            vector<T> comb(k);
-            uint j = 0;
-
-            for (uint i = 0; i < n; ++i)
-                if (bitmask[i])
-                    comb[j++] = elements[i];
-
-            combs.push_back(comb);
-        } while (std::prev_permutation(bitmask.begin(), bitmask.end()));
-
-        return combs;
-    }
+    /**
+     * Calculates (base ^ exponent) mod modulo
+     * @param base The base
+     * @param exponent The exponent
+     * @param modulo The modulo
+     * @return The result
+     */
+    template<class T, class = typename std::enable_if<template_conditions::is_any_integral<T>::value>::type>
+    T mod_pow(T base, T exponent, const T& modulo);
 }
+
+#include "generics.ipp"
 
 #endif //PROJECT_EULER_GENERICS_H

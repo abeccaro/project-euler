@@ -13,7 +13,7 @@ using series::primes;
 namespace problems {
     int problem27::solve(uint ub_a, uint ub_b) {
         primes<uint> p;
-        vector<uint> ps = p.get_while([ub_b](uint n) { return n <= ub_b; });
+        std::vector<uint> ps = p.get_while([ub_b](uint n) { return n <= ub_b; });
         uint max_primes = 0;
         int max_a, max_b;
 

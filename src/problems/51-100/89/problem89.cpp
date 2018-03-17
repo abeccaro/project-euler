@@ -67,7 +67,7 @@ namespace problems {
     uint problem89::solve() {
         uint result = 0;
 
-        vector<string> in = input::read_vector<string>(input::PROBLEMS_FOLDER + "51-100/89/input.txt");
+        std::vector<string> in = input::read_vector<string>(input::problems_folder + "51-100/89/input.txt");
         for (string s : in)
             result += s.size() - to_roman(from_roman(s)).size();
 

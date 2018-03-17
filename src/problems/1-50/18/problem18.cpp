@@ -13,11 +13,11 @@ namespace problems {
             return triangle[row][col];
 
         return triangle[row][col] +
-               max(best_path_sum(triangle, row + 1, col), best_path_sum(triangle, row + 1, col + 1));
+                std::max(best_path_sum(triangle, row + 1, col), best_path_sum(triangle, row + 1, col + 1));
     }
 
     uint problem18::solve() {
-        vector<vector<uint>> triangle = read_matrix<uint>(PROBLEMS_FOLDER + "1-50/18/input.txt");
+        vector<vector<uint>> triangle = read_matrix<uint>(problems_folder + "1-50/18/input.txt");
         return best_path_sum(triangle);
     }
 }

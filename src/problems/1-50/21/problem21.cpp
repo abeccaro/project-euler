@@ -10,9 +10,9 @@ using generics::divisors;
 
 namespace problems {
     uint problem21::solve(uint ub) {
-        vector<uint> divisors_sums(ub);
+        std::vector<uint> divisors_sums(ub);
         for (uint i = 2; i < ub; i++) {
-            vector<uint> divs = divisors(i);
+            std::vector<uint> divs = divisors(i);
             for (const auto &div : divs)
                 divisors_sums[i] += div;
             divisors_sums[i] -= i;

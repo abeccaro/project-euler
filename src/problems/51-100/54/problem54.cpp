@@ -133,7 +133,7 @@ namespace problems {
     }
 
     uint problem54::solve() {
-        vector<vector<string>> cards = read_matrix<string>(PROBLEMS_FOLDER + "51-100/54/input.txt");
+        vector<vector<string>> cards = read_matrix<string>(problems_folder + "51-100/54/input.txt");
         vector<hand> hands(cards.size() * 2);
 
         for (uint i = 0; i < hands.size(); i++)
