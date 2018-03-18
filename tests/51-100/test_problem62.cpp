@@ -2,17 +2,20 @@
 // Created by Alex Beccaro on 18/01/18.
 //
 
-#include <gtest/gtest.h>
+#define BOOST_TEST_DYN_LINK
+#include <boost/test/unit_test.hpp>
 #include "../../src/problems/51-100/62/problem62.hpp"
 
-using problems::problem62;
+BOOST_AUTO_TEST_SUITE( Problem62 )
 
-TEST(Problem62, example) {
-    auto res = problem62::solve(3);
-    EXPECT_EQ(res, 41063625);
-}
+    BOOST_AUTO_TEST_CASE( Example ) {
+        auto res = problems::problem62::solve(3);
+        BOOST_CHECK_EQUAL(res, 41063625);
+    }
 
-TEST(Problem62, solution) {
-    auto res = problem62::solve();
-    EXPECT_EQ(res, 127035954683);
-}
+    BOOST_AUTO_TEST_CASE( Solution ) {
+        auto res = problems::problem62::solve();
+        BOOST_CHECK_EQUAL(res, 127035954683);
+    }
+
+BOOST_AUTO_TEST_SUITE_END()

@@ -26,7 +26,7 @@ namespace problems {
          * @param ub The upper bound of number to consider
          * @return The solution
          */
-        static uint solve(uint ub);
+        static uint solve(uint ub = 10000000);
     };
 }
 
