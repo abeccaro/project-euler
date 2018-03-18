@@ -5,10 +5,8 @@
 #ifndef PROJECT_EULER_PROBLEM31_HPP
 #define PROJECT_EULER_PROBLEM31_HPP
 
+#include <cstdint>
 #include <vector>
-
-using uint = unsigned int;
-using rev_it = std::vector<uint>::reverse_iterator;
 
 namespace problems {
     class problem31 {
@@ -20,14 +18,14 @@ namespace problems {
          * @param coin The maximum value coin to use
          * @return The number of different ways to make 'pence' pence
          */
-        static uint coins_combination(uint pence, const rev_it& coin);
+        static uint32_t coins_combination(uint32_t pence, const std::vector<uint32_t>::reverse_iterator& coin);
     public:
         /**
          * Solves problem
          * @param pence The total pence
          * @return The solution
          */
-        static uint solve(uint pence = 200);
+        static uint32_t solve(uint32_t pence = 200);
     };
 }
 

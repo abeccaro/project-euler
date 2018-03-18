@@ -5,10 +5,8 @@
 #ifndef PROJECT_EULER_PROBLEM18_HPP
 #define PROJECT_EULER_PROBLEM18_HPP
 
+#include <cstdint>
 #include <vector>
-
-using uint = unsigned int;
-using std::vector;
 
 namespace problems {
     class problem18 {
@@ -20,13 +18,14 @@ namespace problems {
          * @param col The starting element column
          * @return The sum of the best path
          */
-        static uint best_path_sum(const vector<vector<uint>> &triangle, uint row = 0, uint col = 0);
+        static uint32_t best_path_sum(const std::vector<std::vector<uint32_t>>& triangle,
+                                      uint32_t row = 0, uint32_t col = 0);
     public:
         /**
          * Solves problem
          * @return The solution
          */
-        static uint solve();
+        static uint32_t solve();
     };
 }
 

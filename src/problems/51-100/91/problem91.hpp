@@ -5,7 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM91_HPP
 #define PROJECT_EULER_PROBLEM91_HPP
 
-using uint = unsigned int;
+#include <cstdint>
 
 namespace problems {
     class problem91 {
@@ -19,7 +19,7 @@ namespace problems {
          * @param y2 The y coordinate of the second point
          * @return True if formed triangle has a rect angle, false otherwise
          */
-        static bool has_right_angle(uint x1, uint y1, uint x2, uint y2);
+        static bool has_right_angle(uint32_t x1, uint32_t y1, uint32_t x2, uint32_t y2);
     public:
         /**
          * Solves problem
@@ -27,7 +27,7 @@ namespace problems {
          * @param max_y The maximum value for x coordinate
          * @return The solution
          */
-        static uint solve(uint max_x = 50, uint max_y = 50);
+        static uint32_t solve(uint32_t max_x = 50, uint32_t max_y = 50);
     };
 }
 

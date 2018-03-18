@@ -5,9 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM7_HPP
 #define PROJECT_EULER_PROBLEM7_HPP
 
-
-using uint = unsigned int;
-using ulong = unsigned long;
+#include <cstdint>
 
 namespace problems {
 
@@ -18,7 +16,7 @@ namespace problems {
          * @param position The ordinal of requested prime
          * @return The solution
          */
-        static uint solve(ulong position = 10001);
+        static uint32_t solve(uint32_t position = 10001);
     };
 }
 

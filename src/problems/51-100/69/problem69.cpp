@@ -14,7 +14,7 @@ namespace problems {
         uint argmax = 0;
 
         for (uint i = 2; i <= ub; i++) {
-            double x = (double) i / totient<ulong>(i);
+            double x = (double) i / totient<uint64_t>(i);
             if (x > max) {
                 max = x;
                 argmax = i;

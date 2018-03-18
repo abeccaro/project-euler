@@ -5,7 +5,11 @@
 #include "problem54.hpp"
 #include <input.hpp>
 
-using namespace input;
+using std::vector;
+using std::string;
+
+using input::read_matrix;
+using input::problems_folder;
 
 namespace problems {
     problem54::card::card(string s) {
@@ -18,7 +22,7 @@ namespace problems {
             case '7':
             case '8':
             case '9':
-                value = (uint) s[0] - 48;
+                value = (uint32_t) s[0] - 48;
                 break;
             case 'T':
                 value = 10;
@@ -63,9 +67,9 @@ namespace problems {
         return score() > other.score();
     }
 
-    uint problem54::hand::score() {
+    uint32_t problem54::hand::score() {
         sort(cards.begin(), cards.end());
-        uint hc = cards.back().value;
+        uint32_t hc = cards.back().value;
         bool s = is_straight();
         bool f = is_flush();
 
@@ -82,9 +86,9 @@ namespace problems {
             return 9498; // Straight
 
         // counting repetitions (poker, tris and couples)
-        uint n_v1 = 0, v1, n_v2 = 0, v2;
-        for (uint i = 2; i < 15; i++) {
-            uint c = count_if(cards.begin(), cards.end(), [i](card c) { return c.value == i; });
+        uint32_t n_v1 = 0, v1, n_v2 = 0, v2;
+        for (uint32_t i = 2; i < 15; i++) {
+            uint32_t c = count_if(cards.begin(), cards.end(), [i](card c) { return c.value == i; });
             if (c > n_v1 || (c == n_v1 && i > v1)) {
                 if (n_v1 > 0) {
                     n_v2 = n_v1;
@@ -126,21 +130,21 @@ namespace problems {
     }
 
     bool problem54::hand::is_straight() const {
-        for (uint i = 1; i < 5; i++)
+        for (uint32_t i = 1; i < 5; i++)
             if (cards[i - 1].value != cards[i].value - 1)
                 return false;
         return true;
     }
 
-    uint problem54::solve() {
+    uint32_t problem54::solve() {
         vector<vector<string>> cards = read_matrix<string>(problems_folder + "51-100/54/input.txt");
         vector<hand> hands(cards.size() * 2);
 
-        for (uint i = 0; i < hands.size(); i++)
-            for (uint j = 0; j < 5; j++)
+        for (uint32_t i = 0; i < hands.size(); i++)
+            for (uint32_t j = 0; j < 5; j++)
                 hands[i].add((card) cards[i / 2][i % 2 == 0 ? j : j + 5]);
 
-        uint result = 0;
+        uint32_t result = 0;
         for (int i = 0; i < hands.size(); i += 2)
             if (hands[i] > hands[i + 1])
                 result++;

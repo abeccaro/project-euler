@@ -6,15 +6,16 @@
 #include <generics.hpp>
 #include <series/primes.hpp>
 
-using std::sort;
+using std::vector;
+
 using generics::digits;
 using series::primes;
 
 namespace problems {
-    uint problem70::solve(uint ub) {
+    uint32_t problem70::solve(uint32_t ub) {
         double min = std::numeric_limits<double>::max();
-        uint result = 0;
-        primes<ulong> ps;
+        uint32_t result = 0;
+        primes<uint64_t> ps;
 
         // Can't be prime as ϕ(p) = p-1 and p/p-1 can't be a p permutation.
         // Next best candidates are semiprimes (numbers that only have 2 prime divisors).
@@ -23,16 +24,16 @@ namespace problems {
                 if (*p > ub)
                     return result;
 
-                uint n = *p * *q;
+                uint32_t n = *p * *q;
                 if (n > ub)
                     break;
 
-                uint t = (*p - 1) * (*q - 1); // totient
+                uint32_t t = (*p - 1) * (*q - 1); // totient
                 double x = (double) n / t;
 
                 if (x < min) {
-                    vector<uint> digs_t = digits(t);
-                    vector<uint> digs_n = digits(n);
+                    vector<uint32_t> digs_t = digits(t);
+                    vector<uint32_t> digs_n = digits(n);
                     sort(digs_t.begin(), digs_t.end());
                     sort(digs_n.begin(), digs_n.end());
 

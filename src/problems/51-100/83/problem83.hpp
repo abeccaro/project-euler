@@ -7,10 +7,6 @@
 
 #include <vector>
 
-using uint = unsigned int;
-using ulong = unsigned long;
-using std::vector;
-
 namespace problems {
     class problem83 {
     private:
@@ -18,10 +14,10 @@ namespace problems {
          * Representation of a number in input matrix with relative data
          */
         struct entry {
-            ulong row;      // row index
-            ulong col;      // column index
-            uint value;     // number value
-            uint distance;  // upper bound for sum of numbers from top-left to this entry
+            uint64_t row;      // row index
+            uint64_t col;      // column index
+            uint32_t value;     // number value
+            uint32_t distance;  // upper bound for sum of numbers from top-left to this entry
 
             /**
              * Constructor that sets position in matrix and value
@@ -29,7 +25,7 @@ namespace problems {
              * @param col The column index
              * @param value The number value
              */
-            entry(ulong row, ulong col, uint value);
+            entry(uint64_t row, uint64_t col, uint32_t value);
         };
 
         /**
@@ -45,13 +41,13 @@ namespace problems {
          * @param matrix The matrix of numbers
          * @return The sum of numbers in the best path
          */
-        static uint best_path_sum(const vector<vector<uint>>& matrix);
+        static uint32_t best_path_sum(const std::vector<std::vector<uint32_t>>& matrix);
     public:
         /**
          * Solves problem
          * @return The solution
          */
-        static uint solve();
+        static uint32_t solve();
     };
 }
 

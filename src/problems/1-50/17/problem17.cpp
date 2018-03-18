@@ -5,7 +5,7 @@
 #include "problem17.hpp"
 
 namespace problems {
-    uint problem17::letters(uint n) {
+    uint32_t problem17::letters(uint32_t n) {
         switch (n) {
             case 0: return 0;
             case 1: return 3;
@@ -37,18 +37,18 @@ namespace problems {
             case 90: return 6;
             case 1000: return 11;
             default: {
-                uint sum = 0;
+                uint32_t sum = 0;
 
-                uint x = n % 100;
+                uint32_t x = n % 100;
                 if (x < 20 || x % 10 == 0)
                     sum += letters(x);
                 else {
-                    uint units = x % 10;
+                    uint32_t units = x % 10;
                     sum += letters(units);
                     sum += letters(x - units);
                 }
 
-                uint y = (n / 100);
+                uint32_t y = (n / 100);
                 sum += letters(y) + (y == 0 ? 0 : (x == 0 ? 7 : 10));
 
                 return sum;
@@ -56,9 +56,9 @@ namespace problems {
         }
     }
 
-    uint problem17::solve(uint ub) {
-        uint sum = 0;
-        for (uint i = 1; i <= ub; i++)
+    uint32_t problem17::solve(uint32_t ub) {
+        uint32_t sum = 0;
+        for (uint32_t i = 1; i <= ub; i++)
             sum += letters(i);
         return sum;
     }

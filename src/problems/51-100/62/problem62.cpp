@@ -7,22 +7,19 @@
 #include <map>
 
 using generics::digits;
-
-using numtype = unsigned long;
-using uint = unsigned int;
 using std::map;
 using std::vector;
 
 namespace problems {
-    ulong problem62::solve(uint n) {
-        map<vector<uint>, vector<ulong>> m;
+    uint64_t problem62::solve(uint32_t n) {
+        map<vector<uint32_t>, vector<uint64_t>> m;
 
-        for (ulong i = 1; true; i++) {
-            ulong cube = i * i * i;
-            vector<uint> digs = digits(cube);
+        for (uint64_t i = 1; ; i++) {
+            uint64_t cube = i * i * i;
+            vector<uint32_t> digs = digits(cube);
             sort(digs.begin(), digs.end());
 
-            vector<ulong>& cubes = m[digs];
+            vector<uint64_t>& cubes = m[digs];
             cubes.push_back(cube);
 
             if (cubes.size() >= n)

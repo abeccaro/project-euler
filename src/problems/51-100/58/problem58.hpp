@@ -5,7 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM58_HPP
 #define PROJECT_EULER_PROBLEM58_HPP
 
-using uint = unsigned int;
+#include <cstdint>
 
 namespace problems {
     class problem58 {
@@ -15,7 +15,7 @@ namespace problems {
          * @param treshold The threshold to reach
          * @return The solution
          */
-        static uint solve(double treshold = 10);
+        static uint32_t solve(double treshold = 10);
     };
 }
 

@@ -5,7 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM33_HPP
 #define PROJECT_EULER_PROBLEM33_HPP
 
-using uint = unsigned int;
+#include <cstdint>
 
 namespace problems {
     class problem33 {
@@ -16,13 +16,13 @@ namespace problems {
          * @param d The denominator
          * @return true if fraction is digit cancelling, false otherwise
          */
-        static bool is_digit_cancelling(uint n, uint d);
+        static bool is_digit_cancelling(uint32_t n, uint32_t d);
     public:
         /**
          * Solves problem
          * @return The solution
          */
-        static uint solve();
+        static uint32_t solve();
     };
 }
 

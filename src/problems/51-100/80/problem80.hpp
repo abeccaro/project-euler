@@ -5,8 +5,6 @@
 #ifndef PROJECT_EULER_PROBLEM80_HPP
 #define PROJECT_EULER_PROBLEM80_HPP
 
-using uint = unsigned int;
-
 namespace problems {
     class problem80 {
     public:
@@ -15,7 +13,7 @@ namespace problems {
          * @param ub The upper bound for numbers to consider
          * @return The solution
          */
-        static uint solve(uint ub = 100);
+        static uint32_t solve(uint32_t ub = 100);
     };
 }
 

@@ -5,10 +5,8 @@
 #ifndef PROJECT_EULER_PROBLEM19_HPP
 #define PROJECT_EULER_PROBLEM19_HPP
 
+#include <cstdint>
 #include <vector>
-
-using uint = unsigned int;
-using std::vector;
 
 namespace problems {
     class problem19 {
@@ -19,7 +17,7 @@ namespace problems {
          * @param month The month
          * @return The number of days
          */
-        static uint days_in_month(uint year, uint month);
+        static uint32_t days_in_month(uint32_t year, uint32_t month);
 
         /**
          * Counts Sundays that fell on the first of a month given a vector of number of days in each month and how many days
@@ -28,13 +26,13 @@ namespace problems {
          * @param passed_from_sunday The number of days passed from last Sunday
          * @return The number of Sundays that fell on the first of the month
          */
-        static uint count_sundays(const vector<uint>& days_in_months, uint passed_from_sunday);
+        static uint32_t count_sundays(const std::vector<uint32_t>& days_in_months, uint32_t passed_from_sunday);
     public:
         /**
          * Solves problem
          * @return The solution
          */
-        static uint solve();
+        static uint32_t solve();
     };
 }
 

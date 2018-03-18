@@ -5,7 +5,8 @@
 #include <sstream>
 #include "problem68.hpp"
 
-using std::prev_permutation;
+using std::vector;
+using std::string;
 using std::stringstream;
 
 namespace problems {

@@ -5,8 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM25_HPP
 #define PROJECT_EULER_PROBLEM25_HPP
 
-using uint = unsigned int;
-using ulong = unsigned long;
+#include <cstdint>
 
 namespace problems {
     class problem25 {
@@ -16,7 +15,7 @@ namespace problems {
          * @param digs The number of digits
          * @return The solution
          */
-        static ulong solve(uint digs = 1000);
+        static uint64_t solve(uint32_t digs = 1000);
     };
 }
 

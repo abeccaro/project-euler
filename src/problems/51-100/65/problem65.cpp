@@ -6,14 +6,15 @@
 #include "fraction.hpp"
 #include <generics.hpp>
 
+using std::vector;
 using boost::multiprecision::uint512_t;
 using fractions::fraction;
 using generics::digits;
 
 namespace problems {
-    uint problem65::solve(uint n) {
+    uint32_t problem65::solve(uint32_t n) {
         fraction<uint512_t> convergent = 1; // general formula: N % 3 == 0 ? 2 * N / 3 : 1
-        for (uint i = n - 1; i > 1; i--) {
+        for (uint32_t i = n - 1; i > 1; i--) {
             convergent.invert();
             if (i % 3 == 0)
                 convergent += 2 * i / 3;
@@ -24,8 +25,8 @@ namespace problems {
         convergent += 2;
         convergent.reduce();
 
-        uint result = 0;
-        std::vector<uint> digs = digits(convergent.numerator());
+        uint32_t result = 0;
+        vector<uint32_t> digs = digits(convergent.numerator());
         for (const auto &d : digs)
             result += d;
         return result;

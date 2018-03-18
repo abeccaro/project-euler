@@ -9,26 +9,25 @@
 using std::vector;
 
 namespace problems {
-    uint problem39::solve(uint ub) {
-        const uint A_BOUND = ub / 3;
+    uint32_t problem39::solve(uint32_t ub) {
+        const uint32_t a_bound = ub / 3;
 
-        vector<uint> counts(ub - 2); // no possible triangles for 0, 1 and 2.
+        vector<uint32_t> counts(ub - 2); // no possible triangles for 0, 1 and 2.
 
-        for (uint a = 1; a <= A_BOUND; a++) {
-            uint B_BOUND = (ub - a) / 2;
-            for (uint b = a; b <= B_BOUND; b++) {
-                uint c_squared = a * a + b * b;
-                auto c = (uint) sqrt(c_squared);
+        for (uint32_t a = 1; a <= a_bound; a++) {
+            uint32_t b_bound = (ub - a) / 2;
+            for (uint32_t b = a; b <= b_bound; b++) {
+                uint32_t c_squared = a * a + b * b;
+                auto c = (uint32_t) sqrt(c_squared);
                 if (c * c == c_squared) { // if it is right angle triangle
-                    uint p = a + b + c;
+                    uint32_t p = a + b + c;
 
-                    if (p <= 1000)
+                    if (p <= ub)
                         counts[p - 3]++;
                 }
             }
         }
 
-        auto result = (uint) distance(counts.begin(), max_element(counts.begin(), counts.end())) + 3;
-        return result;
+        return (uint32_t) distance(counts.begin(), max_element(counts.begin(), counts.end())) + 3;
     }
 }

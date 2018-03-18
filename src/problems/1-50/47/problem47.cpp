@@ -9,11 +9,11 @@
 using primes::prime_factors;
 
 namespace problems {
-    uint problem47::solve(uint n, uint factors) {
-        uint result;
-        uint found = 0;
+    uint32_t problem47::solve(uint32_t n, uint32_t factors) {
+        uint32_t result;
+        uint32_t found = 0;
 
-        for (uint i = 1; found < n; i++)
+        for (uint32_t i = 1; found < n; i++)
             if (prime_factors(i).size() == factors) {
                 found++;
                 if (found == n)

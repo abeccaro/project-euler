@@ -5,8 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM6_HPP
 #define PROJECT_EULER_PROBLEM6_HPP
 
-
-using ulong = unsigned long;
+#include <cstdint>
 
 namespace problems {
 
@@ -17,7 +16,7 @@ namespace problems {
          * @param n The number
          * @return The solution
          */
-        static ulong solve(ulong n = 100);
+        static uint64_t solve(uint32_t n = 100);
     };
 }
 

@@ -5,8 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM45_HPP
 #define PROJECT_EULER_PROBLEM45_HPP
 
-using uint = unsigned int;
-using ulong = unsigned long;
+#include <cstdint>
 
 namespace problems {
     class problem45 {
@@ -16,14 +15,14 @@ namespace problems {
          * @param n The number to check
          * @return True if n is pentagonal, false otherwise
          */
-        static bool is_pentagonal(ulong n);
+        static bool is_pentagonal(uint64_t n);
     public:
         /**
          * Solves problem
          * @param n The ordinal number of the solution to find
          * @return The solution
          */
-        static ulong solve(uint n = 3);
+        static uint64_t solve(uint32_t n = 3);
     };
 }
 

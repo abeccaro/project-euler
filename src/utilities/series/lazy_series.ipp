@@ -9,7 +9,7 @@ namespace series {
     /// region constructors and destructors
 
     template<class T>
-    lazy_series<T>::iterator::iterator(const lazy_series<T>* pointer, ulong i) :
+    lazy_series<T>::iterator::iterator(const lazy_series<T>* pointer, uint64_t i) :
             series(const_cast<lazy_series<T>*>(pointer)), index(i) {}
 
     template<class T>
@@ -93,23 +93,23 @@ namespace series {
     }
 
     template<class T>
-    typename lazy_series<T>::iterator lazy_series<T>::iterator::operator + (ulong n) const {
+    typename lazy_series<T>::iterator lazy_series<T>::iterator::operator + (uint64_t n) const {
         return iterator(series, index + n);
     }
 
     template<class T>
-    typename lazy_series<T>::iterator lazy_series<T>::iterator::operator - (ulong n) const {
+    typename lazy_series<T>::iterator lazy_series<T>::iterator::operator - (uint64_t n) const {
         return iterator(series, index - n);
     }
 
     template<class T>
-    typename lazy_series<T>::iterator& lazy_series<T>::iterator::operator += (ulong n) {
+    typename lazy_series<T>::iterator& lazy_series<T>::iterator::operator += (uint64_t n) {
         index += n;
         return *this;
     }
 
     template<class T>
-    typename lazy_series<T>::iterator& lazy_series<T>::iterator::operator -= (ulong n) {
+    typename lazy_series<T>::iterator& lazy_series<T>::iterator::operator -= (uint64_t n) {
         index -= n;
         return *this;
     }
@@ -129,7 +129,7 @@ namespace series {
     }
 
     template<class T>
-    const T& lazy_series<T>::iterator::operator [] (ulong n) const {
+    const T& lazy_series<T>::iterator::operator [] (uint64_t n) const {
         return (*series)[index + n];
     }
 
@@ -141,8 +141,8 @@ namespace series {
     lazy_series<T>::~lazy_series<T>() = default;
 
     template<class T>
-    const T& lazy_series<T>::operator[](ulong index) {
-        for (ulong i = numbers.size(); i <= index; i++)
+    const T& lazy_series<T>::operator[](uint64_t index) {
+        for (uint64_t i = numbers.size(); i <= index; i++)
             numbers.push_back(next_element());
 
         return numbers[index];
@@ -159,14 +159,14 @@ namespace series {
     }
 
     template<class T>
-    ulong lazy_series<T>::size() const {
+    uint64_t lazy_series<T>::size() const {
         return numbers.size();
     }
 
     /// region getters
 
     template<class T>
-    std::vector<T> lazy_series<T>::get(ulong n) {
+    std::vector<T> lazy_series<T>::get(uint64_t n) {
         if (numbers.size() < n)
             numbers.reserve(n);
 
@@ -178,7 +178,7 @@ namespace series {
     }
 
     template<class T>
-    std::vector<T> lazy_series<T>::get(ulong n, const test& filter) {
+    std::vector<T> lazy_series<T>::get(uint64_t n, const test& filter) {
         if (numbers.size() < n)
             numbers.reserve(n);
 
@@ -232,8 +232,8 @@ namespace series {
     }
 
     template<class T>
-    std::vector<T> lazy_series<T>::get_first(const test& check, ulong n) {
-        ulong count = 0;
+    std::vector<T> lazy_series<T>::get_first(const test& check, uint64_t n) {
+        uint64_t count = 0;
         std::vector<T> elements(n);
 
         for (iterator it = begin(); count < n; it++)

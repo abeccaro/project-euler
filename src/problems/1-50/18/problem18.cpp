@@ -5,7 +5,9 @@
 #include "problem18.hpp"
 #include <input.hpp>
 
-using namespace input;
+using std::vector;
+using input::read_matrix;
+using input::problems_folder;
 
 namespace problems {
     uint problem18::best_path_sum(const vector<vector<uint>>& triangle, uint row, uint col) {

@@ -5,7 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM17_HPP
 #define PROJECT_EULER_PROBLEM17_HPP
 
-using uint = unsigned int;
+#include <cstdint>
 
 namespace problems {
     class problem17 {
@@ -15,14 +15,14 @@ namespace problems {
          * @param n The number
          * @return The number of letters
          */
-        static uint letters(uint n);
+        static uint32_t letters(uint32_t n);
     public:
         /**
          * Solves problem
          * @param ub The upper bound of numbers to consider
          * @return The solution
          */
-        static uint solve(uint ub = 1000);
+        static uint32_t solve(uint32_t ub = 1000);
     };
 }
 

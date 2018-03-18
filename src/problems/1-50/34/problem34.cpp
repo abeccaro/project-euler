@@ -5,22 +5,23 @@
 #include "problem34.hpp"
 #include <generics.hpp>
 
+using std::vector;
 using generics::factorial;
 using generics::digits;
 
 namespace problems {
-    uint problem34::solve() {
-        const uint UPPER_BOUND = 1499999;
+    uint32_t problem34::solve() {
+        const uint32_t ub = 1499999;
 
-        uint result = 0;
-        std::vector<uint> factorials(10);
+        uint32_t result = 0;
+        vector<uint32_t> factorials(10);
 
-        for (uint i = 0; i < 10; i++)
+        for (uint32_t i = 0; i < 10; i++)
             factorials[i] = factorial(i);
 
-        for (uint i = 10; i < UPPER_BOUND; i++) {
-            uint sum = 0;
-            std::vector<uint> digs = digits(i);
+        for (uint32_t i = 10; i < ub; i++) {
+            uint32_t sum = 0;
+            vector<uint32_t> digs = digits(i);
 
             for (const auto &digit : digs)
                 sum += factorials[digit];

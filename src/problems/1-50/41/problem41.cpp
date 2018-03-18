@@ -6,29 +6,28 @@
 #include <generics.hpp>
 #include <primes.hpp>
 
+using std::vector;
 using generics::from_digits;
 using generics::factorial;
 using primes::is_prime;
 
-using uint = unsigned int;
-
 namespace problems {
-    ulong problem41::solve() {
-        std::vector<uint> all_digits = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-        ulong result;
+    uint64_t problem41::solve() {
+        vector<uint32_t> all_digits = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        uint64_t result;
 
         // 9,8,6,5,3,2 -digit pandigitals cannot be primes (always dividable by 3)
         // so only 7,4,1 -digit numbers are tested
-        for (uint n = 7; n > 0; n -= 3) {
-            std::vector<uint> permutation(n);
+        for (uint32_t n = 7; n > 0; n -= 3) {
+            vector<uint32_t> permutation(n);
             copy(all_digits.begin(), all_digits.begin() + n, permutation.begin());
 
-            ulong max = 0;
+            uint64_t max = 0;
 
-            uint permutations = factorial(n);
-            for (uint i = 0; i < permutations; i++) {
+            uint32_t permutations = factorial(n);
+            for (uint32_t i = 0; i < permutations; i++) {
                 next_permutation(permutation.begin(), permutation.end());
-                auto number = from_digits<ulong>(permutation);
+                uint64_t number = from_digits<uint64_t>(permutation);
 
                 if (is_prime(number) && number > max)
                     max = number;

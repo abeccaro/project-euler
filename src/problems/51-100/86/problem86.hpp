@@ -5,7 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM86_HPP
 #define PROJECT_EULER_PROBLEM86_HPP
 
-using uint = unsigned int;
+#include <cstdint>
 
 namespace problems {
     class problem86 {
@@ -16,14 +16,14 @@ namespace problems {
          * @param m The maximum number valid
          * @return The number of x, y valid combinations
          */
-        static uint sum_combinations(uint sum, uint m);
+        static uint32_t sum_combinations(uint32_t sum, uint32_t m);
     public:
         /**
          * Solves problem
          * @param n The number of integral solutions to find
          * @return The solution
          */
-        static uint solve(uint n = 1000000);
+        static uint32_t solve(uint32_t n = 1000000);
     };
 }
 

@@ -4,18 +4,20 @@
 
 #include "problem78.hpp"
 
-namespace problems {
-    long problem78::partitions(uint n, vector<int>& memory, vector<uint>& p) {
-        long sum = 0;
-        int sign = 1;
+using std::vector;
 
-        for (uint k = 1; p[k-1] <= n; k += 2) {
-            int i1 = n - p[k-1];
+namespace problems {
+    int64_t problem78::partitions(uint32_t n, vector<int32_t>& memory, vector<uint32_t>& p) {
+        int64_t sum = 0;
+        int32_t sign = 1;
+
+        for (uint32_t k = 1; p[k-1] <= n; k += 2) {
+            int32_t i1 = n - p[k-1];
             if (i1 >= 0)
                 sum += sign * memory[i1];
 
             if (p[k] <= n) {
-                int i2 = n - p[k];
+                int32_t i2 = n - p[k];
                 if (i2 >= 0)
                     sum += sign * memory[i2];
             }
@@ -26,16 +28,16 @@ namespace problems {
         return sum;
     }
 
-    uint problem78::solve(uint n) {
-        vector<int> memory(2, 1);
+    uint32_t problem78::solve(uint32_t n) {
+        vector<int32_t> memory(2, 1);
 
-        vector<uint> gen_pentagons;
-        for (uint i = 1; i == 1 || gen_pentagons.back() <= n; i++) {
+        vector<uint32_t> gen_pentagons;
+        for (uint32_t i = 1; i == 1 || gen_pentagons.back() <= n; i++) {
             gen_pentagons.push_back((3 * i * i - i) / 2);
             gen_pentagons.push_back((3 * i * i + i) / 2);
         }
 
-        for (uint i = 2; ; i++) {
+        for (uint32_t i = 2; ; i++) {
             memory.push_back(partitions(i, memory, gen_pentagons) % n);
             if (memory[i] == 0)
                 return i;

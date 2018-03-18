@@ -5,7 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM27_HPP
 #define PROJECT_EULER_PROBLEM27_HPP
 
-using uint = unsigned int;
+#include <cstdint>
 
 namespace problems {
     class problem27 {
@@ -16,7 +16,7 @@ namespace problems {
          * @param ub_b The maximum abs value of b
          * @return The solution
          */
-        static int solve(uint ub_a = 1000, uint ub_b = 1000);
+        static int solve(uint32_t ub_a = 1000, uint32_t ub_b = 1000);
     };
 }
 

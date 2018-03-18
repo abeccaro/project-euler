@@ -5,7 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM16_HPP
 #define PROJECT_EULER_PROBLEM16_HPP
 
-using uint = unsigned int;
+#include <cstdint>
 
 namespace problems {
     class problem16 {
@@ -15,7 +15,7 @@ namespace problems {
          * @param exp The exponent
          * @return The solution
          */
-        static uint solve(uint exp = 1000);
+        static uint32_t solve(uint32_t exp = 1000);
     };
 }
 

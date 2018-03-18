@@ -7,10 +7,6 @@
 
 #include <vector>
 
-using uint = unsigned int;
-using ulong = unsigned long;
-using std::vector;
-
 namespace problems {
     class problem76 {
     private:
@@ -20,14 +16,14 @@ namespace problems {
          * @param memory The memory of already calculated counts
          * @return
          */
-        static ulong partitions(uint n, vector<ulong>& memory);
+        static uint64_t partitions(uint32_t n, std::vector<uint64_t>& memory);
     public:
         /**
          * Solves problem
          * @param n The number
          * @return The solution
          */
-        static ulong solve(uint n = 100);
+        static uint64_t solve(uint32_t n = 100);
     };
 }
 

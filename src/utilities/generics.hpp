@@ -4,11 +4,7 @@
 #ifndef PROJECT_EULER_GENERICS_H
 #define PROJECT_EULER_GENERICS_H
 
-#include <vector>
 #include <template_conditions.hpp>
-
-using uint = unsigned int;
-using ulong = unsigned long;
 
 namespace generics {
     /**
@@ -17,7 +13,7 @@ namespace generics {
      * @return The vector of ordered digits
      */
     template<class T, class = typename std::enable_if<template_conditions::is_any_integral<T>::value>::type>
-    std::vector<uint> digits(const T& n);
+    std::vector<uint32_t> digits(const T& n);
 
     /**
      * Creates the number formed by concatenating given digits.
@@ -25,7 +21,7 @@ namespace generics {
      * @return The number
      */
     template<class T, class = typename std::enable_if<template_conditions::is_any_integral<T>::value>::type>
-    T from_digits(const std::vector<uint>& digits);
+    T from_digits(const std::vector<uint32_t>& digits);
 
     /**
      * Checks if given number is palindrome or not. It doesn't take into account sign.
@@ -129,7 +125,7 @@ namespace generics {
      * @return The converted number's digits
      */
     template<class T, class = typename std::enable_if<template_conditions::is_any_integral<T>::value>::type>
-    std::vector<uint> to_base(const T& n, uint base);
+    std::vector<uint32_t> to_base(const T& n, uint32_t base);
 
     /**
      * Converts given number from given base to base 10
@@ -138,7 +134,7 @@ namespace generics {
      * @return The number base 10
      */
     template<class T, class = typename std::enable_if<template_conditions::is_any_integral<T>::value>::type>
-    T from_base(const T& n, uint base);
+    T from_base(const T& n, uint32_t base);
 
     /**
      * Converts given number from a base to another base
@@ -148,7 +144,7 @@ namespace generics {
      * @return The converted number's digits
      */
     template<class T, class = typename std::enable_if<template_conditions::is_any_integral<T>::value>::type>
-    std::vector<uint> to_base(const T& n, uint from, uint to);
+    std::vector<uint32_t> to_base(const T& n, uint32_t from, uint32_t to);
 
     /**
      * Template version of std::abs that allows unsigned types to have a non ambiguous call.
@@ -176,7 +172,7 @@ namespace generics {
      * @return All the combinations
      */
     template<class T>
-    std::vector<std::vector<T>> combinations(const std::vector<T>& elements, ulong k);
+    std::vector<std::vector<T>> combinations(const std::vector<T>& elements, uint64_t k);
 
     /**
      * Calculates (base ^ exponent) mod modulo

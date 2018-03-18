@@ -7,10 +7,6 @@
 
 #include <fraction.hpp>
 
-using fractions::fraction;
-
-using uint = unsigned int;
-
 namespace problems {
     class problem71 {
     public:
@@ -20,7 +16,7 @@ namespace problems {
          * @param ref The fraction to get as close as possible to
          * @return The solution
          */
-        static uint solve(uint ub = 1000000, fraction<ulong> ref = {3, 7});
+        static uint32_t solve(uint32_t ub = 1000000, fractions::fraction<uint64_t> ref = {3, 7});
     };
 }
 

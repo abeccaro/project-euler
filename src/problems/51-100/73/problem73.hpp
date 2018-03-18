@@ -7,13 +7,10 @@
 
 #include <fraction.hpp>
 
-using fractions::fraction;
-using range = std::pair<fraction<uint>, fraction<uint>>;
-
-using uint = unsigned int;
-
 namespace problems {
     class problem73 {
+        using range = std::pair<fractions::fraction<uint32_t>, fractions::fraction<uint32_t>>;
+
     public:
         /**
          * Solves problem
@@ -21,7 +18,7 @@ namespace problems {
          * @param interval The interval to consider
          * @return The solution
          */
-        static uint solve(uint den_ub = 12000, const range& interval = {{1,3},{1,2}});
+        static uint32_t solve(uint32_t den_ub = 12000, const range& interval = {{1,3},{1,2}});
     };
 }
 

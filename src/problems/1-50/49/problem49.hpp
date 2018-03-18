@@ -7,10 +7,6 @@
 
 #include <vector>
 
-using uint = unsigned int;
-using ulong = unsigned long;
-using std::vector;
-
 namespace problems {
     class problem49 {
     private:
@@ -19,13 +15,13 @@ namespace problems {
          * @param prime The number. It is supposed to be a prime with 4 digits
          * @return The vector of permutations that are prime
          */
-        static vector<uint> permutation_primes(const uint& prime);
+        static std::vector<uint32_t> permutation_primes(const uint32_t& prime);
     public:
         /**
          * Solves problem
          * @return The solution
          */
-        static ulong solve();
+        static uint64_t solve();
     };
 }
 

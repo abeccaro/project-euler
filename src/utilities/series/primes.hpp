@@ -7,8 +7,6 @@
 #include "lazy_series.hpp"
 #include "template_conditions.hpp"
 
-using ulong = unsigned long;
-
 namespace series {
     template<class T, class = typename std::enable_if<template_conditions::is_any_integral<T>::value>::type>
     /**

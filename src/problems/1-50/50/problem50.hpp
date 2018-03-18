@@ -5,7 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM50_HPP
 #define PROJECT_EULER_PROBLEM50_HPP
 
-using uint = unsigned int;
+#include <cstdint>
 
 namespace problems {
     class problem50 {
@@ -15,7 +15,7 @@ namespace problems {
          * @param ub The upper bound for primes to consider
          * @return The solution
          */
-        static uint solve(uint ub = 1000000);
+        static uint32_t solve(uint32_t ub = 1000000);
     };
 }
 

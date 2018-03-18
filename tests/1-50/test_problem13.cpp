@@ -10,7 +10,7 @@ BOOST_AUTO_TEST_SUITE( Problem13 )
 
     BOOST_AUTO_TEST_CASE( Solution ) {
         auto res = problems::problem13::solve();
-        vector<unsigned int> sol = {5, 5, 3, 7, 3, 7, 6, 2, 3, 0};
+        std::vector<unsigned int> sol = {5, 5, 3, 7, 3, 7, 6, 2, 3, 0};
         BOOST_CHECK_EQUAL_COLLECTIONS(res.begin(), res.end(), sol.begin(), sol.end());
     }
 

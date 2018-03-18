@@ -8,24 +8,27 @@
 #include <input.hpp>
 #include <unordered_set>
 
+using std::vector;
 using std::unordered_set;
+
 using input::read_matrix;
+using input::problems_folder;
 
 namespace problems {
-    vector<uint> problem79::solve() {
-        vector<vector<uint>> codes = read_matrix<uint>(input::problems_folder + "51-100/79/input.txt");
+    vector<uint32_t> problem79::solve() {
+        vector<vector<uint32_t>> codes = read_matrix<uint32_t>(problems_folder + "51-100/79/input.txt");
 
-        unordered_set<uint> possible_digits;
+        unordered_set<uint32_t> possible_digits;
         // assuming all digits in passcode have been requested at least once
         // otherwise problem would be impossible
         for (const auto& c : codes)
             for (const auto& d : c)
                 possible_digits.insert(d);
 
-        vector<uint> result(possible_digits.size());
-        for (uint i = 0; i < result.size(); i++) {
+        vector<uint32_t> result(possible_digits.size());
+        for (uint32_t i = 0; i < result.size(); i++) {
             // possible next digit to insert in passcode is among these
-            unordered_set<uint> possible_next = possible_digits;
+            unordered_set<uint32_t> possible_next = possible_digits;
 
             // selecting next digit to insert in passcode
             for (const auto& c : codes)
@@ -33,11 +36,11 @@ namespace problems {
                     possible_next.erase(*it);
 
             // should have only one digit (or problem is ambiguous)
-            uint next = *possible_next.begin();
+            uint32_t next = *possible_next.begin();
 
             // removing next occurrencies to not scan them later
             for (auto it = codes.begin(); it != codes.end(); it++) {
-                vector<uint>& c = *it;
+                vector<uint32_t>& c = *it;
                 if (c[0] == next) {
                     c.erase(c.begin());
                     if (c.empty())

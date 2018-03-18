@@ -5,7 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM52_HPP
 #define PROJECT_EULER_PROBLEM52_HPP
 
-using uint = unsigned int;
+#include <cstdint>
 
 namespace problems {
     class problem52 {
@@ -15,7 +15,7 @@ namespace problems {
          * @param multiples The number of consecutive multiples with same digits
          * @return The solution
          */
-        static uint solve(uint multiples = 6);
+        static uint32_t solve(uint32_t multiples = 6);
     };
 }
 

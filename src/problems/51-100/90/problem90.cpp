@@ -5,6 +5,9 @@
 #include "problem90.hpp"
 #include <generics.hpp>
 
+using std::vector;
+using generics::combinations;
+
 namespace problems {
     void problem90::extend(vector<uint>& dice) {
         bool six = false, nine = false;
@@ -17,9 +20,9 @@ namespace problems {
         }
 
         if (six && !nine)
-            (dice).push_back(9);
+            dice.push_back(9);
         else if (nine && !six)
-            (dice).push_back(6);
+            dice.push_back(6);
     }
 
     bool problem90::is_valid(const vector<uint>& d1, const vector<uint>& d2, const vector<uint>& tests) {
@@ -40,7 +43,7 @@ namespace problems {
     uint problem90::solve(const vector<uint>& tests) {
         uint result = 0;
         const vector<uint> digits = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-        vector<vector<uint>> combs = generics::combinations(digits, 6);
+        vector<vector<uint>> combs = combinations(digits, 6);
 
         for (auto i = combs.begin(); i < combs.end(); i++) {
             extend(*i);

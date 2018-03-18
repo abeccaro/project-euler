@@ -5,7 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM28_HPP
 #define PROJECT_EULER_PROBLEM28_HPP
 
-using uint = unsigned int;
+#include <cstdint>
 
 namespace problems {
     class problem28 {
@@ -15,7 +15,7 @@ namespace problems {
          * @param size The side length of the spiral
          * @return The solution
          */
-        static uint solve(uint size = 1001);
+        static uint32_t solve(uint32_t size = 1001);
     };
 }
 

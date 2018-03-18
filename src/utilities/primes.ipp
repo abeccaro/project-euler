@@ -16,21 +16,19 @@ namespace primes {
          */
         template<class T, class = typename std::enable_if<template_conditions::is_any_integral<T>::value>::type>
         bool miller_rabin(const T& n, const std::vector<T>& witnesses) {
-            unsigned int s = 0;
+            uint32_t s = 0;
             T d = n - 1;
             while (d % 2 == 0) {
                 s++;
                 d /= 2;
             }
-//            auto l = log((cpp_dec_float_100) n);
-//            T max_witness = min<T>(n-1, (T) (2 * (l * l)));
 
             for (const auto& a : witnesses) {
                 if (generics::mod_pow<T>(a, d, n) == 1)
                     continue;
 
                 bool composite = true;
-                for (unsigned int r = 0; r < s; r++) {
+                for (uint32_t r = 0; r < s; r++) {
                     if (generics::mod_pow<T>(a, (T) pow(2, r) * d, n) == n - 1) {
                         composite = false;
                         break;
@@ -81,7 +79,7 @@ namespace primes {
 
     template<class T, class>
     std::vector<T> primes_up_to(const T& upper_bound) {
-        std::vector<bool> primes_check((uint) (upper_bound / 2), true);
+        std::vector<bool> primes_check(upper_bound / 2, true);
         std::vector<T> primes;
 
         if (upper_bound < 2)
@@ -91,16 +89,15 @@ namespace primes {
         auto root = sqrt(upper_bound) / 2;
 
         // setting false all multiples of primes
-        for(uint i = 1; i < root; i ++)
+        for(uint32_t i = 1; i < root; i ++)
             if (primes_check[i]) {
                 T prime = i * 2 + 1;
                 for (T multiple = prime * prime; multiple < upper_bound; multiple += 2 * prime)
-                    // FIXME: cast might be lossy! (very very high values)
-                    primes_check[(uint) ((multiple - 1) / 2)] = false;
+                    primes_check[(uint64_t) ((multiple - 1) / 2)] = false;
             }
 
         // adding primes to std::vector
-        for (uint i = 1; i < primes_check.size(); i++)
+        for (uint64_t i = 1; i < primes_check.size(); i++)
             if (primes_check[i])
                 primes.emplace_back(2 * i + 1);
 

@@ -5,13 +5,20 @@
 #include "problem93.hpp"
 #include <generics.hpp>
 
+using std::vector;
+using std::map;
+using std::set;
+using std::string;
+
+using generics::combinations;
+
 namespace problems {
-    vector<float> problem93::apply_operators_first(const vector<uint>& digits, map<vector<uint>, vector<float> >& m) {
+    vector<float> problem93::apply_operators_first(const vector<uint32_t>& digits, map<vector<uint32_t>, vector<float> >& m) {
         vector<float> numbers;
 
-        vector<uint> end(digits.size() - 1);
+        vector<uint32_t> end(digits.size() - 1);
         std::copy(digits.begin() + 1, digits.end(), end.begin());
-        uint first = digits.front();
+        uint32_t first = digits.front();
 
         if (m.find(end) == m.end())
             apply_operators(end, m);
@@ -27,12 +34,12 @@ namespace problems {
         return numbers;
     }
 
-    vector<float> problem93::apply_operators_last(const vector<uint>& digits, map<vector<uint>, vector<float> >& m) {
+    vector<float> problem93::apply_operators_last(const vector<uint32_t>& digits, map<vector<uint32_t>, vector<float> >& m) {
         vector<float> numbers;
 
-        vector<uint> start(digits);
+        vector<uint32_t> start(digits);
         start.resize(start.size() - 1);
-        uint last = digits.back();
+        uint32_t last = digits.back();
 
         if (m.find(start) == m.end())
             apply_operators(start, m);
@@ -48,7 +55,7 @@ namespace problems {
         return numbers;
     }
 
-    vector<float> problem93::apply_operators(const vector<uint>& digits, map<vector<uint>, vector<float> >& m) {
+    vector<float> problem93::apply_operators(const vector<uint32_t>& digits, map<vector<uint32_t>, vector<float> >& m) {
         if (m.find(digits) != m.end())
             return m[digits];
 
@@ -65,10 +72,10 @@ namespace problems {
         return numbers;
     }
 
-    uint problem93::consecutive_int_length(const set<uint>& numbers) {
-        uint length = 0;
+    uint32_t problem93::consecutive_int_length(const set<uint32_t>& numbers) {
+        uint32_t length = 0;
 
-        for (uint i = 1; ; i++) {
+        for (uint32_t i = 1; ; i++) {
             if (numbers.find(i) == numbers.end())
                 break;
             length++;
@@ -78,25 +85,25 @@ namespace problems {
     }
 
     string problem93::solve() {
-        const vector<uint> digits = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-        map<vector<uint>, vector<float> > m;
-        uint max_length = 0;
-        vector<uint> result;
+        const vector<uint32_t> digits = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+        map<vector<uint32_t>, vector<float> > m;
+        uint32_t max_length = 0;
+        vector<uint32_t> result;
 
-        for (vector<uint> digs : generics::combinations(digits, 4)) {
-            set<uint> numbers;
+        for (vector<uint32_t> digs : combinations(digits, 4)) {
+            set<uint32_t> numbers;
 
-            for (uint p = 0; p < 24; p++) {
+            for (uint32_t p = 0; p < 24; p++) {
                 vector<float> res = apply_operators(digs, m);
 
                 for (float n : res)
-                    if (n == (uint) n)
-                    numbers.insert((uint) n);
+                    if (n == (uint32_t) n)
+                    numbers.insert((uint32_t) n);
 
                 std::next_permutation(digs.begin(), digs.end());
             }
 
-            uint length = consecutive_int_length(numbers);
+            uint32_t length = consecutive_int_length(numbers);
 
             if (length > max_length) {
                 max_length = length;
@@ -105,7 +112,7 @@ namespace problems {
         }
 
         string s;
-        for (uint d : result)
+        for (uint32_t d : result)
             s += std::to_string(d);
 
         return s;

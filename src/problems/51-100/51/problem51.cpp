@@ -7,13 +7,14 @@
 #include <series/primes.hpp>
 #include <generics.hpp>
 
+using std::vector;
 using generics::digits;
 using generics::from_digits;
 using primes::is_prime;
 using series::primes;
 
 namespace problems {
-    vector<vector<bool>> problem51::masks(uint size) {
+    vector<vector<bool>> problem51::masks(uint32_t size) {
         vector<vector<bool>> v;
 
         if (size < 3)
@@ -45,7 +46,7 @@ namespace problems {
 
         vector<vector<bool>> v_result;
         for (const vector<bool> &vec : v) {
-            uint sum = 0;
+            uint32_t sum = 0;
             for (const auto &b : vec)
                 if (b)
                     sum++;
@@ -56,11 +57,11 @@ namespace problems {
         return v_result;
     }
 
-    uint problem51::get_family_size(const vector<uint>& digs, const vector<bool>& mask) {
-        vector<uint> family;
+    uint32_t problem51::get_family_size(const vector<uint32_t>& digs, const vector<bool>& mask) {
+        vector<uint32_t> family;
 
-        for (uint i = 0; i < 10; i++) {
-            vector<uint> member(digs.size());
+        for (uint32_t i = 0; i < 10; i++) {
+            vector<uint32_t> member(digs.size());
 
             auto it = mask.begin();
             auto m_it = member.begin();
@@ -74,7 +75,7 @@ namespace problems {
             }
 
             if (member[0] != 0) {
-                auto number = from_digits<ulong>(member);
+                uint64_t number = from_digits<uint64_t>(member);
                 if (is_prime(number))
                     family.push_back(number);
             }
@@ -83,10 +84,10 @@ namespace problems {
         return family.size();
     }
 
-    bool problem51::has_required_family(const uint& number) {
-        vector<uint> digs = digits(number);
+    bool problem51::has_required_family(const uint32_t& number) {
+        vector<uint32_t> digs = digits(number);
 
-        uint mask_size = count_if(digs.begin(), digs.end(), [](uint d) { return d < 3; });
+        uint32_t mask_size = count_if(digs.begin(), digs.end(), [](uint32_t d) { return d < 3; });
         auto m = masks(mask_size);
 
         for (const auto &mask : m)
@@ -95,12 +96,12 @@ namespace problems {
         return false;
     }
 
-    uint problem51::solve() {
-        const uint LOWER_BOUND = 56003;  // given by problem
+    uint32_t problem51::solve() {
+        const uint32_t lb = 56003;  // lower bound given by problem
 
-        primes<ulong> p;
+        primes<uint64_t> p;
         for (const auto &prime : p)
-            if (prime >= LOWER_BOUND && has_required_family(prime))
-                return (uint) prime;
+            if (prime >= lb && has_required_family(prime))
+                return (uint32_t) prime;
     }
 }

@@ -5,21 +5,22 @@
 #include <generics.hpp>
 #include "problem73.hpp"
 
+using fractions::fraction;
 using generics::are_coprime;
 
 namespace problems {
-    uint problem73::solve(uint ub, const range& interval) {
-        uint max_num = interval.second.numerator();
-        uint max_den = interval.second.denominator();
+    uint32_t problem73::solve(uint32_t ub, const range& interval) {
+        uint32_t max_num = interval.second.numerator();
+        uint32_t max_den = interval.second.denominator();
 
-        uint result = 0;
+        uint32_t result = 0;
 
-        for (uint d = 2; d <= ub; d++) {
+        for (uint32_t d = 2; d <= ub; d++) {
             if (d == max_den)
                 continue;
 
-            uint n = d * max_num / max_den;
-            fraction<uint> f(n, d);
+            uint32_t n = d * max_num / max_den;
+            fraction<uint32_t> f(n, d);
 
             while (!are_coprime(f.numerator(), f.denominator()))
                 f.numerator(f.numerator() - 1);

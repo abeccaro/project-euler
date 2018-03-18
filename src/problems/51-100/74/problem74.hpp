@@ -7,10 +7,6 @@
 
 #include <vector>
 
-using uint = unsigned int;
-using ulong = unsigned long;
-using std::vector;
-
 namespace problems {
     class problem74 {
     private:
@@ -22,15 +18,15 @@ namespace problems {
          * @param chain Elements already found in current chain
          * @return The length of the chain starting from n
          */
-        static uint chain_length(uint n, vector<uint>& memory,
-                                 const vector<uint>& factorials, vector<ulong>& chain);
+        static uint32_t chain_length(uint32_t n, std::vector<uint32_t>& memory,
+                                     const std::vector<uint32_t>& factorials, std::vector<uint64_t>& chain);
     public:
         /**
          * Solves problem
          * @param ub The upper bound for starting numbers to consider
          * @return The solution
          */
-        static uint solve(uint ub = 1000000);
+        static uint32_t solve(uint32_t ub = 1000000);
     };
 }
 

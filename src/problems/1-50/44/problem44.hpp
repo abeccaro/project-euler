@@ -5,7 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM44_HPP
 #define PROJECT_EULER_PROBLEM44_HPP
 
-using uint = unsigned int;
+#include <cstdint>
 
 namespace problems {
     class problem44 {
@@ -15,20 +15,20 @@ namespace problems {
          * @param n The number to check
          * @return True if n is pentagonal, false otherwise
          */
-        static bool is_pentagonal(uint n);
+        static bool is_pentagonal(uint32_t n);
 
         /**
          * Checks if given number is the double of a pentagonal number
          * @param n The number to check
          * @return True if n is the double of a pentagonal number, false otherwise
          */
-        static bool is_double_pentagonal(uint n);
+        static bool is_double_pentagonal(uint32_t n);
     public:
         /**
          * Solves problem
          * @return The solution
          */
-        static uint solve();
+        static uint32_t solve();
     };
 }
 

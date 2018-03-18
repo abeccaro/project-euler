@@ -5,8 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM5_HPP
 #define PROJECT_EULER_PROBLEM5_HPP
 
-
-using ulong = unsigned long;
+#include <cstdint>
 
 namespace problems {
 
@@ -17,7 +16,7 @@ namespace problems {
          * @param max_divisor The highest divisor of requested number
          * @return The solution
          */
-        static ulong solve(ulong max_divisor = 20);
+        static uint64_t solve(uint32_t max_divisor = 20);
     };
 }
 

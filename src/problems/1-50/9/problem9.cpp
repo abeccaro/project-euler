@@ -5,10 +5,10 @@
 #include "problem9.hpp"
 
 namespace problems {
-    uint problem9::solve(uint sum) {
-        for (uint a = 1; a <= sum / 3; a++)
-            for (uint b = a + 1; b < sum / 2; b++) {
-                uint c = sum - a - b;
+    uint32_t problem9::solve(uint32_t sum) {
+        for (uint32_t a = 1; a <= sum / 3; a++)
+            for (uint32_t b = a + 1; b < sum / 2; b++) {
+                uint32_t c = sum - a - b;
                 if (a * a + b * b == c * c)
                     return a * b * c;
             }

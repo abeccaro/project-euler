@@ -5,7 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM11_HPP
 #define PROJECT_EULER_PROBLEM11_HPP
 
-using uint = unsigned int;
+#include <cstdint>
 
 namespace problems {
     class problem11 {
@@ -15,7 +15,7 @@ namespace problems {
          * @param size The number of adjacent numbers to multiply
          * @return The solution
          */
-        static uint solve(uint size = 4);
+        static uint32_t solve(uint32_t size = 4);
     };
 }
 

@@ -7,9 +7,6 @@
 
 #include <vector>
 
-using uint = unsigned int;
-using std::vector;
-
 namespace problems {
     class problem95 {
     private:
@@ -21,14 +18,15 @@ namespace problems {
          * @param chain Numbers found since first call
          * @return The length of the chain starting from n, or 1 if there is no chain.
          */
-        static uint chain_length(uint n, vector<uint>& memory, const vector<uint>& div_sums, vector<uint>& chain);
+        static uint32_t chain_length(uint32_t n, std::vector<uint32_t>& memory, const std::vector<uint32_t>& div_sums,
+                                     std::vector<uint32_t>& chain);
     public:
         /**
          * Solves problem
          * @param ub The upper bound for numbers in considered chains
          * @return The solution
          */
-        static uint solve(uint ub = 1000000);
+        static uint32_t solve(uint32_t ub = 1000000);
     };
 }
 

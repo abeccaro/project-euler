@@ -5,8 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM10_HPP
 #define PROJECT_EULER_PROBLEM10_HPP
 
-using uint = unsigned int;
-using ulong = unsigned long;
+#include <cstdint>
 
 namespace problems {
     class problem10 {
@@ -16,7 +15,7 @@ namespace problems {
          * @param ub The upper bound of primes to sum
          * @return The solution
          */
-        static ulong solve(uint ub = 2000000);
+        static uint64_t solve(uint32_t ub = 2000000);
     };
 }
 

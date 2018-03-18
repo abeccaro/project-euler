@@ -12,12 +12,12 @@ using fractions::fraction;
 using series::sqrt_convergents;
 
 namespace problems {
-    uint problem66::solve(uint ub) {
-        uint result = 0;
+    uint32_t problem66::solve(uint32_t ub) {
+        uint32_t result = 0;
         uint256_t max_x = 0;
 
-        for (uint n = 2; n <= ub; n++) {
-            auto root = (uint) sqrt(n);
+        for (uint32_t n = 2; n <= ub; n++) {
+            auto root = (uint32_t) sqrt(n);
             if (root * root == n) // perfect square
                 continue;
 

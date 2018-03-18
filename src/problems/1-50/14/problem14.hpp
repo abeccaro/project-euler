@@ -5,10 +5,8 @@
 #ifndef PROJECT_EULER_PROBLEM14_HPP
 #define PROJECT_EULER_PROBLEM14_HPP
 
+#include <cstdint>
 #include <vector>
-
-using uint = unsigned int;
-using std::vector;
 
 namespace problems {
     class problem14 {
@@ -19,14 +17,14 @@ namespace problems {
          * @param memory The vector with already calculated lengths
          * @return The length of the chain
          */
-        static uint collatz_length(uint n, vector<uint>& memory);
+        static uint32_t collatz_length(uint32_t n, std::vector<uint32_t>& memory);
     public:
         /**
          * Solves problem
          * @param ub The upper bound of starting numbers to check
          * @return The solution
          */
-        static uint solve(uint ub = 1000000);
+        static uint32_t solve(uint32_t ub = 1000000);
     };
 }
 

@@ -5,7 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM12_HPP
 #define PROJECT_EULER_PROBLEM12_HPP
 
-using uint = unsigned int;
+#include <cstdint>
 
 namespace problems {
     class problem12 {
@@ -15,7 +15,7 @@ namespace problems {
          * @param divs The number of requested divisors
          * @return The solution
          */
-        static uint solve(uint divs = 500);
+        static uint32_t solve(uint32_t divs = 500);
     };
 }
 

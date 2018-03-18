@@ -7,9 +7,6 @@
 
 #include <vector>
 
-using uint = unsigned int;
-using rev_it = std::vector<uint>::reverse_iterator;
-
 namespace problems {
     class problem77 {
     private:
@@ -20,14 +17,14 @@ namespace problems {
          * @param coin The maximum value prime to use
          * @return The number of different prime sums to n
          */
-        static uint primes_combination(uint n, const rev_it& prime);
+        static uint32_t primes_combination(uint32_t n, const std::vector<uint32_t>::reverse_iterator& prime);
     public:
         /**
          * Solves problem
          * @param n The number of different prime sums required
          * @return The solution
          */
-        static uint solve(uint n = 5000);
+        static uint32_t solve(uint32_t n = 5000);
     };
 }
 

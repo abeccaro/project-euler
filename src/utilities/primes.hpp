@@ -4,7 +4,6 @@
 #ifndef PROJECT_EULER_PRIMES_UTILS_H
 #define PROJECT_EULER_PRIMES_UTILS_H
 
-#include <vector>
 #include <template_conditions.hpp>
 
 namespace primes {

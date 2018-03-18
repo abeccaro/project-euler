@@ -5,10 +5,10 @@
 #include "problem6.hpp"
 
 namespace problems {
-    ulong problem6::solve(ulong n) {
-        ulong sumOfSquares = 0, squareOfSum = 0;
+    uint64_t problem6::solve(uint32_t n) {
+        uint64_t sumOfSquares = 0, squareOfSum = 0;
 
-        for (ulong i = 1; i <= n; i++) {
+        for (uint32_t i = 1; i <= n; i++) {
             sumOfSquares += i * i;
             squareOfSum += i;
         }

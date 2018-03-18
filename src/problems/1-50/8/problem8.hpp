@@ -5,8 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM8_HPP
 #define PROJECT_EULER_PROBLEM8_HPP
 
-using uint = unsigned int;
-using ulong = unsigned long;
+#include <cstdint>
 
 namespace problems {
     class problem8 {
@@ -16,7 +15,7 @@ namespace problems {
          * @param digits The number of adjacent digits to sum
          * @return The solution
          */
-        static ulong solve(uint digits = 13);
+        static uint64_t solve(uint32_t digits = 13);
     };
 }
 

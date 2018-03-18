@@ -8,7 +8,7 @@
 using primes::prime_factors;
 
 namespace problems {
-    ulong problem3::solve(ulong n) {
+    uint64_t problem3::solve(uint64_t n) {
         return prime_factors(n).back();
     }
 }

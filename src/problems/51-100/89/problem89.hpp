@@ -8,36 +8,33 @@
 #include <string>
 #include <map>
 
-using uint = unsigned int;
-using std::string;
-
 namespace problems {
     class problem89 {
     private:
         /**
          * Values of roman letters
          */
-        static std::map<char, uint> letterValues;
+        static std::map<char, uint32_t> letterValues;
 
         /**
          * Converts a roman number to an integer
          * @param roman The roman number
          * @return The integer value
          */
-        static uint from_roman(const string& roman);
+        static uint32_t from_roman(const std::string& roman);
 
         /**
          * Converts an integer to a roman number in its minimal form
          * @param roman The integer
          * @return The roman number
          */
-        static string to_roman(uint n);
+        static std::string to_roman(uint32_t n);
     public:
         /**
          * Solves problem
          * @return The solution
          */
-        static uint solve();
+        static uint32_t solve();
     };
 }
 

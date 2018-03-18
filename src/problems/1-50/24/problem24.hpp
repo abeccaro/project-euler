@@ -5,10 +5,8 @@
 #ifndef PROJECT_EULER_PROBLEM24_HPP
 #define PROJECT_EULER_PROBLEM24_HPP
 
+#include <cstdint>
 #include <vector>
-
-using uint = unsigned int;
-using std::vector;
 
 namespace problems {
     class problem24 {
@@ -19,7 +17,8 @@ namespace problems {
          * @param n The ordinal number of required permutation
          * @return The solution
          */
-        static vector<uint> solve(const vector<uint>& digs = {0,1,2,3,4,5,6,7,8,9}, uint n = 1000000);
+        static std::vector<uint32_t> solve(const std::vector<uint32_t>& digs = {0,1,2,3,4,5,6,7,8,9},
+                                           uint32_t n = 1000000);
     };
 }
 

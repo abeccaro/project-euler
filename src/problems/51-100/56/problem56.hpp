@@ -5,7 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM56_HPP
 #define PROJECT_EULER_PROBLEM56_HPP
 
-using uint = unsigned int;
+#include <cstdint>
 
 namespace problems {
     class problem56 {
@@ -16,7 +16,7 @@ namespace problems {
          * @param exp_ub The upper bound for exponents to consider
          * @return The solution
          */
-        static uint solve(uint base_ub = 100, uint exp_ub = 100);
+        static uint32_t solve(uint32_t base_ub = 100, uint32_t exp_ub = 100);
     };
 }
 

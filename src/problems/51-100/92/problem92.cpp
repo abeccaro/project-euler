@@ -4,18 +4,20 @@
 
 #include "problem92.hpp"
 
+using std::vector;
+
 namespace problems {
-    bool problem92::chains_to_89(uint n, vector<uint>& mem) {
+    bool problem92::chains_to_89(uint32_t n, vector<uint32_t>& mem) {
         if (mem[n-1] == 89)
             return true;
 
         if (mem[n-1] == 1)
             return false;
 
-        uint sum = 0;
-        uint copy = n;
+        uint32_t sum = 0;
+        uint32_t copy = n;
         while (copy != 0) {
-            uint d = copy % 10;
+            uint32_t d = copy % 10;
             sum += d * d;
             copy /= 10;
         }
@@ -25,13 +27,13 @@ namespace problems {
         return result;
     }
 
-    uint problem92::solve(uint ub) {
-        uint result = 0;
-        vector<uint> mem(ub - 1);
+    uint32_t problem92::solve(uint32_t ub) {
+        uint32_t result = 0;
+        vector<uint32_t> mem(ub - 1);
         mem[0] = 1;
         mem[88] = 89;
 
-        for (uint i = 1; i < ub; i++)
+        for (uint32_t i = 1; i < ub; i++)
             if (chains_to_89(i, mem))
                 result++;
 

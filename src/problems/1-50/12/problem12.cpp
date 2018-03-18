@@ -10,8 +10,10 @@ using series::figurate_number;
 using generics::divisors;
 
 namespace problems {
-    uint problem12::solve(uint divs) {
-        figurate_number<uint> triangulars(3);
-        return triangulars.get_first([divs](uint n){return divisors(n).size() > divs;});
+    uint32_t problem12::solve(uint32_t divs) {
+        figurate_number<uint32_t> triangulars(3);
+        return triangulars.get_first([divs](uint32_t n){
+            return divisors(n).size() > divs;
+        });
     }
 }

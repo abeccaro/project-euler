@@ -5,8 +5,15 @@
 #include "problem89.hpp"
 #include <input.hpp>
 
+using std::vector;
+using std::string;
+using std::map;
+
+using input::read_vector;
+using input::problems_folder;
+
 namespace problems {
-    std::map<char, uint> problem89::letterValues = {
+    map<char, uint> problem89::letterValues = {
             {'I', 1},
             {'V', 5},
             {'X', 10},
@@ -67,7 +74,7 @@ namespace problems {
     uint problem89::solve() {
         uint result = 0;
 
-        std::vector<string> in = input::read_vector<string>(input::problems_folder + "51-100/89/input.txt");
+        vector<string> in = read_vector<string>(problems_folder + "51-100/89/input.txt");
         for (string s : in)
             result += s.size() - to_roman(from_roman(s)).size();
 

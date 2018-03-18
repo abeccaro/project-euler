@@ -8,15 +8,15 @@
 using series::figurate_number;
 
 namespace problems {
-    bool problem45::is_pentagonal(ulong n) {
+    bool problem45::is_pentagonal(uint64_t n) {
         auto x = (sqrt(24 * n + 1) + 1) / 6;
 
-        return (ulong) x == x;
+        return (uint64_t) x == x;
     }
 
-    ulong problem45::solve(uint n) {
-        figurate_number<ulong> hexagonals(6);
-        ulong result;
+    uint64_t problem45::solve(uint32_t n) {
+        figurate_number<uint64_t> hexagonals(6);
+        uint64_t result;
 
         for (auto i = hexagonals.begin(); i < hexagonals.end(); i++)
             if (is_pentagonal(*i)) { // all hexagonal numbers are also triangular numbers

@@ -5,7 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM40_HPP
 #define PROJECT_EULER_PROBLEM40_HPP
 
-using uint = unsigned int;
+#include <cstdint>
 
 namespace problems {
     class problem40 {
@@ -14,7 +14,7 @@ namespace problems {
          * Solves problem
          * @return The solution
          */
-        static uint solve();
+        static uint32_t solve();
     };
 }
 

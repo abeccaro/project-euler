@@ -7,9 +7,6 @@
 
 #include <vector>
 
-using uint = unsigned int;
-using std::vector;
-
 namespace problems {
     class problem60 {
     private:
@@ -20,21 +17,21 @@ namespace problems {
          * @param lb The lower bound
          * @return true if a new element is added, false otherwise
          */
-        static bool add_next(const vector<uint>& p, vector<uint>& n, uint lb);
+        static bool add_next(const std::vector<uint32_t>& p, std::vector<uint32_t>& n, uint32_t lb);
 
         /**
-         * Finds a quintuplet of primes that satisfy problem requirements.
+         * Finds a quint32_tuplet of primes that satisfy problem requirements.
          * @param ub The upper bound for primes
-         * @return The quintuplet
+         * @return The quint32_tuplet
          */
-        static vector<uint> find_tuple(uint ub, uint size);
+        static std::vector<uint32_t> find_tuple(uint32_t ub, uint32_t size);
     public:
         /**
          * Solves problem
          * @param n The number of primes in the requested set
          * @return The solution
          */
-        static uint solve(uint n = 5);
+        static uint32_t solve(uint32_t n = 5);
     };
 }
 

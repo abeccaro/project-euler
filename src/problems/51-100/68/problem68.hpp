@@ -7,10 +7,6 @@
 
 #include <vector>
 
-using uint = unsigned int;
-using std::vector;
-using std::string;
-
 namespace problems {
     class problem68 {
     private:
@@ -19,13 +15,13 @@ namespace problems {
          * @param str The 5-gon ring string representation
          * @return True if str is valid, false otherwise
          */
-        static bool is_valid(const vector<uint>& str);
+        static bool is_valid(const std::vector<uint32_t>& str);
     public:
         /**
          * Solves problem
          * @return The solution
          */
-        static string solve();
+        static std::string solve();
     };
 }
 

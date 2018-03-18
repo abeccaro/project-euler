@@ -5,8 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM1_HPP
 #define PROJECT_EULER_PROBLEM1_HPP
 
-
-using uint = unsigned int;
+#include <cstdint>
 
 namespace problems {
 
@@ -17,7 +16,7 @@ namespace problems {
          * @param ub The upper bound
          * @return The solution
          */
-        static uint solve(uint ub = 1000);
+        static uint32_t solve(uint32_t ub = 1000);
 
     private:
         /**
@@ -26,7 +25,7 @@ namespace problems {
          * @param ub The upper bound
          * @return The sum of multiples
          */
-        static uint multiplesSum(uint n, uint ub);
+        static uint32_t multiplesSum(uint32_t n, uint32_t ub);
     };
 }
 

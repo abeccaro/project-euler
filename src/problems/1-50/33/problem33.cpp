@@ -8,12 +8,12 @@
 using generics::gcd;
 
 namespace problems {
-    bool problem33::is_digit_cancelling(uint n, uint d) {
-        uint n1 = n / 10;
-        uint n2 = n % 10;
-        uint d1 = d / 10;
-        uint d2 = d % 10;
-        uint gcd_nd = gcd(n, d);
+    bool problem33::is_digit_cancelling(uint32_t n, uint32_t d) {
+        uint32_t n1 = n / 10;
+        uint32_t n2 = n % 10;
+        uint32_t d1 = d / 10;
+        uint32_t d2 = d % 10;
+        uint32_t gcd_nd = gcd(n, d);
 
         return (n1 == d1 && n / gcd_nd == n2 / gcd(n2, d2) && d / gcd_nd == d2 / gcd(n2, d2)) ||
                (n1 == d2 && n / gcd_nd == n2 / gcd(n2, d1) && d / gcd_nd == d1 / gcd(n2, d1)) ||
@@ -22,12 +22,12 @@ namespace problems {
 
     }
 
-    uint problem33::solve() {
-        uint num_product = 1;
-        uint den_product = 1;
+    uint32_t problem33::solve() {
+        uint32_t num_product = 1;
+        uint32_t den_product = 1;
 
-        for (uint n = 10; n < 100; n++)
-            for (uint d = n + 1; d < 100; d++)
+        for (uint32_t n = 10; n < 100; n++)
+            for (uint32_t d = n + 1; d < 100; d++)
                 if (d % 10 != 0 && is_digit_cancelling(n, d)) {
                     num_product *= n;
                     den_product *= d;

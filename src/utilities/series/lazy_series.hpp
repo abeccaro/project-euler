@@ -8,8 +8,6 @@
 #include <vector>
 #include <functional>
 
-using ulong = unsigned long;
-
 namespace series {
     template <class T>
     class lazy_series {
@@ -39,7 +37,7 @@ namespace series {
             /**
              * The index of current number
              */
-            ulong index;
+            uint64_t index;
 
             /**
              * The lazy series
@@ -51,7 +49,7 @@ namespace series {
              * @param pointer The pointer to the series
              * @param i The index. Defaults to 0 (first element)
              */
-            explicit iterator(const lazy_series<T>* pointer, ulong i = 0);
+            explicit iterator(const lazy_series<T>* pointer, uint64_t i = 0);
 
         public:
 
@@ -159,28 +157,28 @@ namespace series {
              * @param n The number of elements
              * @return The new Iterator
              */
-            iterator operator + (ulong n) const;
+            iterator operator + (uint64_t n) const;
 
             /**
              * Creates an Iterator that is n elements behind of this
              * @param n The number of elements
              * @return The new Iterator
              */
-            iterator operator - (ulong n) const;
+            iterator operator - (uint64_t n) const;
 
             /**
              * Shorthand for sum and auto assignment
              * @param n The number of elements
              * @return This iterator reference
              */
-            iterator& operator += (ulong n);
+            iterator& operator += (uint64_t n);
 
             /**
              * Shorthand for difference and auto assignment
              * @param n The number of elements
              * @return This iterator reference
              */
-            iterator& operator -= (ulong n);
+            iterator& operator -= (uint64_t n);
 
             ///endregion
 
@@ -203,7 +201,7 @@ namespace series {
              * @param n The offset
              * @return The element n positions after the one referenced by this iterator
              */
-            const T& operator [] (ulong n) const;
+            const T& operator [] (uint64_t n) const;
 
             ///endregion
         };
@@ -220,7 +218,7 @@ namespace series {
          * @param index The index of the requested element
          * @return The n-th element of the series
          */
-        const T& operator[](ulong index);
+        const T& operator[](uint64_t index);
 
         /**
          * Gets the iterator to the first element of the series
@@ -239,7 +237,7 @@ namespace series {
          * Returns the number of already evaluated elements
          * @return The number of already evaluated elements
          */
-        ulong size() const;
+        uint64_t size() const;
 
         ///region Getters
 
@@ -248,7 +246,7 @@ namespace series {
          * @param n The number of elements
          * @return The vector of elements
          */
-        std::vector<T> get(ulong n);
+        std::vector<T> get(uint64_t n);
 
         /**
          * Gets the first n elements of the series filtered by given function
@@ -256,7 +254,7 @@ namespace series {
          * @param filter The filter function
          * @return The vector of the elements
          */
-        std::vector<T> get(ulong n, const test& filter);
+        std::vector<T> get(uint64_t n, const test& filter);
 
         /**
          * Gets all the elements before the first one to fail given test
@@ -301,7 +299,7 @@ namespace series {
          * @param n The number of elements to return
          * @return The first n elements that pass given test
          */
-        std::vector<T> get_first(const test& check, ulong n);
+        std::vector<T> get_first(const test& check, uint64_t n);
 
         ///endregion
 

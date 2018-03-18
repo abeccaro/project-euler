@@ -5,7 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM47_HPP
 #define PROJECT_EULER_PROBLEM47_HPP
 
-using uint = unsigned int;
+#include <cstdint>
 
 namespace problems {
     class problem47 {
@@ -16,7 +16,7 @@ namespace problems {
          * @param factors The number of distinct prime factors
          * @return The solution
          */
-        static uint solve(uint n = 4, uint factors = 4);
+        static uint32_t solve(uint32_t n = 4, uint32_t factors = 4);
     };
 }
 

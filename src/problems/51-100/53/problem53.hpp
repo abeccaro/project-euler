@@ -5,7 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM53_HPP
 #define PROJECT_EULER_PROBLEM53_HPP
 
-using uint = unsigned int;
+#include <cstdint>
 
 namespace problems {
     class problem53 {
@@ -15,7 +15,7 @@ namespace problems {
          * @param max_n The maximum n in "n choose r" calculations
          * @return The solution
          */
-        static uint solve(uint max_n = 100);
+        static uint32_t solve(uint32_t max_n = 100, uint32_t threshold = 1000000);
     };
 }
 

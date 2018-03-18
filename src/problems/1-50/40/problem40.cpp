@@ -5,14 +5,15 @@
 #include "problem40.hpp"
 #include <generics.hpp>
 
+using std::vector;
 using generics::digits;
 
 namespace problems {
-    uint problem40::solve() {
-        std::vector<uint> d;
+    uint32_t problem40::solve() {
+        vector<uint32_t> d;
 
-        for (uint i = 1; d.size() < 1000000; i++) {
-            std::vector<uint> digs = digits(i);
+        for (uint32_t i = 1; d.size() < 1000000; i++) {
+            vector<uint32_t> digs = digits(i);
             d.insert(d.end(), digs.begin(), digs.end());
         }
 

@@ -8,8 +8,8 @@
 using series::primes;
 
 namespace problems {
-    uint problem7::solve(ulong position) {
-        primes<uint> p;
+    uint32_t problem7::solve(uint32_t position) {
+        primes<uint32_t> p;
         return p[position - 1];
     }
 }

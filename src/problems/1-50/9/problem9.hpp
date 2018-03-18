@@ -5,7 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM9_HPP
 #define PROJECT_EULER_PROBLEM9_HPP
 
-using uint = unsigned int;
+#include <cstdint>
 
 namespace problems {
     class problem9 {
@@ -15,7 +15,7 @@ namespace problems {
          * @param sum The sum of pythagorean triplet
          * @return The solution
          */
-        static uint solve(uint sum = 1000);
+        static uint32_t solve(uint32_t sum = 1000);
     };
 }
 

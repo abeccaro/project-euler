@@ -2,38 +2,39 @@
 // Created by Alex Beccaro on 16/03/18.
 //
 
+#include <vector>
 #include <primes.hpp>
 
 namespace generics {
 
     template<class T, class>
-    std::vector<uint> digits(const T& n) {
-        std::vector<uint> digits;
+    std::vector<uint32_t> digits(const T& n) {
+        std::vector<uint32_t> digits;
         T copy = n;
 
         if (copy < 0)
             copy *= -1;
 
         while (copy > 9) {
-            auto d = (uint) (copy % 10);
+            auto d = (uint32_t) (copy % 10);
             digits.push_back(d);
             copy /= 10;
         }
-        digits.push_back((uint) copy);
+        digits.push_back((uint32_t) copy);
 
         reverse(digits.begin(), digits.end());
         return digits;
     }
 
     template<class T, class>
-    T from_digits(const std::vector<uint>& digits) {
-        assert(all_of(digits.begin(), digits.end(), [](uint n){return n < 10;}) &&
+    T from_digits(const std::vector<uint32_t>& digits) {
+        assert(all_of(digits.begin(), digits.end(), [](uint32_t n){return n < 10;}) &&
                "At least a non digit number (> 10)");
 
         T result = 0;
-        ulong length = digits.size();
+        uint64_t length = digits.size();
 
-        for (ulong i = 0; i < length; i++)
+        for (uint64_t i = 0; i < length; i++)
             result += digits[length - i - 1] * pow(10, i);
 
         return result;
@@ -41,8 +42,8 @@ namespace generics {
 
     template<class T, class>
     bool is_palindrome(const T& n) {
-        std::vector<uint> dig = digits(n);
-        std::vector<uint> reversed_dig(dig.size());
+        std::vector<uint32_t> dig = digits(n);
+        std::vector<uint32_t> reversed_dig(dig.size());
 
         reverse_copy(dig.begin(), dig.end(), reversed_dig.begin());
 
@@ -143,7 +144,7 @@ namespace generics {
         assert(mod > 1 && "Modulo must be greater than 1");
         assert(are_coprime(base, mod) && "Multiplicative order is not defined for given values");
 
-        ulong exp = 1;
+        uint64_t exp = 1;
         while ((T) pow(base, exp) % mod != 1)
             exp++;
 
@@ -152,17 +153,17 @@ namespace generics {
 
     template<class T, class>
     std::vector<T> rotations(const T& n) {
-        std::vector<uint> digs = digits(n);
-        ulong length = digs.size();
+        std::vector<uint32_t> digs = digits(n);
+        uint64_t length = digs.size();
 
         std::vector<T> result(length);
         result[0] = n;
 
-        for (ulong i = 1; i < length; i++) {
-            std::vector<uint> ds(length);
+        for (uint64_t i = 1; i < length; i++) {
+            std::vector<uint32_t> ds(length);
 
             copy(digs.begin() + i, digs.end(), ds.begin());
-            ulong copied = length - i;
+            uint64_t copied = length - i;
             copy(digs.begin(), digs.begin() + i, ds.begin() + copied);
 
             result[i] = from_digits<T>(ds);
@@ -172,10 +173,10 @@ namespace generics {
     }
 
     template<class T, class>
-    std::vector<uint> to_base(const T& n, uint base) {
+    std::vector<uint32_t> to_base(const T& n, uint32_t base) {
         assert (base > 0 && "Base must be positive");
 
-        std::vector<uint> digits;
+        std::vector<uint32_t> digits;
         T copy = n;
 
         while (copy > 0) {
@@ -188,21 +189,21 @@ namespace generics {
     }
 
     template<class T, class>
-    T from_base(const T& n, uint base) {
+    T from_base(const T& n, uint32_t base) {
         assert (base > 0 && "Base must be positive");
 
         T result = 0;
-        std::vector<uint> digs = digits(n);
-        ulong size = digs.size();
+        std::vector<uint32_t> digs = digits(n);
+        uint64_t size = digs.size();
 
-        for (ulong i = 0; i < size; i++)
+        for (uint64_t i = 0; i < size; i++)
             result += digs[size-i-1] * pow(base, i);
 
         return result;
     }
 
     template<class T, class>
-    std::vector<uint> to_base(const T& n, uint from, uint to) {
+    std::vector<uint32_t> to_base(const T& n, uint32_t from, uint32_t to) {
         // FIXME: not correct? Test!
         from_base(from_digits<T>(to_base(n, 2)), 2);
     }
@@ -227,9 +228,9 @@ namespace generics {
     }
 
     template<class T>
-    std::vector<std::vector<T>> combinations(const std::vector<T>& elements, ulong k) {
+    std::vector<std::vector<T>> combinations(const std::vector<T>& elements, uint64_t k) {
         std::vector<std::vector<T>> combs;
-        ulong n = elements.size();
+        uint64_t n = elements.size();
 
         std::string bitmask(k, 1); // k leading 1s
         bitmask.resize(n, 0); // n-k trailing 0s
@@ -238,9 +239,9 @@ namespace generics {
         // the bitmask and skip the others
         do {
             std::vector<T> comb(k);
-            uint j = 0;
+            uint32_t j = 0;
 
-            for (uint i = 0; i < n; ++i)
+            for (uint32_t i = 0; i < n; ++i)
                 if (bitmask[i])
                     comb[j++] = elements[i];
 

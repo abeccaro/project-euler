@@ -6,18 +6,19 @@
 #include <unordered_set>
 #include <cmath>
 
-using ulong = unsigned long;
+using std::vector;
+using std::unordered_set;
 
 namespace problems {
-    void problem88::calculate_mps_recursive(vector<uint>& mps, uint ub, vector<uint>& a, uint sum, uint product) {
-        uint last = a.back();
+    void problem88::calculate_mps_recursive(vector<uint32_t>& mps, uint32_t ub, vector<uint32_t>& a, uint32_t sum, uint32_t product) {
+        uint32_t last = a.back();
 
-        for (uint p = product * last; p < ub; p = product * last) {
-            uint s = sum + last;
+        for (uint32_t p = product * last; p < ub; p = product * last) {
+            uint32_t s = sum + last;
             a.push_back(last);
 
             // calculate k
-            ulong k = a.size() + p - s;
+            uint64_t k = a.size() + p - s;
 
             // if k is greater then considered ones stop
             if (k > mps.size()) {
@@ -36,29 +37,29 @@ namespace problems {
         }
     }
 
-    vector<uint> problem88::calculate_mps(uint ub) {
-        vector<uint> mps(ub, 2 * ub); // result vector
+    vector<uint32_t> problem88::calculate_mps(uint32_t ub) {
+        vector<uint32_t> mps(ub, 2 * ub); // result vector
         mps[0] = 0; // skip k = 1
-        uint root = (uint) std::sqrt(2 * ub); // upper bound for min a[i] != 1
+        uint32_t root = (uint32_t) std::sqrt(2 * ub); // upper bound for min a[i] != 1
 
-        for (uint i = 2; i <= root; i++) {
-            vector<uint> a(1, i);
+        for (uint32_t i = 2; i <= root; i++) {
+            vector<uint32_t> a(1, i);
             calculate_mps_recursive(mps, 2 * ub, a, i, i);
         }
 
         return mps;
     }
 
-    uint problem88::solve(uint ub) {
-        vector<uint> mps2 = calculate_mps(ub);
+    uint32_t problem88::solve(uint32_t ub) {
+        vector<uint32_t> mps2 = calculate_mps(ub);
 
         // remove duplicates
-        std::unordered_set<uint> mps_set(std::make_move_iterator(mps2.begin()),
-                                         std::make_move_iterator(mps2.end()));
+        unordered_set<uint32_t> mps_set(std::make_move_iterator(mps2.begin()),
+                                        std::make_move_iterator(mps2.end()));
 
         // sum
-        uint result = 0;
-        for (uint x : mps_set)
+        uint32_t result = 0;
+        for (uint32_t x : mps_set)
             result += x;
 
         return result;

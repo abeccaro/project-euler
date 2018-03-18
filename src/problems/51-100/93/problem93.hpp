@@ -9,12 +9,6 @@
 #include <map>
 #include <set>
 
-using std::map;
-using std::vector;
-using std::set;
-using std::string;
-using uint = unsigned int;
-
 namespace problems {
     class problem93 {
     private:
@@ -24,7 +18,8 @@ namespace problems {
          * @param m The memory of already calculated results
          * @return All possible outputs of operator application
          */
-        static vector<float> apply_operators_first(const vector<uint>& digits, map<vector<uint>, vector<float> >& m);
+        static std::vector<float> apply_operators_first(const std::vector<uint32_t>& digits,
+                                                   std::map<std::vector<uint32_t>, std::vector<float> >& m);
 
         /**
          * Apply all basic operators (+, -, *, /) combinations to all outputs of first n-1 digits and the last digit
@@ -32,7 +27,8 @@ namespace problems {
          * @param m The memory of already calculated results
          * @return All possible outputs of operator application
          */
-        static vector<float> apply_operators_last(const vector<uint>& digits, map<vector<uint>, vector<float> >& m);
+        static std::vector<float> apply_operators_last(const std::vector<uint32_t>& digits,
+                                                       std::map<std::vector<uint32_t>, std::vector<float> >& m);
 
         /**
          * Apply all basic operators (+, -, *, /) combinations to given digits maintaining number order
@@ -40,20 +36,21 @@ namespace problems {
          * @param m The memory of already calculated results
          * @return All possible outputs of operator application
          */
-        static vector<float> apply_operators(const vector<uint>& digits, map<vector<uint>, vector<float> >& m);
+        static std::vector<float> apply_operators(const std::vector<uint32_t>& digits,
+                                             std::map<std::vector<uint32_t>, std::vector<float> >& m);
 
         /**
          * Calculates the number of consecutive numbers in the set starting from 1
          * @param numbers The set of numbers
          * @return The number of consecutive numbers starting from 1
          */
-        static uint consecutive_int_length(const set<uint>& numbers);
+        static uint32_t consecutive_int_length(const std::set<uint32_t>& numbers);
     public:
         /**
          * Solves problem
          * @return The solution
          */
-        static string solve();
+        static std::string solve();
     };
 }
 

@@ -7,16 +7,14 @@
 
 using primes::is_prime;
 
-using ulong = unsigned long;
-
 namespace problems {
-    uint problem58::solve(double treshold) {
-        ulong last = 1;
-        for (uint side = 3, primes = 0; true; side += 2) {
-            uint increment = side - 1;
-            ulong n1 = last + increment;
-            ulong n2 = n1 + increment;
-            ulong n3 = n2 + increment;
+    uint32_t problem58::solve(double treshold) {
+        uint64_t last = 1;
+        for (uint32_t side = 3, primes = 0; true; side += 2) {
+            uint32_t increment = side - 1;
+            uint64_t n1 = last + increment;
+            uint64_t n2 = n1 + increment;
+            uint64_t n3 = n2 + increment;
             last = n3 + increment;
 
             if (is_prime(n1))

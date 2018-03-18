@@ -5,12 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM54_HPP
 #define PROJECT_EULER_PROBLEM54_HPP
 
-#include <string>
 #include <vector>
-
-using uint = unsigned int;
-using std::string;
-using std::vector;
 
 namespace problems {
     class problem54 {
@@ -26,13 +21,13 @@ namespace problems {
             enum suit_t {diamonds, clubs, hearts, spades};
 
             suit_t suit;  // the suit
-            uint value; // the value
+            uint32_t value; // the value
 
             /**
              * Constructor from string (as in input file)
              * @param s The string representation of the card
              */
-            explicit card(string s);
+            explicit card(std::string s);
 
             /**
              * Operator < definition for sorting cards
@@ -47,7 +42,7 @@ namespace problems {
          * All public for simplicity.
          */
         struct hand {
-            vector<card> cards; // cards in hand
+            std::vector<card> cards; // cards in hand
 
             /**
              * Adds a card to this hand
@@ -66,7 +61,7 @@ namespace problems {
              * Calculates a score for this hand. Absolute values may vary a lot but order is maintained.
              * @return The score of this hand
              */
-            uint score();
+            uint32_t score();
 
             /**
              * Checks if this hand is a flush
@@ -85,7 +80,7 @@ namespace problems {
          * Solves problem
          * @return The solution
          */
-        static uint solve();
+        static uint32_t solve();
     };
 }
 

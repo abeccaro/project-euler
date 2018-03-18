@@ -9,16 +9,16 @@
 using std::vector;
 
 namespace problems {
-    uint problem64::solve(uint ub) {
-        uint result = 0;
+    uint32_t problem64::solve(uint32_t ub) {
+        uint32_t result = 0;
 
-        for (uint i = 2; i <= ub; i++) {
-            vector<uint> period;
+        for (uint32_t i = 2; i <= ub; i++) {
+            vector<uint32_t> period;
 
-            auto a_0 = (uint) sqrt(i);
-            uint a = a_0;
-            uint m = 0;
-            uint d = 1;
+            auto a_0 = (uint32_t) sqrt(i);
+            uint32_t a = a_0;
+            uint32_t m = 0;
+            uint32_t d = 1;
 
             if (a * a == i) // perfect square
                 continue;

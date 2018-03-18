@@ -5,7 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM41_HPP
 #define PROJECT_EULER_PROBLEM41_HPP
 
-using ulong = unsigned long;
+#include <cstdint>
 
 namespace problems {
     class problem41 {
@@ -14,7 +14,7 @@ namespace problems {
          * Solves problem
          * @return The solution
          */
-        static ulong solve();
+        static uint64_t solve();
     };
 }
 

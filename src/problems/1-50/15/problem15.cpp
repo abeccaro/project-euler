@@ -8,7 +8,7 @@
 using generics::binomial_coefficient;
 
 namespace problems {
-    uint128_t problem15::solve(uint width, uint height) {
+    uint128_t problem15::solve(uint32_t width, uint32_t height) {
         return binomial_coefficient<uint128_t>(width + height, width);
     }
 }

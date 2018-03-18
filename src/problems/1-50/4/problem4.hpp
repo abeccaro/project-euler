@@ -5,8 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM4_HPP
 #define PROJECT_EULER_PROBLEM4_HPP
 
-
-using uint = unsigned int;
+#include <cstdint>
 
 namespace problems {
 
@@ -17,7 +16,7 @@ namespace problems {
          * @param digits The number of digits of factors
          * @return The solution
          */
-        static uint solve(uint digits = 3);
+        static uint32_t solve(uint32_t digits = 3);
     };
 }
 

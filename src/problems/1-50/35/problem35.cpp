@@ -6,19 +6,20 @@
 #include <generics.hpp>
 #include <primes.hpp>
 
+using std::vector;
 using generics::rotations;
 using primes::is_prime;
 using primes::primes_up_to;
 
 namespace problems {
-    uint problem35::solve(uint ub) {
-        std::vector<ulong> primes = primes_up_to((ulong) ub-1);
+    uint32_t problem35::solve(uint32_t ub) {
+        vector<uint64_t> primes = primes_up_to<uint64_t>(ub - 1);
 
-        uint result = 0;
+        uint32_t result = 0;
         for (const auto &prime : primes) {
-            std::vector<ulong> rots = rotations(prime);
+            vector<uint64_t> rots = rotations(prime);
 
-            if (all_of(rots.begin() + 1, rots.end(), [](ulong n) { return is_prime(n); }))
+            if (all_of(rots.begin() + 1, rots.end(), [](uint64_t n) { return is_prime(n); }))
                 result++;
         }
         return result;

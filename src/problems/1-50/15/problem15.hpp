@@ -7,7 +7,6 @@
 
 #include <boost/multiprecision/cpp_int.hpp>
 
-using uint = unsigned int;
 using boost::multiprecision::uint128_t;
 
 namespace problems {
@@ -19,7 +18,7 @@ namespace problems {
          * @param height The height of the grid
          * @return The solution
          */
-        static uint128_t solve(uint width = 20, uint height = 20);
+        static uint128_t solve(uint32_t width = 20, uint32_t height = 20);
     };
 }
 

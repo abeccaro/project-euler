@@ -5,7 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM65_HPP
 #define PROJECT_EULER_PROBLEM65_HPP
 
-using uint = unsigned int;
+#include <cstdint>
 
 namespace problems {
     class problem65 {
@@ -15,7 +15,7 @@ namespace problems {
          * @param n The ordinal number of the convergent to consider
          * @return The solution
          */
-        static uint solve(uint n = 100);
+        static uint32_t solve(uint32_t n = 100);
     };
 }
 

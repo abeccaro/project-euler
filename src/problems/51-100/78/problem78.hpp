@@ -7,9 +7,6 @@
 
 #include <vector>
 
-using uint = unsigned int;
-using std::vector;
-
 namespace problems {
     class problem78 {
     private:
@@ -20,14 +17,14 @@ namespace problems {
          * @param p Pre-calculated generalized pentagonal numbers
          * @return The number of partitions of n
          */
-        static long partitions(uint n, vector<int>& memory, vector<uint>& p);
+        static int64_t partitions(uint32_t n, std::vector<int32_t>& memory, std::vector<uint32_t>& p);
     public:
         /**
          * Solves problem
          * @param n The divisor that p(n) must have
          * @return The solution
          */
-        static uint solve(uint n = 1000000);
+        static uint32_t solve(uint32_t n = 1000000);
     };
 }
 

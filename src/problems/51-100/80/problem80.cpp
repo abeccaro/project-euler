@@ -10,12 +10,12 @@ using boost::multiprecision::cpp_dec_float_100;
 using std::string;
 
 namespace problems {
-    uint problem80::solve(uint ub) {
-        uint sum = 0;
-        for (uint i = 2; i <= ub; i++) {
+    uint32_t problem80::solve(uint32_t ub) {
+        uint32_t sum = 0;
+        for (uint32_t i = 2; i <= ub; i++) {
             cpp_dec_float_100 n(i);
             n = sqrt(n);
-            if (n == (uint) n)
+            if (n == (uint32_t) n)
                 continue;
 
             string s = n.str().substr(0, 101); // 100 digits and '.'

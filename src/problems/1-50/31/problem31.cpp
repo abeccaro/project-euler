@@ -7,20 +7,20 @@
 using std::vector;
 
 namespace problems {
-    uint problem31::coins_combination(uint pence, const rev_it& coin) {
+    uint32_t problem31::coins_combination(uint32_t pence, const vector<uint32_t>::reverse_iterator& coin) {
         if (*coin == 1)
             return 1;
 
-        uint count = 0;
-        for (uint i = 0; i <= pence / (*coin); i++) {
-            uint remaining = pence - i * (*coin);
+        uint32_t count = 0;
+        for (uint32_t i = 0; i <= pence / (*coin); i++) {
+            uint32_t remaining = pence - i * (*coin);
             count += coins_combination(remaining, (coin + 1));
         }
         return count;
     }
 
-    uint problem31::solve(uint pence) {
-        vector<uint> coins = {1, 2, 5, 10, 20, 50, 100, 200};
+    uint32_t problem31::solve(uint32_t pence) {
+        vector<uint32_t> coins = {1, 2, 5, 10, 20, 50, 100, 200};
 
         return coins_combination(pence, coins.rbegin());
     }

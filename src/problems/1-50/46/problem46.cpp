@@ -10,18 +10,18 @@ using primes::is_prime;
 using series::primes;
 
 namespace problems {
-    uint problem46::solve() {
-        primes<uint> p;
-        uint result = 0;
+    uint32_t problem46::solve() {
+        primes<uint32_t> p;
+        uint32_t result = 0;
 
-        for (uint i = 9; result == 0; i += 2)
+        for (uint32_t i = 9; result == 0; i += 2)
             if (!is_prime(i)) {
                 bool found = false;
                 
                 for (auto prime = p.begin(); *prime < i; prime++) {
-                    uint x = (i - *prime) / 2;
+                    uint32_t x = (i - *prime) / 2;
                     auto root = sqrt(x);
-                    if (root == (uint) root) {
+                    if (root == (uint32_t) root) {
                         found = true;
                         break;
                     }

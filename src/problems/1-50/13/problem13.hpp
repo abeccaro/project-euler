@@ -5,11 +5,8 @@
 #ifndef PROJECT_EULER_PROBLEM13_HPP
 #define PROJECT_EULER_PROBLEM13_HPP
 
+#include <cstdint>
 #include <vector>
-
-using std::vector;
-
-using uint = unsigned int;
 
 namespace problems {
     class problem13 {
@@ -19,7 +16,7 @@ namespace problems {
          * @param d The number of starting digits to return
          * @return The solution
          */
-        static vector<uint> solve(uint d = 10);
+        static std::vector<uint32_t> solve(uint32_t d = 10);
     };
 }
 

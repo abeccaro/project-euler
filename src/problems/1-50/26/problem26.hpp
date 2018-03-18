@@ -5,7 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM26_HPP
 #define PROJECT_EULER_PROBLEM26_HPP
 
-using uint = unsigned int;
+#include <cstdint>
 
 namespace problems {
     class problem26 {
@@ -15,7 +15,7 @@ namespace problems {
          * @param ub The maximum denominator to check
          * @return The solution
          */
-        static uint solve(uint ub = 1000);
+        static uint32_t solve(uint32_t ub = 1000);
     };
 }
 

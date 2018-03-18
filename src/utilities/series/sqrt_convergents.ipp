@@ -25,10 +25,10 @@ namespace series {
 
     template<class T, class U>
     fractions::fraction<T> sqrt_convergents<T, U>::next_element() {
-        auto n = this->numbers;
-        uint s = n.size();
+        std::vector<fractions::fraction<T> > n = this->numbers;
+        uint64_t s = n.size();
 
-        T a = coeff[(this->numbers.size() - 1) % coeff.size()];
+        T a = coeff[(s - 1) % coeff.size()];
         T num = a * n[s-1].numerator() + n[s-2].numerator();
         T den = a * n[s-1].denominator() + n[s-2].denominator();
 

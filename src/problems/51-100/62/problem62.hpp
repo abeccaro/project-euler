@@ -5,8 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM62_HPP
 #define PROJECT_EULER_PROBLEM62_HPP
 
-using uint = unsigned int;
-using ulong = unsigned long;
+#include <cstdint>
 
 namespace problems {
     class problem62 {
@@ -16,7 +15,7 @@ namespace problems {
          * @param n The number of cubes permutations
          * @return The solution
          */
-        static ulong solve(uint n = 5);
+        static uint64_t solve(uint32_t n = 5);
     };
 }
 

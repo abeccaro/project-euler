@@ -7,9 +7,6 @@
 
 #include <vector>
 
-using uint = unsigned int;
-using std::vector;
-
 namespace problems {
     class problem48 {
     public:
@@ -18,7 +15,7 @@ namespace problems {
          * @param ub The upper bound of numbers
          * @return The solution
          */
-        static vector<uint> solve(uint ub = 1000);
+        static std::vector<uint32_t> solve(uint32_t ub = 1000);
     };
 }
 

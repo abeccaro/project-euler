@@ -11,11 +11,11 @@ using series::sqrt_convergents;
 using boost::multiprecision::cpp_int;
 
 namespace problems {
-    uint problem57::solve(uint convergents) {
-        uint result = 0;
+    uint32_t problem57::solve(uint32_t convergents) {
+        uint32_t result = 0;
         sqrt_convergents<cpp_int> c(2);
 
-        for (uint i = 0; i <= convergents; i++) {
+        for (uint32_t i = 0; i <= convergents; i++) {
             cpp_int num = c[i].numerator();
             cpp_int den = c[i].denominator();
             if (num.str().size() > den.str().size())

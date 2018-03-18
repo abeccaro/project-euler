@@ -5,8 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM32_HPP
 #define PROJECT_EULER_PROBLEM32_HPP
 
-using uint = unsigned int;
-using ulong = unsigned long;
+#include <cstdint>
 
 namespace problems {
     class problem32 {
@@ -17,13 +16,13 @@ namespace problems {
          * @param b The second number
          * @return The number of different ways to make 'pence' pence
          */
-        static ulong combine(uint a, uint b);
+        static uint64_t combine(uint32_t a, uint32_t b);
     public:
         /**
          * Solves problem
          * @return The solution
          */
-        static uint solve();
+        static uint32_t solve();
     };
 }
 

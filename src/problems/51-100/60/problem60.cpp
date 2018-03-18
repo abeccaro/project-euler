@@ -6,16 +6,16 @@
 #include <primes.hpp>
 #include <generics.hpp>
 
+using std::vector;
+
 using primes::is_prime;
 using primes::primes_up_to;
 using generics::digits;
 using generics::from_digits;
 
-using ulong = unsigned long;
-
 namespace problems {
 
-    bool problem60::add_next(const vector<uint>& p, vector<uint>& n, uint lb) {
+    bool problem60::add_next(const vector<uint32_t>& p, vector<uint32_t>& n, uint32_t lb) {
         for (const auto &prime : p) {
             if (prime <= lb)
                 continue;
@@ -24,16 +24,16 @@ namespace problems {
             for (const auto &num : n) {
                 auto p_digs = digits(prime);
                 auto n_digs = digits(num);
-                uint p_size = p_digs.size();
+                uint32_t p_size = p_digs.size();
 
                 p_digs.insert(p_digs.end(), n_digs.begin(), n_digs.end());
-                if (!is_prime(from_digits<ulong>(p_digs))) {
+                if (!is_prime(from_digits<uint64_t>(p_digs))) {
                     ok = false;
                     break;
                 }
 
                 n_digs.insert(n_digs.end(), p_digs.begin(), p_digs.begin() + p_size);
-                if (!is_prime(from_digits<ulong>(n_digs))) {
+                if (!is_prime(from_digits<uint64_t>(n_digs))) {
                     ok = false;
                     break;
                 }
@@ -48,10 +48,10 @@ namespace problems {
         return false;
     }
 
-    vector<uint> problem60::find_tuple(uint ub, uint size) {
-        vector<uint> p = primes_up_to(ub);
-        vector<uint> sol;
-        uint lower_bound = 2;
+    vector<uint32_t> problem60::find_tuple(uint32_t ub, uint32_t size) {
+        vector<uint32_t> p = primes_up_to(ub);
+        vector<uint32_t> sol;
+        uint32_t lower_bound = 2;
 
         while (sol.size() < size) {
             bool added = add_next(p, sol, lower_bound);
@@ -63,12 +63,12 @@ namespace problems {
         return sol;
     }
 
-    uint problem60::solve(uint n) {
-        const uint UPPER_BOUND = 10000; // empirical bound for n = 5
+    uint32_t problem60::solve(uint32_t n) {
+        const uint32_t ub = 10000; // empirical bound for n = 5
 
-        auto sol = find_tuple(UPPER_BOUND, n);
+        auto sol = find_tuple(ub, n);
 
-        uint result = 0;
+        uint32_t result = 0;
         for (const auto &p : sol)
             result += p;
         return result;

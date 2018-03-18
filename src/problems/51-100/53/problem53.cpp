@@ -6,19 +6,15 @@
 #include <generics.hpp>
 
 using generics::binomial_coefficient;
-using boost::multiprecision::cpp_int;
-
-using numtype = cpp_int;
+using boost::multiprecision::uint1024_t;
 
 namespace problems {
-    uint problem53::solve(uint max_n) {
-        const numtype THRESHOLD = 1000000;
+    uint32_t problem53::solve(uint32_t max_n, uint32_t threshold) {
+        uint32_t result = 0;
 
-        uint result = 0;
-
-        for (numtype n = 1; n <= max_n; n++)
-            for (numtype r = 1; r <= n; r++)
-                if (binomial_coefficient(n, r) > THRESHOLD)
+        for (uint1024_t n = 1; n <= max_n; n++)
+            for (uint1024_t r = 1; r <= n; r++)
+                if (binomial_coefficient(n, r) > threshold)
                     result++;
 
         return result;

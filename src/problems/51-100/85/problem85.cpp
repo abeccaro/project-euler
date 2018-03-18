@@ -8,14 +8,14 @@
 using series::figurate_number;
 
 namespace problems {
-    uint problem85::solve(uint rectangles) {
-        figurate_number<uint> triangulars(3);
-        uint result = 0, min_diff = rectangles;
+    uint32_t problem85::solve(uint32_t rectangles) {
+        figurate_number<uint32_t> triangulars(3);
+        uint32_t result = 0, min_diff = rectangles;
 
-        for (uint b = 1; triangulars[b] < rectangles; b++)
-            for (uint h = 0; h <= b; h++) {
-                uint rects = triangulars[b] * triangulars[h];
-                uint diff = rects < rectangles ? rectangles - rects : rects - rectangles;
+        for (uint32_t b = 1; triangulars[b] < rectangles; b++)
+            for (uint32_t h = 0; h <= b; h++) {
+                uint32_t rects = triangulars[b] * triangulars[h];
+                uint32_t diff = rects < rectangles ? rectangles - rects : rects - rectangles;
 
                 if (diff < min_diff) {
                     min_diff = diff;

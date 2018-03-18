@@ -5,7 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM57_HPP
 #define PROJECT_EULER_PROBLEM57_HPP
 
-using uint = unsigned int;
+#include <cstdint>
 
 namespace problems {
     class problem57 {
@@ -15,7 +15,7 @@ namespace problems {
          * @param convergents The number of convergent to test
          * @return The solution
          */
-        static uint solve(uint convergents = 1000);
+        static uint32_t solve(uint32_t convergents = 1000);
     };
 }
 

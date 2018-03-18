@@ -8,13 +8,13 @@
 using generics::digits;
 
 namespace problems {
-    uint problem52::solve(uint multiples) {
-        for (uint i = 1; true; i++) {
+    uint32_t problem52::solve(uint32_t multiples) {
+        for (uint32_t i = 1; true; i++) {
             auto digs = digits(i);
             sort(digs.begin(), digs.end());
             bool ok = true;
 
-            for (uint j = 2; j <= multiples; j++) {
+            for (uint32_t j = 2; j <= multiples; j++) {
                 auto multiple_digs = digits(i * j);
                 sort(multiple_digs.begin(), multiple_digs.end());
 

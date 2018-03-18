@@ -6,16 +6,20 @@
 #include <map>
 #include "problem84.hpp"
 
+using std::vector;
+using std::string;
+using std::map;
+
 namespace problems {
-    std::map<uint, float> problem84::init_rolls(uint sides) {
-        std::map<uint, float> rolls;
+    map<uint32_t, float> problem84::init_rolls(uint32_t sides) {
+        map<uint32_t, float> rolls;
         float p = 1.0f / (sides * sides);
 
-        for (uint i = 2; i < 2 * sides; i++)
+        for (uint32_t i = 2; i < 2 * sides; i++)
             rolls[i] = 0;
 
-        for (uint i = 1; i <= sides; i++) {
-            for (uint j = 1; j <= sides; j++) {
+        for (uint32_t i = 1; i <= sides; i++) {
+            for (uint32_t j = 1; j <= sides; j++) {
                 rolls[i + j] += p;
             }
         }
@@ -23,7 +27,7 @@ namespace problems {
         return rolls;
     }
 
-    vector<float> problem84::turn_to(uint pos) {
+    vector<float> problem84::turn_to(uint32_t pos) {
         vector<float> probabilities(40);
 
         switch (pos) {
@@ -63,7 +67,7 @@ namespace problems {
                 // Back 3 squares
                 if (pos == 36) {
                     vector<float> p = turn_to(pos - 3);
-                    for (uint i = 0; i < probabilities.size(); i++)
+                    for (uint32_t i = 0; i < probabilities.size(); i++)
                         probabilities[i] += p[i] * 1.0f / 16;
                 } else
                     probabilities[pos - 3] = 1.0f / 16;
@@ -77,11 +81,11 @@ namespace problems {
         return probabilities;
     }
 
-    vector<float> problem84::turn_from(uint pos, const map<uint, float>& rolls) {
+    vector<float> problem84::turn_from(uint32_t pos, const map<uint32_t, float>& rolls) {
         vector<float> probabilities(40);
 
         // JAIL if third consecutive double
-        uint sides = (uint) ((rolls.size() + 1) / 2.0f);
+        uint32_t sides = (uint32_t) ((rolls.size() + 1) / 2.0f);
         float three_floats_p = 1.0f / (sides * sides * sides);
         probabilities[10] += three_floats_p;
 
@@ -95,10 +99,10 @@ namespace problems {
         return probabilities;
     }
 
-    vector<float> problem84::turn(const vector<float>& probabilities, const map<uint, float>& rolls) {
+    vector<float> problem84::turn(const vector<float>& probabilities, const map<uint32_t, float>& rolls) {
         vector<float> new_probabilities(probabilities.size());
 
-        for (uint i = 0; i < probabilities.size(); i++) {
+        for (uint32_t i = 0; i < probabilities.size(); i++) {
             vector<float> p = turn_from(i, rolls);
             for (int j = 0; j < p.size(); j++)
                 new_probabilities[j] += p[j] * probabilities[i];
@@ -107,8 +111,8 @@ namespace problems {
         return new_probabilities;
     }
 
-    string problem84::solve(uint sides) {
-        std::map<uint, float> rolls = init_rolls(sides);
+    string problem84::solve(uint32_t sides) {
+        map<uint32_t, float> rolls = init_rolls(sides);
 
         // starting from first square
         vector<float> probabilities(40);
@@ -123,8 +127,8 @@ namespace problems {
         }
 
         string result;
-        for (int i = 0; i < 3; i++) {
-            long argMax = std::distance(probabilities.begin(), std::max_element(probabilities.begin(), probabilities.end()));
+        for (uint32_t i = 0; i < 3; i++) {
+            int64_t argMax = std::distance(probabilities.begin(), std::max_element(probabilities.begin(), probabilities.end()));
             result += argMax == 0 ? "00" : std::to_string(argMax);
             probabilities[argMax] = 0; // remove from next max
         }

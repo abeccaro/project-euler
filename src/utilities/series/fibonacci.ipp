@@ -12,7 +12,7 @@ namespace series {
 
     template<class T, class U>
     T fibonacci<T, U>::next_element() {
-        unsigned long count = this->numbers.size();
+        uint64_t count = this->numbers.size();
 
         return this->numbers[count-2] + this->numbers[count-1];
     }

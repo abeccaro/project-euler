@@ -8,10 +8,10 @@
 using generics::totient;
 
 namespace problems {
-    ulong problem72::solve(ulong ub) {
-        ulong result = 0;
+    uint64_t problem72::solve(uint64_t ub) {
+        uint64_t result = 0;
 
-        for (ulong i = 2; i <= ub; i++)
+        for (uint64_t i = 2; i <= ub; i++)
             result += totient(i);
 
         return result;

@@ -7,8 +7,6 @@
 
 #include <string>
 
-using std::string;
-
 namespace problems {
     class problem97 {
     public:
@@ -16,7 +14,7 @@ namespace problems {
          * Solves problem
          * @return The solution
          */
-        static string solve();
+        static std::string solve();
     };
 }
 

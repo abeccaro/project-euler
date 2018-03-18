@@ -5,7 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM21_HPP
 #define PROJECT_EULER_PROBLEM21_HPP
 
-using uint = unsigned int;
+#include <cstdint>
 
 namespace problems {
     class problem21 {
@@ -15,7 +15,7 @@ namespace problems {
          * @param ub The upper bound
          * @return The solution
          */
-        static uint solve(uint ub = 10000);
+        static uint32_t solve(uint32_t ub = 10000);
     };
 }
 

@@ -8,16 +8,13 @@
 using series::fibonacci;
 
 namespace problems {
-    uint problem2::solve(uint ub) {
-        fibonacci<uint> fib;
+    uint32_t problem2::solve(uint32_t ub) {
+        fibonacci<uint32_t> fib;
 
-        uint sum = 0;
-        for (const auto &f : fib) {
-            if (f > ub)
-                break;
-            if (f % 2 == 0)
-                sum += f;
-        }
+        uint32_t sum = 0;
+        for (auto f = fib.begin(); *f <= ub; f++)
+            if (*f % 2 == 0)
+                sum += *f;
 
         return sum;
     }

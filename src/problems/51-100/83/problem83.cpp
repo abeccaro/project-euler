@@ -6,25 +6,29 @@
 #include <input.hpp>
 #include <queue>
 
-using input::read_matrix;
+using std::vector;
 using std::priority_queue;
+using std::numeric_limits;
+
+using input::read_matrix;
+using input::problems_folder;
 
 namespace problems {
-    problem83::entry::entry(ulong row, ulong col, uint value) :
-            row(row), col(col), value(value), distance(std::numeric_limits<uint>::max()) {};
+    problem83::entry::entry(uint64_t row, uint64_t col, uint32_t value) :
+            row(row), col(col), value(value), distance(numeric_limits<uint32_t>::max()) {};
 
     bool problem83::entry_comparer::operator()(const entry* a, const entry* b) {
         return a->distance > b->distance;
     };
 
-    uint problem83::best_path_sum(const vector<vector<uint>>& matrix) {
-        priority_queue<entry*, std::vector<entry*>, entry_comparer> q;
+    uint32_t problem83::best_path_sum(const vector<vector<uint32_t>>& matrix) {
+        priority_queue<entry*, vector<entry*>, entry_comparer> q;
         vector<vector<entry*>> entries(matrix.size());
 
         // entries matrix initialization
-        for (uint r = 0; r < entries.size(); r++) {
+        for (uint32_t r = 0; r < entries.size(); r++) {
             entries[r] = vector<entry*>(matrix[r].size());
-            for (uint c = 0; c < entries[r].size(); c++)
+            for (uint32_t c = 0; c < entries[r].size(); c++)
                 entries[r][c] = new entry(r, c, matrix[r][c]);
         }
 
@@ -76,7 +80,7 @@ namespace problems {
         }
 
         // returning sum of numbers in best path
-        uint result = entries.back().back()->distance;
+        uint32_t result = entries.back().back()->distance;
 
         // deleting pointers
         for (const auto& es : entries)
@@ -87,8 +91,8 @@ namespace problems {
 
     }
 
-    uint problem83::solve() {
-        vector<vector<uint>> matrix = read_matrix<uint>(input::problems_folder + "51-100/83/input.txt");
+    uint32_t problem83::solve() {
+        vector<vector<uint32_t>> matrix = read_matrix<uint32_t>(problems_folder + "51-100/83/input.txt");
 
         return best_path_sum(matrix);
     }
