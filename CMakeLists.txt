@@ -15,12 +15,14 @@ if(Boost_FOUND)
 endif()
 
 SET(PROBLEMS "")
+SET(TESTS "")
 
 # problems 1-50
 foreach(i RANGE 1 50)
     SET(NAME "problem${i}")
     SET(SRC_PATH "src/problems/1-50/${i}/")
     LIST(APPEND PROBLEMS ${SRC_PATH}${NAME}.cpp ${SRC_PATH}${NAME}.hpp)
+    LIST(APPEND TESTS tests/1-50/test_${NAME}.cpp)
 endforeach(${i})
 
 # problems 51-100
@@ -28,7 +30,8 @@ foreach(i RANGE 51 97)
     SET(NAME "problem${i}")
     SET(SRC_PATH "src/problems/51-100/${i}/")
     LIST(APPEND PROBLEMS ${SRC_PATH}${NAME}.cpp ${SRC_PATH}${NAME}.hpp)
+    LIST(APPEND TESTS tests/51-100/test_${NAME}.cpp)
 endforeach(${i})
 
-add_executable(all_tests tests/all_tests.cpp ${PROBLEMS})
+add_executable(all_tests tests/all_tests.cpp ${PROBLEMS} ${TESTS})
 target_link_libraries(all_tests lib)
