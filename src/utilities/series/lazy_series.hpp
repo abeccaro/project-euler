@@ -264,7 +264,7 @@ namespace series {
         std::vector<T> get_while(const test& check);
 
         /**
-         * Gets all the elements before the first one to fail given test
+         * Gets all the elements before the first one to fail given test filtered by given filter
          * @param check The test function
          * @param filter The filter function
          * @return The vector of elements
@@ -279,7 +279,7 @@ namespace series {
         std::vector<T> get_until(const test& check);
 
         /**
-         * Gets all the elements before the first one to pass given test
+         * Gets all the elements before the first one to pass given test filtered by given filter
          * @param check The check function
          * @param filter The filter function
          * @return The vector of elements
