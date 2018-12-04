@@ -34,17 +34,12 @@ foreach(i RANGE 51 100)
 endforeach(${i})
 
 # problems 101-150
-foreach(i RANGE 101 103)
+foreach(i RANGE 101 105)
     SET(NAME "problem${i}")
     SET(SRC_PATH "src/problems/101-150/${i}/")
     LIST(APPEND PROBLEMS ${SRC_PATH}${NAME}.cpp ${SRC_PATH}${NAME}.hpp)
     LIST(APPEND TESTS tests/101-150/test_${NAME}.cpp)
 endforeach(${i})
-
-SET(NAME "problem105")
-SET(SRC_PATH "src/problems/101-150/105/")
-LIST(APPEND PROBLEMS ${SRC_PATH}${NAME}.cpp ${SRC_PATH}${NAME}.hpp)
-LIST(APPEND TESTS tests/101-150/test_${NAME}.cpp)
 
 add_executable(all_tests tests/all_tests.cpp ${PROBLEMS} ${TESTS})
 target_link_libraries(all_tests lib)
