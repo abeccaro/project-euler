@@ -110,6 +110,19 @@ namespace generics {
     }
 
     template<class T, class>
+    T divisors_count(const T& n) {
+        assert (n > 0 && "Numbers must be positive");
+
+        T divisors = 1;
+
+        auto ps = primes::prime_factors_multeplicity(n);
+        for (const auto& p : ps)
+            divisors *= p.second + 1;
+
+        return divisors;
+    }
+
+    template<class T, class>
     T factorial(const T& n) {
         assert(n >= 0 && "Number can't be negative");
 

@@ -68,6 +68,33 @@ namespace primes {
     }
 
     template<class T, class>
+    std::vector<std::pair<T, T>> prime_factors_multeplicity(const T &n) {
+        std::vector<std::pair<T, T>> result;
+        T copy(n);
+
+        T count = 0;
+        while (copy % 2 == 0) {
+            copy /= 2;
+            count++;
+        }
+        result.emplace_back(std::pair<T, T>(2, count));
+
+        for (T i = 3; i * i <= copy; i = i + 2) {
+            count = 0;
+            while (copy % i == 0) {
+                copy /= i;
+                count++;
+            }
+            result.emplace_back(std::pair<T, T>(i, count));
+        }
+
+        if (copy > 2)
+            result.push_back(std::pair<T, T>(copy, 1));
+
+        return result;
+    }
+
+    template<class T, class>
     std::vector<T> primes(const T& n) {
         assert (n > 0 && "Number of primes must be positive");
 

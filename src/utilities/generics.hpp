@@ -74,6 +74,14 @@ namespace generics {
     std::vector<T> divisors(const T& n);
 
     /**
+     * Finds the number of divisors of n
+     * @param n The number
+     * @return The number of divisors of n
+     */
+    template<class T, class = typename std::enable_if<template_conditions::is_any_integral<T>::value>::type>
+    T divisors_count(const T& n);
+
+    /**
      * Calculates the factorial of given number
      * @param n The number
      * @return The factorial

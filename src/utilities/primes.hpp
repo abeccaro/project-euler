@@ -17,6 +17,15 @@ namespace primes {
     std::vector<T> prime_factors(const T& n);
 
     /**
+     * Calculates all given number prime factors and their multeplicity. It uses division trial.
+     * Complexity: O(√n)
+     * @param n The number
+     * @return The vector of couples: (prime factor, multeplicity)
+     */
+    template<class T, class = typename std::enable_if<template_conditions::is_any_integral<T>::value>::type>
+    std::vector<std::pair<T, T>> prime_factors_multeplicity(const T& n);
+
+    /**
      * Generates the first n primes.
      * Complexity: let x = n + log n + log log n, O(x log log x)
      * @param n The number of primes to generate
