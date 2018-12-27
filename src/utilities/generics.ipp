@@ -264,6 +264,30 @@ namespace generics {
         return combs;
     }
 
+    template<class T>
+    std::vector<std::vector<T>> combinations_repetition(const std::vector<T>& elements, uint64_t k, const std::vector<T>& prefix) {
+        if (k == 0)
+            return {};
+
+        std::vector<std::vector<T>> combs;
+
+        for (const auto& e : elements) {
+            std::vector<T> v(prefix);
+            v.push_back(e);
+
+            if (k == 1)
+                combs.push_back(v);
+            else {
+                std::vector<std::vector<T>> res_rec = combinations_repetition(elements, k - 1, v);
+
+                for (const auto &res : res_rec)
+                    combs.push_back(res);
+            }
+        }
+
+        return combs;
+    }
+
     template<class T, class>
     T mod_pow(T base, T exponent, const T& modulo) {
         base %= modulo;

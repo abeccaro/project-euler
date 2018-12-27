@@ -183,6 +183,17 @@ namespace generics {
     std::vector<std::vector<T>> combinations(const std::vector<T>& elements, uint64_t k);
 
     /**
+     * Generates all possible combinations (with possible repetitions) of k items from given elements.
+     * Elements are supposed all different and are treated as such.
+     * @tparam T The type of elements
+     * @param elements The elements to choose from
+     * @param k The number of elements to choose
+     * @return All the combinations
+     */
+    template<class T>
+    std::vector<std::vector<T>> combinations_repetition(const std::vector<T>& elements, uint64_t k, const std::vector<T>& prefix = {});
+
+    /**
      * Calculates (base ^ exponent) mod modulo
      * @param base The base
      * @param exponent The exponent
