@@ -10,7 +10,7 @@ using std::vector;
 
 namespace problems {
 
-    uint64_t problem115::fill_combinations(uint32_t l, uint32_t m, vector<uint64_t>& mem) {
+    uint64_t problem115::fill_combinations(uint32_t l, uint32_t m, const vector<uint64_t>& mem) {
         if (l < m)
             return 1;
 

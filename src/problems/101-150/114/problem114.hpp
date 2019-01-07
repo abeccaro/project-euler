@@ -20,7 +20,7 @@ namespace problems {
          * @param mem The values for results of smaller problems
          * @return The number of ways to fill a row of length 'l'
          */
-        static uint64_t fill_combinations(uint32_t l, std::vector<uint64_t>& mem);
+        static uint64_t fill_combinations(uint32_t l, const std::vector<uint64_t>& mem);
     public:
         /**
          * Solves problem
