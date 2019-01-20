@@ -70,7 +70,7 @@ namespace fractions {
         ///region getters and setters
 
         /**
-         * Sets auto reduction to specified value (true by default).
+         * Sets auto reduction to specified value (false by default).
          * @param b The auto reduction state to set
          */
         static void auto_reduce(bool b);

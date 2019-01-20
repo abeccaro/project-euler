@@ -145,8 +145,8 @@ namespace fractions {
     template<class T, class V>
     fraction<T> fraction<T, V>::operator + (const fraction<T>& other) const {
         T d = generics::lcm<T>(den, other.denominator());
-        T n1 = num * d / den;
-        T n2 = other.numerator() * d / other.denominator();
+        T n1 = d / den * num;
+        T n2 = d / other.numerator() * other.numerator();
         fraction<T> res(n1 + n2, d);
 
         return res;
@@ -155,8 +155,8 @@ namespace fractions {
     template<class T, class V>
     fraction<T>& fraction<T, V>::operator += (const fraction<T>& other) {
         T d = generics::lcm<T>(den, other.denominator());
-        T n1 = num * d / den;
-        T n2 = other.numerator() * d / other.denominator();
+        T n1 = d / den * num;
+        T n2 = d / other.denominator() * other.numerator();
 
         num = n1 + n2;
         den = d;
@@ -170,8 +170,8 @@ namespace fractions {
     template<class T, class V>
     fraction<T> fraction<T, V>::operator - (const fraction<T>& other) const {
         T d = generics::lcm<T>(den, other.denominator());
-        T n1 = num * d / den;
-        T n2 = other.numerator() * d / other.denominator();
+        T n1 = d / den * num;
+        T n2 = d / other.denominator() * other.numerator();
         fraction<T> res(n1 - n2, d);
 
         return res;
@@ -180,8 +180,8 @@ namespace fractions {
     template<class T, class V>
     fraction<T>& fraction<T, V>::operator -= (const fraction<T>& other) {
         T d = generics::lcm<T>(den, other.denominator());
-        T n1 = num * d / den;
-        T n2 = other.numerator() * d / other.denominator();
+        T n1 = d / den * num;
+        T n2 = d / other.denominator() * other.numerator();
 
         num = n1 - n2;
         den = d;

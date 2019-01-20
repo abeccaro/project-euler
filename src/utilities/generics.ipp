@@ -74,7 +74,7 @@ namespace generics {
 
     template<class T, class>
     T lcm(const T& a, const T& b) {
-        return (a * b) / gcd(a, b);
+        return a / gcd(a, b) * b;
     }
 
     template<class T, class>
