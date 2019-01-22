@@ -43,11 +43,12 @@ namespace generics {
     template<class T, class>
     bool is_palindrome(const T& n) {
         std::vector<uint32_t> dig = digits(n);
-        std::vector<uint32_t> reversed_dig(dig.size());
 
-        reverse_copy(dig.begin(), dig.end(), reversed_dig.begin());
+        for (auto it = dig.begin(), it_rev = dig.end() - 1; it <= it_rev; it++, it_rev--)
+            if (*it != *it_rev)
+                return false;
 
-        return dig == reversed_dig;
+        return true;
     }
 
     template<class T, class>
