@@ -254,9 +254,8 @@ namespace fractions {
 
     template<class T>
     void pow(fraction<T>& f, const T& exp) {
-        // FIXME: might not work for boost int types
-        f.numerator(std::pow(f.numerator(), exp));
-        f.denominator(std::pow(f.denominator(), exp));
+        f.numerator(generics::int_pow(f.numerator(), exp));
+        f.denominator(generics::int_pow(f.denominator(), exp));
     }
 
     template<class T>

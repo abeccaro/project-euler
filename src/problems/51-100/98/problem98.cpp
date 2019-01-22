@@ -3,6 +3,7 @@
 //
 
 #include "problem98.hpp"
+#include <generics.hpp>
 #include <input.hpp>
 #include <series/figurate_number.hpp>
 
@@ -11,6 +12,7 @@ using std::string;
 using std::pair;
 using std::to_string;
 
+using generics::int_pow;
 using input::read_vector;
 using input::problems_folder;
 using series::figurate_number;
@@ -82,8 +84,8 @@ namespace problems {
         for (const auto& p : pairs) {
             // get squares of the same length of words in p
             uint32_t l = p.first.size();
-            uint32_t lb = pow(10, l - 1);
-            uint32_t ub = pow(10, l);
+            uint32_t lb = int_pow<uint32_t>(10, l - 1);
+            uint32_t ub = int_pow<uint32_t>(10, l);
             vector<uint32_t> ss = squares.get_while(
                     [ub](uint32_t s) { return s < ub; },
                     [lb](uint32_t s) { return s >= lb; }

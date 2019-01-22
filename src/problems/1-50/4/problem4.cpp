@@ -6,11 +6,12 @@
 #include "generics.hpp"
 
 using generics::is_palindrome;
+using generics::int_pow;
 
 namespace problems {
     uint32_t problem4::solve(uint32_t digits) {
         uint32_t largest_palindrome = 0;
-        uint32_t lb = (uint32_t) pow(10, digits-1);
+        uint32_t lb = int_pow<uint32_t>(10, digits-1);
         uint32_t ub = lb * 10;
 
         for (uint32_t i = lb; i < ub; i++)

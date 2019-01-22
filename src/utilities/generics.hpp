@@ -194,6 +194,15 @@ namespace generics {
     std::vector<std::vector<T>> combinations_repetition(const std::vector<T>& elements, uint64_t k, const std::vector<T>& prefix = {});
 
     /**
+     * Calculates b^exp efficiently for integers
+     * @param b The base
+     * @param exp The exponent
+     * @return The result of b^exp
+     */
+    template<class T, class = typename std::enable_if<template_conditions::is_any_integral<T>::value>::type>
+    T int_pow(T b, T exp);
+
+    /**
      * Calculates (base ^ exponent) mod modulo
      * @param base The base
      * @param exponent The exponent

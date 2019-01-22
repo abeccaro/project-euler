@@ -24,7 +24,7 @@ namespace series {
         prime_checks.resize((uint64_t) (ub / 2), true);
         auto root = sqrt(ub);
 
-        for (uint64_t i = 1; this->numbers[i] < root && i < size; i++) {
+        for (uint64_t i = 1; this->numbers[i] <= root && i < size; i++) {
             while (next_multiples[i] < ub) {
                 prime_checks[(uint64_t) (next_multiples[i] / 2)] = false;
                 next_multiples[i] += 2 * this->numbers[i];

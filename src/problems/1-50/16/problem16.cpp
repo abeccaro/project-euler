@@ -8,10 +8,11 @@
 using std::vector;
 using boost::multiprecision::uint1024_t;
 using generics::digits;
+using generics::int_pow;
 
 namespace problems {
     uint32_t problem16::solve(uint32_t exp) {
-        vector<uint32_t> dig = digits(pow((uint1024_t) 2, exp));
+        vector<uint32_t> dig = digits(int_pow<uint1024_t>(2, exp));
 
         uint32_t sum = 0;
         for (const auto &n : dig)

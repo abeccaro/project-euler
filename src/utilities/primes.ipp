@@ -29,7 +29,7 @@ namespace primes {
 
                 bool composite = true;
                 for (uint32_t r = 0; r < s; r++) {
-                    if (generics::mod_pow<T>(a, (T) pow(2, r) * d, n) == n - 1) {
+                    if (generics::mod_pow<T>(a, generics::int_pow<T>(2, r) * d, n) == n - 1) {
                         composite = false;
                         break;
                     }

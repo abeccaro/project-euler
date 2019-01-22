@@ -35,7 +35,7 @@ namespace generics {
         uint64_t length = digits.size();
 
         for (uint64_t i = 0; i < length; i++)
-            result += digits[length - i - 1] * pow(10, i);
+            result += digits[length - i - 1] * int_pow<T>(10, i);
 
         return result;
     }
@@ -158,7 +158,7 @@ namespace generics {
         assert(are_coprime(base, mod) && "Multiplicative order is not defined for given values");
 
         uint64_t exp = 1;
-        while ((T) pow(base, exp) % mod != 1)
+        while (int_pow<T>(base, exp) % mod != 1)
             exp++;
 
         return exp;
@@ -210,7 +210,7 @@ namespace generics {
         uint64_t size = digs.size();
 
         for (uint64_t i = 0; i < size; i++)
-            result += digs[size-i-1] * pow(base, i);
+            result += digs[size-i-1] * int_pow<uint32_t >(base, i);
 
         return result;
     }
@@ -286,6 +286,20 @@ namespace generics {
         }
 
         return combs;
+    }
+
+    template<class T, class>
+    T int_pow(T b, T exp) {
+        T res = 1;
+
+        while (exp > 0) {
+            if (exp % 2 == 1)
+                res = res * b;
+            b = b * b;
+            exp /= 2;
+        }
+
+        return res;
     }
 
     template<class T, class>
