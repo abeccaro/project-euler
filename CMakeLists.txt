@@ -8,8 +8,8 @@ add_library(lib INTERFACE)
 target_include_directories(lib INTERFACE src/utilities)
 
 # boost
-set(BOOST_ROOT "/Library/Boost")
-find_package(Boost 1.65.1)
+set(BOOST_ROOT "/Library/boost_1_71_0")
+find_package(Boost 1.71.0)
 if(Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIR})
 endif()
@@ -34,7 +34,7 @@ foreach(i RANGE 51 100)
 endforeach(${i})
 
 # problems 101-150
-foreach(i RANGE 101 126)
+foreach(i RANGE 101 127)
     SET(NAME "problem${i}")
     SET(SRC_PATH "src/problems/101-150/${i}/")
     LIST(APPEND PROBLEMS ${SRC_PATH}${NAME}.cpp ${SRC_PATH}${NAME}.hpp)
