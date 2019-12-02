@@ -4,13 +4,17 @@
 
 #define BOOST_TEST_DYN_LINK
 #include <boost/test/unit_test.hpp>
+#include <primes.hpp>
+#include <numeric>
 #include "../../src/problems/101-150/133/problem133.hpp"
 
 BOOST_AUTO_TEST_SUITE( Problem133 )
 
     BOOST_AUTO_TEST_CASE( Example ) {
         auto res = problems::problem133::solve(100);
-        BOOST_CHECK_EQUAL(res, 142);
+        std::vector<uint32_t> primes = primes::primes_up_to<uint32_t>(100);
+        auto solution = std::accumulate(primes.begin(), primes.end(), 0);
+        BOOST_CHECK_EQUAL(res, solution - 142);
     }
 
     BOOST_AUTO_TEST_CASE( Solution ) {
