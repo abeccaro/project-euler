@@ -2,14 +2,11 @@
 // Created by Alex Beccaro on 05/12/2019.
 //
 
-#include <series/primes.hpp>
-#include <generics.hpp>
 #include "problem135.hpp"
+#include <vector>
 
 
 using std::vector;
-
-using generics::mod_pow;
 
 
 namespace problems {

@@ -2,8 +2,8 @@
 // Created by Alex Beccaro on 05/12/2019.
 //
 
-#include <series/primes.hpp>
 #include "problem136.hpp"
+#include <vector>
 
 
 using std::vector;

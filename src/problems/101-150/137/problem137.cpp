@@ -6,8 +6,6 @@
 #include <series/fibonacci.hpp>
 
 
-using std::vector;
-
 using series::fibonacci;
 
 
