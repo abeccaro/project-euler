@@ -8,7 +8,6 @@
 #include <boost/multiprecision/cpp_int.hpp>
 
 
-using series::primes;
 using generics::int_pow;
 using generics::mod_pow;
 
@@ -19,7 +18,7 @@ namespace problems {
 
     uint32_t problem123::solve(uint32_t exp_lb) {
         uint64_t lb = int_pow<uint64_t>(10, exp_lb);
-        primes<uint64_t> ps;
+        series::primes<uint64_t> ps;
 
         for (uint32_t i = 1; ; i++) {
             uint64_t p = ps[i - 1];

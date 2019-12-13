@@ -3,6 +3,7 @@
 //
 
 #include "problem95.hpp"
+#include <algorithm>
 
 using std::vector;
 
@@ -64,7 +65,7 @@ namespace problems {
 
             if (len > max_length) {
                 max_length = len;
-                result = chain.size() == 0 ? i : *min_element(chain.begin(), chain.end());
+                result = chain.empty() ? i : *min_element(chain.begin(), chain.end());
             }
         }
 

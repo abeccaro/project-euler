@@ -28,6 +28,7 @@ namespace problems {
     }
 
     bool problem96::sudoku::is_valid_value(uint32_t row, uint32_t col) {
+        // std::cout << "Valid value " << row << ", " << col << std::endl;
         // row constraint
         for (uint32_t i = 0; i < size; i++)
             if (m[row][i] == m[row][col] && i != col)
@@ -51,12 +52,14 @@ namespace problems {
     }
 
     bool problem96::sudoku::solve(uint32_t row, uint32_t col) {
+        // std::cout << "Solve " << row << ", " << col << std::endl;
         if (m[row][col] != 0) { // if m[row][col] is a hint, skip to next element
             if (col == size - 1)
                 return row == size - 1 || solve(row + 1, 0);
             else
                 return solve(row, col + 1);
         } else { // try all values 1 to 9 and solve recursively
+            // std::cout << "Recursive solve " << row << ", " << col << std::endl;
             for (uint32_t i = 1; i <= size; i++) {
                 m[row][col] = i;
 
@@ -65,7 +68,7 @@ namespace problems {
 
                 if (col == size - 1 && (row == size - 1 || solve(row + 1, 0)))
                     return true;
-                else if (solve(row, col + 1))
+                else if (col < size - 1 && solve(row, col + 1))
                     return true;
             }
 
@@ -84,12 +87,9 @@ namespace problems {
         uint32_t result = 0;
 
         vector<vector<uint32_t>> vectors = read_matrix<uint32_t>(problems_folder + "51-100/96/input.txt");
-        vector<sudoku> sudokus(vectors.size());
 
-        for (uint32_t i = 0; i < vectors.size(); i++)
-            sudokus[i] = sudoku(vectors[i]);
-
-        for (auto& s : sudokus) {
+        for (const auto& vector : vectors) {
+            sudoku s(vector);
             s.solve();
 
             result += s[0][0] * 100;

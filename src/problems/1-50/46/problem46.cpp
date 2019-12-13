@@ -7,11 +7,10 @@
 #include <series/primes.hpp>
 
 using primes::is_prime;
-using series::primes;
 
 namespace problems {
     uint32_t problem46::solve() {
-        primes<uint32_t> p;
+        series::primes<uint32_t> p;
         uint32_t result = 0;
 
         for (uint32_t i = 9; result == 0; i += 2)

@@ -40,7 +40,7 @@ namespace problems {
 
                 // removing other's positions before ss' first element
                 uint32_t to_remove = 0;
-                while (others[to_remove] < ss[0] && to_remove < others.size())
+                while (to_remove < others.size() && others[to_remove] < ss[0])
                     to_remove++;
 
                 others.erase(others.begin(), others.begin() + to_remove);

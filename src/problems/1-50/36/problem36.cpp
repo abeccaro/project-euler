@@ -4,6 +4,7 @@
 
 #include "problem36.hpp"
 #include <generics.hpp>
+#include <vector>
 
 using std::vector;
 using generics::is_palindrome;

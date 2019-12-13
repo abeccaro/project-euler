@@ -9,11 +9,10 @@
 
 using std::vector;
 using primes::is_prime;
-using series::primes;
 
 namespace problems {
     int32_t problem27::solve(uint32_t ub_a, uint32_t ub_b) {
-        primes<uint32_t> p;
+        series::primes<uint32_t> p;
         vector<uint32_t> ps = p.get_while([ub_b](uint32_t n) { return n <= ub_b; });
         uint32_t max_primes = 0;
         int32_t max_a, max_b, signed_ub_a = (int32_t) ub_a;

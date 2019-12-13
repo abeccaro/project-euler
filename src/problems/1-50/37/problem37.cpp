@@ -9,13 +9,12 @@
 
 using std::vector;
 using primes::is_prime;
-using series::primes;
 using generics::digits;
 using generics::from_digits;
 
 namespace problems {
     bool problem37::is_truncatable_from_left(const uint64_t &n) {
-        vector<uint> digs = digits(n);
+        vector<uint32_t> digs = digits(n);
 
         while (digs.size() > 1) {
             if (!is_prime(from_digits<uint64_t>(digs)))
@@ -39,7 +38,7 @@ namespace problems {
     }
 
     uint64_t problem37::solve(uint64_t n) {
-        primes<uint64_t> p;
+        series::primes<uint64_t> p;
         vector<uint64_t> numbers = p.get(n, [](uint64_t p) {
             return p >= 10 && is_truncatable_from_left(p) && is_truncatable_from_right(p);
         });

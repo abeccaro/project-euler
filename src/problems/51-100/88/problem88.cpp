@@ -5,9 +5,11 @@
 #include "problem88.hpp"
 #include <unordered_set>
 #include <cmath>
+#include <algorithm>
 
 using std::vector;
 using std::unordered_set;
+using std::min;
 
 namespace problems {
     void problem88::calculate_mps_recursive(vector<uint32_t>& mps, uint32_t ub, vector<uint32_t>& a, uint32_t sum, uint32_t product) {
@@ -27,7 +29,7 @@ namespace problems {
             }
 
             // update mps of k if necessary
-            mps[k-1] = std::min(mps[k-1], p);
+            mps[k-1] = min(mps[k-1], p);
 
             // recursive call
             calculate_mps_recursive(mps, ub, a, s, p);

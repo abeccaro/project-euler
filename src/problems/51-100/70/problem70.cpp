@@ -9,13 +9,12 @@
 using std::vector;
 
 using generics::digits;
-using series::primes;
 
 namespace problems {
     uint32_t problem70::solve(uint32_t ub) {
         double min = std::numeric_limits<double>::max();
         uint32_t result = 0;
-        primes<uint64_t> ps;
+        series::primes<uint64_t> ps;
 
         // Can't be prime as ϕ(p) = p-1 and p/p-1 can't be a p permutation.
         // Next best candidates are semiprimes (numbers that only have 2 prime divisors).

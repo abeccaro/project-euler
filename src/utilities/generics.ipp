@@ -43,6 +43,8 @@ namespace generics {
     template<class T, class>
     bool is_palindrome(const T& n) {
         std::vector<uint32_t> dig = digits(n);
+        if (dig.size() == 1)
+            return true;
 
         for (auto it = dig.begin(), it_rev = dig.end() - 1; it <= it_rev; it++, it_rev--)
             if (*it != *it_rev)

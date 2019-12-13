@@ -10,7 +10,7 @@ BOOST_AUTO_TEST_SUITE( Problem79 )
 
     BOOST_AUTO_TEST_CASE( Solution ) {
         auto res = problems::problem79::solve();
-        std::vector<uint> sol = {7, 3, 1, 6, 2, 8, 9, 0};
+        std::vector<uint32_t> sol = {7, 3, 1, 6, 2, 8, 9, 0};
         BOOST_CHECK_EQUAL_COLLECTIONS(res.begin(), res.end(), sol.begin(), sol.end());
     }
 

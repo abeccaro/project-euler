@@ -35,7 +35,7 @@ namespace problems {
         return true;
     }
 
-    vector<uint32_t> problem103::optimum_special_sum_set(uint n) {
+    vector<uint32_t> problem103::optimum_special_sum_set(uint32_t n) {
         if (n == 1)
             return {1};
 

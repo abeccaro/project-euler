@@ -10,7 +10,6 @@
 
 using std::vector;
 using primes::is_prime;
-using series::primes;
 using generics::digits;
 using generics::from_digits;
 
@@ -32,7 +31,7 @@ namespace problems {
     uint64_t problem49::solve() {
         const uint32_t except = 1487; // prime not to consider (it's in the example)
 
-        primes<uint32_t> p;
+        series::primes<uint32_t> p;
         vector<uint32_t> primes_4_digs = p.get_while([](int n) { return n < 10000; }, [](int n) { return n > 999; });
 
         uint64_t result = 0;

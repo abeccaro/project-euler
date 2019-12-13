@@ -7,7 +7,6 @@
 
 
 using std::string;
-using std::next_permutation;
 
 using fractions::fraction;
 

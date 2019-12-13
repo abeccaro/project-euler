@@ -5,8 +5,10 @@
 #include "problem39.hpp"
 #include <vector>
 #include <cmath>
+#include <algorithm>
 
 using std::vector;
+using std::max_element;
 
 namespace problems {
     uint32_t problem39::solve(uint32_t ub) {

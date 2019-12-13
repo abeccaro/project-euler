@@ -3,6 +3,7 @@
 //
 
 #include "problem24.hpp"
+#include <algorithm>
 
 using std::vector;
 
