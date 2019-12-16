@@ -4,6 +4,9 @@
 
 #define BOOST_TEST_DYN_LINK
 #include <boost/test/unit_test.hpp>
+#if __APPLE__
+    #include <boost/test/included/unit_test.hpp>
+#endif
 
 // initialization function:
 bool init_unit_test() {
