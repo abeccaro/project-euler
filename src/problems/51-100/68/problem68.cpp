@@ -2,16 +2,17 @@
 // Created by Alex Beccaro on 21/01/18.
 //
 
-#include <sstream>
 #include "problem68.hpp"
+#include <sstream>
+#include <algorithm>
 
 using std::vector;
 using std::string;
 using std::stringstream;
 
 namespace problems {
-    bool problem68::is_valid(const vector<uint>& str) {
-        uint sum = str[0] + str[1] + str[2];
+    bool problem68::is_valid(const vector<uint32_t>& str) {
+        uint32_t sum = str[0] + str[1] + str[2];
 
         return str[3] + str[2] + str[4] == sum &&
                str[5] + str[4] + str[6] == sum &&
@@ -26,7 +27,7 @@ namespace problems {
         // as a0 is the lowest of outer numbers 6 is the maximum value it can have.
         // a1 and a2 must be lower than a0 because they are internal.
         // Further optimisations are not worth.
-        vector<uint> str = {6, 5, 4, 10, 9, 8, 7, 3, 2, 1};
+        vector<uint32_t> str = {6, 5, 4, 10, 9, 8, 7, 3, 2, 1};
 
         while (true) {
             if (is_valid(str)) {

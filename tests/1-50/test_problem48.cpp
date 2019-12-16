@@ -10,13 +10,13 @@ BOOST_AUTO_TEST_SUITE( Problem48 )
 
     BOOST_AUTO_TEST_CASE( Example ) {
         auto res = problems::problem48::solve(10);
-        std::vector<uint> sol = {0, 4, 0, 5, 0, 7, 1, 3, 1, 7};
+        std::vector<uint32_t> sol = {0, 4, 0, 5, 0, 7, 1, 3, 1, 7};
         BOOST_CHECK_EQUAL_COLLECTIONS(res.begin(), res.end(), sol.begin(), sol.end());
     }
 
     BOOST_AUTO_TEST_CASE( Solution ) {
         auto res = problems::problem48::solve();
-        std::vector<uint> sol = {9, 1, 1, 0, 8, 4, 6, 7, 0, 0};
+        std::vector<uint32_t> sol = {9, 1, 1, 0, 8, 4, 6, 7, 0, 0};
         BOOST_CHECK_EQUAL_COLLECTIONS(res.begin(), res.end(), sol.begin(), sol.end());
     }
 

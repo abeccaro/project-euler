@@ -21,7 +21,8 @@ namespace problems {
 
         // find palindromes that can be written as sum of consecutive squares
         for (uint32_t i = 1; squares[i - 1] < ub_2; i++) {
-            uint64_t n = squares[i - 1] + squares[i];
+            uint64_t n = squares[i - 1];
+            n += squares[i];
 
             for (uint32_t j = i; n < ub; j++, n += squares[j])
                 if (is_palindrome(n))

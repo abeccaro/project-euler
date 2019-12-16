@@ -13,7 +13,7 @@ using input::read_vector;
 using input::problems_folder;
 
 namespace problems {
-    map<char, uint> problem89::letterValues = {
+    map<char, uint32_t> problem89::letterValues = {
             {'I', 1},
             {'V', 5},
             {'X', 10},
@@ -23,7 +23,7 @@ namespace problems {
             {'M', 1000}
     };
 
-    uint problem89::from_roman(const string& roman) {
+    uint32_t problem89::from_roman(const string& roman) {
         auto size = roman.size();
 
         if (size == 0)
@@ -32,8 +32,8 @@ namespace problems {
         if (size == 1)
             return letterValues[roman.front()];
 
-        uint v0 = letterValues[roman.front()];
-        uint v1 = letterValues[roman[1]];
+        uint32_t v0 = letterValues[roman.front()];
+        uint32_t v1 = letterValues[roman[1]];
 
         if (v1 > v0)
             return v1 - v0 + from_roman(roman.substr(2, size - 2));
@@ -41,7 +41,7 @@ namespace problems {
         return v0 + from_roman(roman.substr(1, size - 1));
     }
 
-    string problem89::to_roman(uint n) {
+    string problem89::to_roman(uint32_t n) {
         if (n >= 1000)
             return "M" + to_roman(n - 1000);
         if (n >= 900)
@@ -71,8 +71,8 @@ namespace problems {
         return "";
     }
 
-    uint problem89::solve() {
-        uint result = 0;
+    uint32_t problem89::solve() {
+        uint32_t result = 0;
 
         vector<string> in = read_vector<string>(problems_folder + "51-100/89/input.txt");
         for (string s : in)

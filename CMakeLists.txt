@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.9)
+cmake_minimum_required(VERSION 3.10)
 project(project_euler)
 
 set(CMAKE_CXX_STANDARD 11)
@@ -8,11 +8,12 @@ add_library(lib INTERFACE)
 target_include_directories(lib INTERFACE src/utilities)
 
 # boost
-set(BOOST_ROOT "/Library/boost_1_71_0")
-find_package(Boost 1.71.0)
-if(Boost_FOUND)
-    include_directories(${Boost_INCLUDE_DIR})
+if (WIN32)
+    find_package (Boost REQUIRED COMPONENTS unit_test_framework)
+else()
+    find_package(Boost 1.71.0)
 endif()
+include_directories(${Boost_INCLUDE_DIR})
 
 SET(PROBLEMS "")
 SET(TESTS "")
@@ -43,3 +44,4 @@ endforeach(${i})
 
 add_executable(all_tests tests/all_tests.cpp ${PROBLEMS} ${TESTS})
 target_link_libraries(all_tests lib)
+target_link_libraries(all_tests ${Boost_LIBRARIES})

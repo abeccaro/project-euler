@@ -12,7 +12,7 @@
 #include <template_conditions.hpp>
 
 namespace input {
-    const std::string problems_folder = "/Users/Becks/Programmazione/project-euler/src/problems/";
+    const std::string problems_folder = "../src/problems/";
 
     /**
      * Reads a vector of elements from specified file.

@@ -40,13 +40,13 @@ namespace problems {
              * Creates an empty sudoku of specified size
              * @param size The size
              */
-            sudoku(uint32_t size = 9);
+            explicit sudoku(uint32_t size = 9);
 
             /**
              * Creates a sudoku from an existing one represented as vector
              * @param v The vector representation of sudoku. This is supposed by row
              */
-            sudoku(const std::vector<uint32_t>& v);
+            explicit sudoku(const std::vector<uint32_t>& v);
 
             /**
              * Solves the sudoku if possible

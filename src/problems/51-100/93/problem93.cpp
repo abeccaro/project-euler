@@ -100,7 +100,7 @@ namespace problems {
                     if (n == (uint32_t) n)
                     numbers.insert((uint32_t) n);
 
-                std::next_permutation(digs.begin(), digs.end());
+                next_permutation(digs.begin(), digs.end());
             }
 
             uint32_t length = consecutive_int_length(numbers);

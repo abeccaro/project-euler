@@ -8,7 +8,6 @@
 
 
 using std::vector;
-using std::next_permutation;
 
 using primes::is_prime;
 using generics::from_digits;

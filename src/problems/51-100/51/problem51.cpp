@@ -11,7 +11,6 @@ using std::vector;
 using generics::digits;
 using generics::from_digits;
 using primes::is_prime;
-using series::primes;
 
 namespace problems {
     vector<vector<bool>> problem51::masks(uint32_t size) {
@@ -99,7 +98,7 @@ namespace problems {
     uint32_t problem51::solve() {
         const uint32_t lb = 56003;  // lower bound given by problem
 
-        primes<uint64_t> p;
+        series::primes<uint64_t> p;
         for (const auto &prime : p)
             if (prime >= lb && has_required_family(prime))
                 return (uint32_t) prime;

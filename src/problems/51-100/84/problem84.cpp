@@ -4,6 +4,7 @@
 
 #include <vector>
 #include <map>
+#include <algorithm>
 #include "problem84.hpp"
 
 using std::vector;
@@ -128,7 +129,7 @@ namespace problems {
 
         string result;
         for (uint32_t i = 0; i < 3; i++) {
-            int64_t argMax = std::distance(probabilities.begin(), std::max_element(probabilities.begin(), probabilities.end()));
+            int64_t argMax = std::distance(probabilities.begin(), max_element(probabilities.begin(), probabilities.end()));
             result += argMax == 0 ? "00" : std::to_string(argMax);
             probabilities[argMax] = 0; // remove from next max
         }

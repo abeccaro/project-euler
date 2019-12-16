@@ -39,13 +39,16 @@ namespace problems {
             uint32_t next = *possible_next.begin();
 
             // removing next occurrencies to not scan them later
-            for (auto it = codes.begin(); it != codes.end(); it++) {
+            for (auto it = codes.begin(); it != codes.end();) {
                 vector<uint32_t>& c = *it;
-                if (c[0] == next) {
+
+                if (c[0] == next)
                     c.erase(c.begin());
-                    if (c.empty())
-                        codes.erase(it--);
-                }
+
+                if (c.empty())
+                    it = codes.erase(it);
+                else
+                    it++;
             }
 
             // adding digit to passcode

@@ -86,7 +86,7 @@ namespace problems {
             return 9498; // Straight
 
         // counting repetitions (poker, tris and couples)
-        uint32_t n_v1 = 0, v1, n_v2 = 0, v2;
+        uint32_t n_v1 = 0, v1 = 0, n_v2 = 0, v2 = 0;
         for (uint32_t i = 2; i < 15; i++) {
             uint32_t c = count_if(cards.begin(), cards.end(), [i](card c) { return c.value == i; });
             if (c > n_v1 || (c == n_v1 && i > v1)) {

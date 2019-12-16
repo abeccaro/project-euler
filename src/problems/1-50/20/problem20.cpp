@@ -11,10 +11,10 @@ using generics::digits;
 using generics::factorial;
 
 namespace problems {
-    uint problem20::solve(uint n) {
-        vector<uint> dig = digits(factorial<uint1024_t>(n));
+    uint32_t problem20::solve(uint32_t n) {
+        vector<uint32_t> dig = digits(factorial<uint1024_t>(n));
 
-        uint sum = 0;
+        uint32_t sum = 0;
         for (const auto &d : dig)
             sum += d;
         return sum;
