@@ -14,7 +14,7 @@ namespace problems {
          * Solves problem
          * @return The solution
          */
-        static uint64_t solve(uint64_t n = 30);
+        static int64_t solve(uint64_t n = 30);
     };
 }
 

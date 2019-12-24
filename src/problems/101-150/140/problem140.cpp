@@ -8,19 +8,19 @@
 
 namespace problems {
 
-    uint64_t problem140::solve(uint64_t n) {
-        int count = 0;
-        long res = 0;
+    int64_t problem140::solve(uint64_t n) {
+        int32_t count = 0;
+        int64_t res = 0;
 
-        // From 5x² - y² + 14⁢x + 1 = 0 using https://www.alpertron.com.ar/QUAD.HTM
-        std::vector<std::pair<long, long> > sols = {{-4, 5}, {-3, 2}, {-3, -2}, {2, -7}, {0, -1}, {0, 1}};
+        // From 5x² - y² + 14 x + 1 = 0 using https://www.alpertron.com.ar/QUAD.HTM
+        std::vector<std::pair<int64_t, int64_t>> sols = {{-4, 5}, {-3, 2}, {-3, -2}, {2, -7}, {0, -1}, {0, 1}};
 
         for (int i = 0; count < n; i++) {
             auto sol = sols[i % sols.size()];
-            long x = sol.first;
-            long y = sol.second;
+            int64_t x = sol.first;
+            int64_t y = sol.second;
 
-            long new_x = -9 * x - 4 * y - 14;
+            int64_t new_x = -9 * x - 4 * y - 14;
             sol.second = -20 * x - 9 * y - 28;
             sol.first = new_x;
             sols[i % sols.size()] = sol;
