@@ -12,7 +12,7 @@ BOOST_AUTO_TEST_SUITE( Problem53 )
         auto res22 = problems::problem53::solve(22);
         BOOST_CHECK_EQUAL(res22, 0);
         auto res23 = problems::problem53::solve(23);
-        BOOST_CHECK_GT(res23, 0);
+        BOOST_CHECK_GT(res23, 0U);
     }
 
     BOOST_AUTO_TEST_CASE( Solution ) {
