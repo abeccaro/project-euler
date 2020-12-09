@@ -3,7 +3,7 @@
 //
 
 #include "problem144.hpp"
-#include <iostream>
+#include <cmath>
 
 
 namespace problems {
