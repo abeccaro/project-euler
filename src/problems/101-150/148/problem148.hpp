@@ -6,7 +6,6 @@
 #define PROJECT_EULER_PROBLEM148_HPP
 
 #include <cstdint>
-#include <boost/multiprecision/cpp_int.hpp>
 
 
 namespace problems {
@@ -17,7 +16,7 @@ namespace problems {
          * @param n The requested triangular number index
          * @return The nth triangular number
          */
-        static boost::multiprecision::cpp_int triangular(const boost::multiprecision::cpp_int& n);
+        static uint64_t triangular(uint64_t n);
 
     public:
         /**
@@ -25,7 +24,7 @@ namespace problems {
          * @param n The number of lines to consider
          * @return The number of entries that are not divisible by 7 in the first n lines
          */
-        static boost::multiprecision::cpp_int solve(const boost::multiprecision::cpp_int& n = 1000000000);
+        static uint64_t solve(uint64_t n = 1000000000);
     };
 }
 
