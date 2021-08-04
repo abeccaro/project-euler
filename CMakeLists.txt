@@ -42,6 +42,14 @@ foreach(i RANGE 101 150)
     LIST(APPEND TESTS tests/101-150/test_${NAME}.cpp)
 endforeach(${i})
 
+# problems 101-150
+foreach(i RANGE 151 151)
+    SET(NAME "problem${i}")
+    SET(SRC_PATH "src/problems/151-200/${i}/")
+    LIST(APPEND PROBLEMS ${SRC_PATH}${NAME}.cpp ${SRC_PATH}${NAME}.hpp)
+    LIST(APPEND TESTS tests/151-200/test_${NAME}.cpp)
+endforeach(${i})
+
 add_executable(all_tests tests/all_tests.cpp ${PROBLEMS} ${TESTS})
 target_link_libraries(all_tests lib)
 target_link_libraries(all_tests ${Boost_LIBRARIES})
