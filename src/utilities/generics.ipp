@@ -156,6 +156,28 @@ namespace generics {
     }
 
     template<class T, class>
+    std::vector<std::pair<T, T>> coprime_pairs(const T& n) {
+        T a = 0;
+        T b = 1;
+        T c = 1;
+        T d = n;
+        std::vector<std::pair<T, T>> pairs(1, {a, b});
+
+        while(c <= n) {
+            T k = (n + b) / d;
+            T new_c = k * c - a;
+            T new_d = k * d - b;
+            a = c;
+            b = d;
+            c = new_c;
+            d = new_d;
+            pairs.emplace_back(a, b);
+        }
+
+        return pairs;
+    }
+
+    template<class T, class>
     T multiplicative_order(const T& base, const T& mod) {
         assert(mod > 1 && "Modulo must be greater than 1");
         assert(are_coprime(base, mod) && "Multiplicative order is not defined for given values");

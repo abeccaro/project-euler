@@ -108,6 +108,14 @@ namespace generics {
     bool are_coprime(const T& a, const T& b);
 
     /**
+     * Generates all the coprime pairs with numbers up to given limit (n-th Farey sequence).
+     * @param n The upper bound for numbers
+     * @return All the coprime pairs with numbers up to given limit n
+     */
+    template<class T, class = typename std::enable_if<template_conditions::is_any_integral<T>::value>::type>
+    std::vector<std::pair<T, T>> coprime_pairs(const T& n);
+
+    /**
      * Calculates the multiplicative order of n modulo mod.
      * Note that n and mod have to be coprimes. This is assumed by function.
      * @param n The number

@@ -14,13 +14,13 @@ BOOST_AUTO_TEST_SUITE( Problem153 )
     }
 
     BOOST_AUTO_TEST_CASE( Example2 ) {
-    auto res = problems::problem153::solve(100000);
-    BOOST_CHECK_EQUAL(res, 17924657155);
-}
+        auto res = problems::problem153::solve(100000);
+        BOOST_CHECK_EQUAL(res, 17924657155);
+    }
 
     BOOST_AUTO_TEST_CASE( Solution ) {
         auto res = problems::problem153::solve();
-        BOOST_CHECK_EQUAL(res, 100);
+        BOOST_CHECK_EQUAL(res, 17971254122360635);
     }
 
 BOOST_AUTO_TEST_SUITE_END()
