@@ -157,21 +157,18 @@ namespace generics {
 
     template<class T, class>
     std::vector<std::pair<T, T>> coprime_pairs(const T& n) {
-        T a = 0;
-        T b = 1;
-        T c = 1;
-        T d = n;
-        std::vector<std::pair<T, T>> pairs(1, {a, b});
+        std::vector<std::pair<T, T>> pairs;
 
-        while(c <= n) {
-            T k = (n + b) / d;
-            T new_c = k * c - a;
-            T new_d = k * d - b;
+        for (uint64_t a = 0, b = 1, c = 1, d = n; c < d;) {
+            pairs.template emplace_back(c, d);
+
+            uint64_t k = (n + b) / d;
+            uint64_t temp = a;
             a = c;
+            c = k * c - temp;
+            temp = b;
             b = d;
-            c = new_c;
-            d = new_d;
-            pairs.emplace_back(a, b);
+            d = k * d - temp;
         }
 
         return pairs;

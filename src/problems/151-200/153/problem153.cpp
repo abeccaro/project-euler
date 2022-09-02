@@ -3,54 +3,29 @@
 //
 
 #include "problem153.hpp"
-#include <vector>
 #include <cmath>
-
-using std::vector;
-using std::pair;
 
 namespace problems {
     uint64_t problem153::solve(uint64_t ub) {
-        uint64_t result = 0;
         auto root = (uint64_t) sqrt(ub);
+        uint64_t result = 0;
 
-        // divisors with a, b > 0 and a != b using Farey sequence.
-        // To optimize we stop when we reach 1/2 (considered at the end of the loop) and for each pair (a, b) we also
-        // consider (b-a, b) to still use all coprime pairs
-        uint64_t a = 1;
-        uint64_t b = root;
-        uint64_t c = (root + 1) / root;
-        uint64_t d = ((root + 1) / root) * root - 1;
-
-        while(b != 2) {
-            uint64_t a2 = a * a;
-            uint64_t b2 = b * b;
-
-            for (uint64_t g = 1; g * (a2 + b2) <= ub; g++) {
-                uint64_t multiples = ub / (g * (a2 + b2));
-                result += 2 * g * (a + b) * multiples;
-            }
-
-            uint64_t z = b - a;
-            uint64_t z2 = z * z;
-
-            for (uint64_t g = 1; g * (z2 + b2) <= ub; g++) {
-                uint64_t multiples = ub / (g * (z2 + b2));
-                result += 2 * g * (z + b) * multiples;
+        // divisors with a, b > 0 and a != b
+        // same as looping on generics::coprime_pairs(root) but without using memory to improve performance
+        for (uint64_t a = 0, b = 1, c = 1, d = root; c < d;) {
+            uint64_t sum2 = c*c + d*d;
+            for (uint64_t g = 1; g * sum2 <= ub; g++) {
+                uint64_t multiples = ub / (g * sum2);
+                result += 2 * g * (c + d) * multiples;
             }
 
             uint64_t k = (root + b) / d;
-            uint64_t new_c = k * c - a;
-            uint64_t new_d = k * d - b;
+            uint64_t temp = a;
             a = c;
+            c = k * c - temp;
+            temp = b;
             b = d;
-            c = new_c;
-            d = new_d;
-        }
-
-        for (uint64_t g = 1; g * 5 <= ub; g++) {
-            uint64_t multiples = ub / (g * 5);
-            result += 6 * g * multiples;
+            d = k * d - temp;
         }
 
         // integer divisors
