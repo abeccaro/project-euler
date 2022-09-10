@@ -66,6 +66,12 @@ namespace fractions {
          */
         void invert();
 
+        /**
+         * Calculates the inverse of this fraction
+         * @return The inverse of this fraction
+         */
+         fraction inverse() const;
+
 
         ///region getters and setters
 

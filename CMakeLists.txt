@@ -43,7 +43,7 @@ foreach(i RANGE 101 150)
 endforeach(${i})
 
 # problems 151-200
-foreach(i RANGE 151 154)
+foreach(i RANGE 151 155)
     SET(NAME "problem${i}")
     SET(SRC_PATH "src/problems/151-200/${i}/")
     LIST(APPEND PROBLEMS ${SRC_PATH}${NAME}.cpp ${SRC_PATH}${NAME}.hpp)

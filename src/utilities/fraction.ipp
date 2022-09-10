@@ -61,6 +61,13 @@ namespace fractions {
         den = temp;
     }
 
+    template<class T, class V>
+    fraction<T, V> fraction<T, V>::inverse() const {
+        assert(num != 0 && "Can't invert 0");
+
+        return {den, num};
+    }
+
     /// region getters and setters
 
     template<class T, class V>
