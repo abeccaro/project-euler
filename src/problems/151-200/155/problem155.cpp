@@ -13,9 +13,12 @@ using fractions::fraction;
 
 
 namespace problems {
+    // Could probably be more efficient if instead of storing and looking up for whole fractions we use a bi-dimensional
+    // array or a map num => dens so that lookup is faster
     uint32_t problem155::solve(uint32_t n) {
         vector<vector<fraction<uint32_t>>> circuits(n);
         unordered_set<fraction<uint32_t>> solutions;
+        fraction<uint32_t>::auto_reduce(true);
 
         circuits[0].push_back(1);
         solutions.insert(1);
@@ -23,20 +26,19 @@ namespace problems {
             for (uint32_t j = 1; j <= i/2; j++) {
                 for (const auto& c1 : circuits[j - 1]) {
                     for (const auto& c2 : circuits[i - j - 1]) {
-                        fraction<uint32_t> parallel = c1 + c2;
-                        parallel.reduce();
-                        if (parallel.numerator() > parallel.denominator())
-                            parallel.invert();
-                        auto inserted = solutions.insert(parallel);
+                        fraction<uint32_t> sum = c1 + c2;
+                        if (sum.numerator() > sum.denominator())
+                            sum.invert();
+                        auto inserted = solutions.insert(sum);
                         if (inserted.second) {
-                            circuits[i - 1].push_back(parallel);
-                            circuits[i - 1].push_back(parallel.inverse());
+                            circuits[i - 1].push_back(sum);
+                            circuits[i - 1].push_back(sum.inverse());
                         }
                     }
                 }
             }
         }
 
-        return solutions.size() * 2 - 1; // -1 for 1/1
+        return solutions.size() * 2 - 1; // -1 cause the inverse of 1/1 is still 1/1
     }
 }
