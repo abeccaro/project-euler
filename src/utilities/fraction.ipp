@@ -305,3 +305,24 @@ namespace fractions {
     }
 
 }
+
+namespace std {
+    template <class T>
+    struct hash<fractions::fraction<T>> {
+        // see https://stackoverflow.com/a/34799763/5337213
+        auto operator()(const fractions::fraction<T>& f) const -> size_t {
+            size_t n = f.numerator();
+            size_t d = f.denominator();
+            auto elegant = [](size_t n, size_t d) { return n < d ? d * d + n : n * n + n + d; }; // elegant pairing function
+
+            if (n < 0) {
+                if (d < 0)
+                    return 3 + 4 * elegant(-n - 1, -d - 1);
+                return 2 + 4 * elegant(-n - 1, d);
+            }
+            if (d < 0)
+                return 1 + 4 * elegant(n, -d - 1);
+            return 4 * elegant(n, d);
+        }
+    };
+}

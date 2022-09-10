@@ -5,18 +5,17 @@
 #include "problem155.hpp"
 #include "fraction.hpp"
 #include <vector>
-#include <iostream>
+#include <unordered_set>
 
 using std::vector;
-using std::set;
+using std::unordered_set;
 using fractions::fraction;
-using std::pair;
 
 
 namespace problems {
     uint32_t problem155::solve(uint32_t n) {
         vector<vector<fraction<uint32_t>>> circuits(n);
-        set<fraction<uint32_t>> solutions;
+        unordered_set<fraction<uint32_t>> solutions;
 
         circuits[0].push_back(1);
         solutions.insert(1);
@@ -37,9 +36,6 @@ namespace problems {
                 }
             }
         }
-
-//        for (const auto& c : solutions)
-//            std::cout << c << std::endl;
 
         return solutions.size() * 2 - 1; // -1 for 1/1
     }
