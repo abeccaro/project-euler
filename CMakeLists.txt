@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 project(project_euler)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 20)
 
 # private lib
 add_library(lib INTERFACE)
@@ -43,7 +43,7 @@ foreach(i RANGE 101 150)
 endforeach(${i})
 
 # problems 151-200
-foreach(i RANGE 151 156)
+foreach(i RANGE 151 157)
     SET(NAME "problem${i}")
     SET(SRC_PATH "src/problems/151-200/${i}/")
     LIST(APPEND PROBLEMS ${SRC_PATH}${NAME}.cpp ${SRC_PATH}${NAME}.hpp)
