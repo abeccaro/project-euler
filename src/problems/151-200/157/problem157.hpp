@@ -14,10 +14,10 @@ namespace problems {
         /**
          * Calculates the number of combinations of a, b, p, n that solve the diophantine equation 1/a + 1/b = p/(10^n)
          * for n up to given number
-         * @param n The maximum exponent for the power of ten
+         * @param n_max The maximum exponent for the power of ten
          * @return The number of solutions
          */
-        static uint64_t solve(uint64_t n_max = 9);
+        static uint32_t solve(uint32_t n_max = 9);
     };
 }
 

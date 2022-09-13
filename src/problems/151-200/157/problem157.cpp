@@ -14,14 +14,14 @@ using std::set;
 using std::pair;
 
 namespace problems {
-    uint64_t problem157::solve(uint64_t n_max) {
+    uint32_t problem157::solve(uint32_t n_max) {
         uint64_t result = 0;
 
-        for (uint64_t n = 1; n <= n_max; n++) {
-            uint64_t x = int_pow(10ull, n);
+        for (uint32_t n = 1; n <= n_max; n++) {
+            uint32_t x = int_pow(10u, n);
 
             auto combs = combinations(divisors(x), 2);
-            set<pair<uint64_t, uint64_t>> bases;
+            set<pair<uint32_t, uint32_t>> bases;
             for (auto& c : combs) {
                 uint64_t g = gcd(c[0], c[1]);
                 sort(c.begin(),  c.end());
