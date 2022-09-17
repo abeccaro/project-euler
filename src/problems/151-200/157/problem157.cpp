@@ -4,6 +4,7 @@
 
 #include "problem157.hpp"
 #include "generics.hpp"
+#include <set>
 
 using generics::int_pow;
 using generics::combinations;

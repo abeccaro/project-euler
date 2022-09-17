@@ -6,6 +6,7 @@
 #define PROJECT_EULER_PROBLEM142_HPP
 
 #include <cstdint>
+#include <vector>
 #include <unordered_map>
 
 namespace problems {

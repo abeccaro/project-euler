@@ -238,12 +238,6 @@ namespace generics {
     }
 
     template<class T, class>
-    std::vector<uint32_t> to_base(const T& n, uint32_t from, uint32_t to) {
-        // FIXME: not correct? Test!
-        from_base(from_digits<T>(to_base(n, 2)), 2);
-    }
-
-    template<class T, class>
     T abs(const T& n) {
         return n < 0 ? 0 - n : n;
     }

@@ -6,6 +6,7 @@
 #include "fraction.hpp"
 #include "generics.hpp"
 #include <vector>
+#include <set>
 
 using std::vector;
 using std::map;

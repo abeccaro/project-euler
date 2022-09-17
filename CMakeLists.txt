@@ -11,7 +11,7 @@ target_include_directories(lib INTERFACE src/utilities)
 if (WIN32)
     find_package (Boost REQUIRED COMPONENTS unit_test_framework)
 else()
-    find_package(Boost 1.71.0)
+    find_package(Boost 1.80.0)
 endif()
 include_directories(${Boost_INCLUDE_DIR})
 

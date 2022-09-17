@@ -2,6 +2,8 @@
 // Created by Alex Beccaro on 17/03/18.
 //
 
+#include <limits.h>
+
 namespace series {
 
     /// region iterator

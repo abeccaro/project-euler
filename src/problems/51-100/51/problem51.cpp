@@ -74,7 +74,7 @@ namespace problems {
             }
 
             if (member[0] != 0) {
-                uint64_t number = from_digits<uint64_t>(member);
+                auto number = from_digits<uint64_t>(member);
                 if (is_prime(number))
                     family.push_back(number);
             }
@@ -102,5 +102,7 @@ namespace problems {
         for (const auto &prime : p)
             if (prime >= lb && has_required_family(prime))
                 return (uint32_t) prime;
+
+        return 0;
     }
 }

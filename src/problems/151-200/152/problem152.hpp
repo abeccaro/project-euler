@@ -8,6 +8,7 @@
 
 #include <cstdint>
 #include <vector>
+#include <map>
 #include "fraction.hpp"
 
 namespace problems {

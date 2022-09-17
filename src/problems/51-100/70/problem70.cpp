@@ -18,7 +18,7 @@ namespace problems {
 
         // Can't be prime as ϕ(p) = p-1 and p/p-1 can't be a p permutation.
         // Next best candidates are semiprimes (numbers that only have 2 prime divisors).
-        for (auto p = ps.begin() + 1; p != ps.end(); p++)
+        for (auto p = ps.begin() + 1; p != ps.end(); p++) {
             for (auto q = ps.begin(); q != p; q++) {
                 if (*p > ub)
                     return result;
@@ -42,5 +42,8 @@ namespace problems {
                     }
                 }
             }
+        }
+
+        return 0;
     }
 }

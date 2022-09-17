@@ -6,6 +6,7 @@
 #define PROJECT_EULER_PROBLEM54_HPP
 
 #include <vector>
+#include <string>
 
 namespace problems {
     class problem54 {

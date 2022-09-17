@@ -153,16 +153,6 @@ namespace generics {
     T from_base(const T& n, uint32_t base);
 
     /**
-     * Converts given number from a base to another base
-     * @param n The number
-     * @param from The current base
-     * @param to The base to convert the number to
-     * @return The converted number's digits
-     */
-    template<class T, class = typename std::enable_if<template_conditions::is_any_integral<T>::value>::type>
-    std::vector<uint32_t> to_base(const T& n, uint32_t from, uint32_t to);
-
-    /**
      * Template version of std::abs that allows unsigned types to have a non ambiguous call.
      * This is needed in some template instantiations.
      * @param n The number

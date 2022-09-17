@@ -8,6 +8,7 @@
 #include <vector>
 #include <map>
 #include <set>
+#include <string>
 
 namespace problems {
     class problem93 {
