@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 project(project_euler)
 
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 23)
 
 # private lib
 add_library(lib INTERFACE)
@@ -17,6 +17,9 @@ include_directories(${Boost_INCLUDE_DIR})
 
 SET(PROBLEMS "")
 SET(TESTS "")
+
+SET(CURRENT_PROBLEM "160")
+SET(CURRENT_FILE "src/problems/151-200/${CURRENT_PROBLEM}/problem${CURRENT_PROBLEM}")
 
 # problems 1-50
 foreach(i RANGE 1 50)
@@ -43,13 +46,19 @@ foreach(i RANGE 101 150)
 endforeach(${i})
 
 # problems 151-200
-foreach(i RANGE 151 159)
+foreach(i RANGE 151 ${CURRENT_PROBLEM})
     SET(NAME "problem${i}")
     SET(SRC_PATH "src/problems/151-200/${i}/")
     LIST(APPEND PROBLEMS ${SRC_PATH}${NAME}.cpp ${SRC_PATH}${NAME}.hpp)
     LIST(APPEND TESTS tests/151-200/test_${NAME}.cpp)
 endforeach(${i})
 
+#all tests executable
 add_executable(all_tests tests/all_tests.cpp ${PROBLEMS} ${TESTS})
 target_link_libraries(all_tests lib)
 target_link_libraries(all_tests ${Boost_LIBRARIES})
+
+#current problem tests executable
+add_executable(current tests/all_tests.cpp ${CURRENT_FILE}.cpp ${CURRENT_FILE}.hpp tests/151-200/test_problem${CURRENT_PROBLEM}.cpp)
+target_link_libraries(current lib)
+target_link_libraries(current ${Boost_LIBRARIES})
