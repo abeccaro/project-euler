@@ -4,8 +4,8 @@
 #ifndef PROJECT_EULER_TEMPLATE_CONDITIONS_H
 #define PROJECT_EULER_TEMPLATE_CONDITIONS_H
 
-#include <boost/multiprecision/cpp_int.hpp>
-#include <boost/multiprecision/cpp_dec_float.hpp>
+#include "boost/multiprecision/cpp_int.hpp"
+#include "boost/multiprecision/cpp_dec_float.hpp"
 
 namespace template_conditions {
 

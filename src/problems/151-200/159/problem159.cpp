@@ -3,7 +3,8 @@
 //
 
 #include "problem159.hpp"
-#include <vector>
+#include "vector"
+#include "algorithm"
 
 using std::vector;
 using std::max;

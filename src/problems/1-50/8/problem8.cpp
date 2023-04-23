@@ -3,7 +3,7 @@
 //
 
 #include "problem8.hpp"
-#include <input.hpp>
+#include "input.hpp"
 
 using std::vector;
 using input::read_vector;

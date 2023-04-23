@@ -3,7 +3,7 @@
 //
 
 #include "problem61.hpp"
-#include <series/figurate_number.hpp>
+#include "series/figurate_number.hpp"
 
 using std::vector;
 using std::map;

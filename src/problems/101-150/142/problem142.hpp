@@ -5,9 +5,9 @@
 #ifndef PROJECT_EULER_PROBLEM142_HPP
 #define PROJECT_EULER_PROBLEM142_HPP
 
-#include <cstdint>
-#include <vector>
-#include <unordered_map>
+#include "cstdint"
+#include "vector"
+#include "unordered_map"
 
 namespace problems {
     class problem142 {

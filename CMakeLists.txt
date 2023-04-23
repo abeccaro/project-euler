@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.25)
 project(project_euler)
 
 set(CMAKE_CXX_STANDARD 23)
@@ -8,12 +8,9 @@ add_library(lib INTERFACE)
 target_include_directories(lib INTERFACE src/utilities)
 
 # boost
-if (WIN32)
-    find_package (Boost REQUIRED COMPONENTS unit_test_framework)
-else()
-    find_package(Boost 1.74.0)
-endif()
+# set(Boost_USE_STATIC_LIBS OFF)
 include_directories(${Boost_INCLUDE_DIR})
+find_package (Boost COMPONENTS unit_test_framework REQUIRED)
 
 SET(PROBLEMS "")
 SET(TESTS "")
@@ -27,7 +24,7 @@ foreach(i RANGE 1 50)
     SET(SRC_PATH "src/problems/1-50/${i}/")
     LIST(APPEND PROBLEMS ${SRC_PATH}${NAME}.cpp ${SRC_PATH}${NAME}.hpp)
     LIST(APPEND TESTS tests/1-50/test_${NAME}.cpp)
-endforeach(${i})
+endforeach(i)
 
 # problems 51-100
 foreach(i RANGE 51 100)
@@ -35,7 +32,7 @@ foreach(i RANGE 51 100)
     SET(SRC_PATH "src/problems/51-100/${i}/")
     LIST(APPEND PROBLEMS ${SRC_PATH}${NAME}.cpp ${SRC_PATH}${NAME}.hpp)
     LIST(APPEND TESTS tests/51-100/test_${NAME}.cpp)
-endforeach(${i})
+endforeach(i)
 
 # problems 101-150
 foreach(i RANGE 101 150)
@@ -43,7 +40,7 @@ foreach(i RANGE 101 150)
     SET(SRC_PATH "src/problems/101-150/${i}/")
     LIST(APPEND PROBLEMS ${SRC_PATH}${NAME}.cpp ${SRC_PATH}${NAME}.hpp)
     LIST(APPEND TESTS tests/101-150/test_${NAME}.cpp)
-endforeach(${i})
+endforeach(i)
 
 # problems 151-200
 foreach(i RANGE 151 ${CURRENT_PROBLEM})
@@ -51,14 +48,12 @@ foreach(i RANGE 151 ${CURRENT_PROBLEM})
     SET(SRC_PATH "src/problems/151-200/${i}/")
     LIST(APPEND PROBLEMS ${SRC_PATH}${NAME}.cpp ${SRC_PATH}${NAME}.hpp)
     LIST(APPEND TESTS tests/151-200/test_${NAME}.cpp)
-endforeach(${i})
+endforeach(i)
 
 #all tests executable
 add_executable(all_tests tests/all_tests.cpp ${PROBLEMS} ${TESTS})
-target_link_libraries(all_tests lib)
-target_link_libraries(all_tests ${Boost_LIBRARIES})
+target_link_libraries(all_tests lib ${Boost_LIBRARIES})
 
 #current problem tests executable
 add_executable(current tests/all_tests.cpp ${CURRENT_FILE}.cpp ${CURRENT_FILE}.hpp tests/151-200/test_problem${CURRENT_PROBLEM}.cpp)
-target_link_libraries(current lib)
-target_link_libraries(current ${Boost_LIBRARIES})
+target_link_libraries(current lib ${Boost_LIBRARIES})

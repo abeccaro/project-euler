@@ -3,8 +3,8 @@
 //
 
 #include "problem47.hpp"
-#include <primes.hpp>
-#include <iostream>
+#include "primes.hpp"
+#include "iostream"
 
 using primes::prime_factors;
 

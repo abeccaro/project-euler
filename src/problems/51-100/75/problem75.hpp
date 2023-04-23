@@ -5,8 +5,9 @@
 #ifndef PROJECT_EULER_PROBLEM75_HPP
 #define PROJECT_EULER_PROBLEM75_HPP
 
-#include <vector>
-#include <unordered_map>
+#include "cstdint"
+#include "vector"
+#include "unordered_map"
 
 namespace problems {
     class problem75 {

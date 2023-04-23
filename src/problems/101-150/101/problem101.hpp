@@ -5,8 +5,8 @@
 #ifndef PROJECT_EULER_PROBLEM101_HPP
 #define PROJECT_EULER_PROBLEM101_HPP
 
-#include <cstdint>
-#include <functional>
+#include "cstdint"
+#include "functional"
 
 namespace problems {
     class problem101 {

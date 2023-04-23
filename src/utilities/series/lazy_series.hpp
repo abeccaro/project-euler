@@ -5,8 +5,9 @@
 #ifndef PROJECT_EULER_LAZY_SERIES_H
 #define PROJECT_EULER_LAZY_SERIES_H
 
-#include <vector>
-#include <functional>
+#include "cstdint"
+#include "vector"
+#include "functional"
 
 namespace series {
     template <class T>
@@ -210,7 +211,7 @@ namespace series {
         /**
          * Virtual destructor for subclasses
          */
-        virtual ~lazy_series<T>();
+        virtual ~lazy_series();
 
 
         /**

@@ -2,10 +2,9 @@
 // Created by Alex Beccaro on 25/01/2019.
 //
 
-#define BOOST_TEST_DYN_LINK
-#include <boost/test/unit_test.hpp>
-#include <primes.hpp>
-#include <numeric>
+#include "boost/test/unit_test.hpp"
+#include "primes.hpp"
+#include "numeric"
 #include "../../src/problems/101-150/133/problem133.hpp"
 
 BOOST_AUTO_TEST_SUITE( Problem133 )

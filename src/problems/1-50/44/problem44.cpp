@@ -3,7 +3,7 @@
 //
 
 #include "problem44.hpp"
-#include <series/figurate_number.hpp>
+#include "series/figurate_number.hpp"
 
 using series::figurate_number;
 

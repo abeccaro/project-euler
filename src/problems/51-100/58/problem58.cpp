@@ -3,7 +3,7 @@
 //
 
 #include "problem58.hpp"
-#include <primes.hpp>
+#include "primes.hpp"
 
 using primes::is_prime;
 

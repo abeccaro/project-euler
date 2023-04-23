@@ -4,7 +4,7 @@
 #ifndef PROJECT_EULER_GENERICS_H
 #define PROJECT_EULER_GENERICS_H
 
-#include <template_conditions.hpp>
+#include "template_conditions.hpp"
 
 namespace generics {
     /**

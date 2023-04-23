@@ -2,8 +2,7 @@
 // Created by Alex Beccaro on 23/03/18.
 //
 
-#define BOOST_TEST_DYN_LINK
-#include <boost/test/unit_test.hpp>
+#include "boost/test/unit_test.hpp"
 #include "../../src/problems/101-150/104/problem104.hpp"
 
 BOOST_AUTO_TEST_SUITE( Problem104 )

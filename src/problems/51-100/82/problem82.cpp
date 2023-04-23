@@ -3,8 +3,8 @@
 //
 
 #include "problem82.hpp"
-#include <input.hpp>
-#include <queue>
+#include "input.hpp"
+#include "queue"
 
 using std::vector;
 using std::priority_queue;

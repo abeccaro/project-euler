@@ -3,7 +3,7 @@
 //
 
 #include "problem107.hpp"
-#include <input.hpp>
+#include "input.hpp"
 
 using std::vector;
 using std::find;

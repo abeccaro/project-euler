@@ -3,7 +3,7 @@
 //
 
 #include "problem77.hpp"
-#include <series/primes.hpp>
+#include "series/primes.hpp"
 
 using std::vector;
 using series::primes;

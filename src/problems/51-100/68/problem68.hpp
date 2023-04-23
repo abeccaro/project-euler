@@ -5,8 +5,8 @@
 #ifndef PROJECT_EULER_PROBLEM68_HPP
 #define PROJECT_EULER_PROBLEM68_HPP
 
-#include <vector>
-#include <string>
+#include "vector"
+#include "string"
 
 namespace problems {
     class problem68 {

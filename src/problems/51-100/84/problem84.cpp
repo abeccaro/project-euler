@@ -2,9 +2,9 @@
 // Created by Alex Beccaro on 25/02/18.
 //
 
-#include <vector>
-#include <map>
-#include <algorithm>
+#include "vector"
+#include "map"
+#include "algorithm"
 #include "problem84.hpp"
 
 using std::vector;

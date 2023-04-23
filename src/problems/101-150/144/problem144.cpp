@@ -3,8 +3,9 @@
 //
 
 #include "problem144.hpp"
-#include <cmath>
+#include "cmath"
 
+using std::abs;
 
 namespace problems {
 

@@ -4,7 +4,7 @@
 
 #include "problem65.hpp"
 #include "fraction.hpp"
-#include <generics.hpp>
+#include "generics.hpp"
 
 using std::vector;
 using boost::multiprecision::uint512_t;

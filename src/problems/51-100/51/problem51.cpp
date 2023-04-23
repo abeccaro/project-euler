@@ -3,9 +3,9 @@
 //
 
 #include "problem51.hpp"
-#include <primes.hpp>
-#include <series/primes.hpp>
-#include <generics.hpp>
+#include "primes.hpp"
+#include "series/primes.hpp"
+#include "generics.hpp"
 
 using std::vector;
 using generics::digits;

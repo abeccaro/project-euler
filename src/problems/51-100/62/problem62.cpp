@@ -3,8 +3,8 @@
 //
 
 #include "problem62.hpp"
-#include <generics.hpp>
-#include <map>
+#include "generics.hpp"
+#include "map"
 
 using generics::digits;
 using std::map;

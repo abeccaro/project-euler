@@ -3,8 +3,8 @@
 //
 
 #include "problem126.hpp"
-#include <vector>
-#include <series/figurate_number.hpp>
+#include "vector"
+#include "series/figurate_number.hpp"
 
 
 using std::vector;

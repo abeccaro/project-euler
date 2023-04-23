@@ -5,7 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM15_HPP
 #define PROJECT_EULER_PROBLEM15_HPP
 
-#include <boost/multiprecision/cpp_int.hpp>
+#include "boost/multiprecision/cpp_int.hpp"
 
 using boost::multiprecision::uint128_t;
 

@@ -5,7 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM97_HPP
 #define PROJECT_EULER_PROBLEM97_HPP
 
-#include <string>
+#include "string"
 
 namespace problems {
     class problem97 {

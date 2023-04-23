@@ -5,8 +5,8 @@
 #ifndef PROJECT_EULER_PROBLEM112_HPP
 #define PROJECT_EULER_PROBLEM112_HPP
 
-#include <cstdint>
-#include <string>
+#include "cstdint"
+#include "string"
 
 namespace problems {
     class problem112 {

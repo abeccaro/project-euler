@@ -3,10 +3,10 @@
 //
 
 #include "problem49.hpp"
-#include <series/primes.hpp>
-#include <generics.hpp>
-#include <primes.hpp>
-#include <iostream>
+#include "series/primes.hpp"
+#include "generics.hpp"
+#include "primes.hpp"
+#include "iostream"
 
 using std::vector;
 using primes::is_prime;

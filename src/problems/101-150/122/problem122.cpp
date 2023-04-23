@@ -3,7 +3,7 @@
 //
 
 #include "problem122.hpp"
-#include <algorithm>
+#include "algorithm"
 
 
 using std::vector;

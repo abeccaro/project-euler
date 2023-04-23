@@ -5,8 +5,8 @@
 #ifndef PROJECT_EULER_PROBLEM116_HPP
 #define PROJECT_EULER_PROBLEM116_HPP
 
-#include <cstdint>
-#include <vector>
+#include "cstdint"
+#include "vector"
 
 namespace problems {
     class problem116 {

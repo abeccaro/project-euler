@@ -3,8 +3,8 @@
 //
 
 #include "problem60.hpp"
-#include <primes.hpp>
-#include <generics.hpp>
+#include "primes.hpp"
+#include "generics.hpp"
 
 using std::vector;
 

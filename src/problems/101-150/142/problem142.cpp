@@ -3,9 +3,9 @@
 //
 
 #include "problem142.hpp"
-#include <series/figurate_number.hpp>
-#include <generics.hpp>
-#include <cmath>
+#include "series/figurate_number.hpp"
+#include "generics.hpp"
+#include "cmath"
 
 
 using std::get;

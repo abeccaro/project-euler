@@ -3,7 +3,7 @@
 //
 
 #include "problem26.hpp"
-#include <generics.hpp>
+#include "generics.hpp"
 
 using boost::multiprecision::cpp_int;
 using generics::are_coprime;

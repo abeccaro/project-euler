@@ -3,7 +3,7 @@
 //
 
 #include "problem97.hpp"
-#include <generics.hpp>
+#include "generics.hpp"
 
 using std::string;
 using boost::multiprecision::uint128_t;

@@ -4,8 +4,8 @@
 
 #include "problem155.hpp"
 #include "fraction.hpp"
-#include <vector>
-#include <unordered_set>
+#include "vector"
+#include "unordered_set"
 
 using std::vector;
 using std::unordered_set;
@@ -20,7 +20,7 @@ namespace problems {
         unordered_set<fraction<uint32_t>> solutions;
         fraction<uint32_t>::auto_reduce(true);
 
-        circuits[0].push_back(1);
+        circuits[0].emplace_back(1);
         solutions.insert(1);
         for (uint32_t i = 2; i <= n; i++) {
             for (uint32_t j = 1; j <= i/2; j++) {
@@ -39,6 +39,7 @@ namespace problems {
             }
         }
 
+        fraction<uint32_t>::auto_reduce(false);
         return solutions.size() * 2 - 1; // -1 cause the inverse of 1/1 is still 1/1
     }
 }

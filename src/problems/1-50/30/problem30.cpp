@@ -3,8 +3,8 @@
 //
 
 #include "problem30.hpp"
-#include <cmath>
-#include <generics.hpp>
+#include "cmath"
+#include "generics.hpp"
 
 using std::vector;
 using generics::digits;

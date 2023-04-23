@@ -3,7 +3,7 @@
 //
 
 #include "problem43.hpp"
-#include <generics.hpp>
+#include "generics.hpp"
 
 using std::vector;
 using generics::from_digits;

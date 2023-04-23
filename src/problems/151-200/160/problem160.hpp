@@ -6,8 +6,8 @@
 #define PROJECT_EULER_PROBLEM160_HPP
 
 
-#include <cstdint>
-#include <boost/multiprecision/cpp_int.hpp>
+#include "cstdint"
+#include "boost/multiprecision/cpp_int.hpp"
 
 namespace problems {
     class problem160 {

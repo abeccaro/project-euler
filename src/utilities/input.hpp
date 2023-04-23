@@ -4,12 +4,12 @@
 #ifndef PROJECT_EULER_INPUT_H
 #define PROJECT_EULER_INPUT_H
 
-#include <vector>
-#include <string>
-#include <fstream>
-#include <sstream>
-#include <boost/multiprecision/cpp_int.hpp>
-#include <template_conditions.hpp>
+#include "vector"
+#include "string"
+#include "fstream"
+#include "sstream"
+#include "boost/multiprecision/cpp_int.hpp"
+#include "template_conditions.hpp"
 
 namespace input {
     const std::string problems_folder = "../src/problems/";

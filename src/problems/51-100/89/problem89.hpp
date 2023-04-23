@@ -5,8 +5,8 @@
 #ifndef PROJECT_EULER_PROBLEM89_HPP
 #define PROJECT_EULER_PROBLEM89_HPP
 
-#include <string>
-#include <map>
+#include "string"
+#include "map"
 
 namespace problems {
     class problem89 {

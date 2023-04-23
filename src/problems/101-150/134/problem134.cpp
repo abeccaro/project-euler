@@ -2,8 +2,8 @@
 // Created by Alex Beccaro on 28/11/2019.
 //
 
-#include <series/primes.hpp>
-#include <generics.hpp>
+#include "series/primes.hpp"
+#include "generics.hpp"
 #include "problem134.hpp"
 
 

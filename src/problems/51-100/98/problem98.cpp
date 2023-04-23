@@ -3,9 +3,9 @@
 //
 
 #include "problem98.hpp"
-#include <generics.hpp>
-#include <input.hpp>
-#include <series/figurate_number.hpp>
+#include "generics.hpp"
+#include "input.hpp"
+#include "series/figurate_number.hpp"
 
 using std::vector;
 using std::string;

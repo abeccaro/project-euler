@@ -3,8 +3,8 @@
 //
 
 #include "problem68.hpp"
-#include <sstream>
-#include <algorithm>
+#include "sstream"
+#include "algorithm"
 
 using std::vector;
 using std::string;

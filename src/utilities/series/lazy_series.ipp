@@ -2,7 +2,7 @@
 // Created by Alex Beccaro on 17/03/18.
 //
 
-#include <limits.h>
+#include "limits.h"
 
 namespace series {
 
@@ -140,7 +140,7 @@ namespace series {
     /// endregion
 
     template<class T>
-    lazy_series<T>::~lazy_series<T>() = default;
+    lazy_series<T>::~lazy_series() = default;
 
     template<class T>
     const T& lazy_series<T>::operator[](uint64_t index) {

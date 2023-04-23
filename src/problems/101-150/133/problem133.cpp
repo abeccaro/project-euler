@@ -3,7 +3,7 @@
 //
 
 #include "problem133.hpp"
-#include <primes.hpp>
+#include "primes.hpp"
 
 using std::vector;
 

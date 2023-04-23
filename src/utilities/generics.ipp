@@ -2,8 +2,8 @@
 // Created by Alex Beccaro on 16/03/18.
 //
 
-#include <vector>
-#include <primes.hpp>
+#include "vector"
+#include "primes.hpp"
 
 namespace generics {
 

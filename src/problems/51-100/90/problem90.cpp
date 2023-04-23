@@ -3,7 +3,7 @@
 //
 
 #include "problem90.hpp"
-#include <generics.hpp>
+#include "generics.hpp"
 
 using std::vector;
 using generics::combinations;

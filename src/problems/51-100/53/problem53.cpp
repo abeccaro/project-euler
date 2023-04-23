@@ -3,7 +3,7 @@
 //
 
 #include "problem53.hpp"
-#include <generics.hpp>
+#include "generics.hpp"
 
 using generics::binomial_coefficient;
 using boost::multiprecision::uint1024_t;

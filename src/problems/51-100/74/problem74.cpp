@@ -3,7 +3,7 @@
 //
 
 #include "problem74.hpp"
-#include <generics.hpp>
+#include "generics.hpp"
 
 using std::vector;
 

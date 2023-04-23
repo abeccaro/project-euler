@@ -2,7 +2,7 @@
 // Created by Alex Beccaro on 22/01/18.
 //
 
-#include <generics.hpp>
+#include "generics.hpp"
 #include "problem72.hpp"
 
 using generics::totient;

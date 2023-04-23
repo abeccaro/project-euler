@@ -5,7 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM26_HPP
 #define PROJECT_EULER_PROBLEM26_HPP
 
-#include <cstdint>
+#include "cstdint"
 
 namespace problems {
     class problem26 {

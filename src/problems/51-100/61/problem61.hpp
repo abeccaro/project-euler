@@ -5,8 +5,9 @@
 #ifndef PROJECT_EULER_PROBLEM61_HPP
 #define PROJECT_EULER_PROBLEM61_HPP
 
-#include <map>
-#include <vector>
+#include "cstdint"
+#include "map"
+#include "vector"
 
 namespace problems {
     class problem61 {

@@ -3,8 +3,8 @@
 //
 
 #include "problem23.hpp"
-#include <vector>
-#include <generics.hpp>
+#include "vector"
+#include "generics.hpp"
 
 using std::vector;
 using generics::divisors;

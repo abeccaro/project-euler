@@ -3,7 +3,7 @@
 //
 
 #include "problem137.hpp"
-#include <series/fibonacci.hpp>
+#include "series/fibonacci.hpp"
 
 
 using series::fibonacci;

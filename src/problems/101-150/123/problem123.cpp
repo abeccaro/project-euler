@@ -3,9 +3,9 @@
 //
 
 #include "problem123.hpp"
-#include <generics.hpp>
-#include <series/primes.hpp>
-#include <boost/multiprecision/cpp_int.hpp>
+#include "generics.hpp"
+#include "series/primes.hpp"
+#include "boost/multiprecision/cpp_int.hpp"
 
 
 using generics::int_pow;

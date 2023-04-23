@@ -3,9 +3,9 @@
 //
 
 #include "problem37.hpp"
-#include <series/primes.hpp>
-#include <primes.hpp>
-#include <generics.hpp>
+#include "series/primes.hpp"
+#include "primes.hpp"
+#include "generics.hpp"
 
 using std::vector;
 using primes::is_prime;

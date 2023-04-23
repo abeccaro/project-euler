@@ -4,7 +4,7 @@
 #ifndef PROJECT_EULER_PRIMES_UTILS_H
 #define PROJECT_EULER_PRIMES_UTILS_H
 
-#include <template_conditions.hpp>
+#include "template_conditions.hpp"
 
 namespace primes {
     /**

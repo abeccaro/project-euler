@@ -3,8 +3,8 @@
 //
 
 #include "problem146.hpp"
-#include <primes.hpp>
-#include <boost/multiprecision/cpp_int.hpp>
+#include "primes.hpp"
+#include "boost/multiprecision/cpp_int.hpp"
 
 
 using std::vector;

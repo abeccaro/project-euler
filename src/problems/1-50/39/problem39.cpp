@@ -3,9 +3,9 @@
 //
 
 #include "problem39.hpp"
-#include <vector>
-#include <cmath>
-#include <algorithm>
+#include "vector"
+#include "cmath"
+#include "algorithm"
 
 using std::vector;
 using std::max_element;

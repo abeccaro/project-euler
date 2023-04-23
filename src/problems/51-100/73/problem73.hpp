@@ -5,7 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM73_HPP
 #define PROJECT_EULER_PROBLEM73_HPP
 
-#include <fraction.hpp>
+#include "fraction.hpp"
 
 namespace problems {
     class problem73 {

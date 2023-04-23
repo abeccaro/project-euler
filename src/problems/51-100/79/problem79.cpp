@@ -5,8 +5,8 @@
 //
 
 #include "problem79.hpp"
-#include <input.hpp>
-#include <unordered_set>
+#include "input.hpp"
+#include "unordered_set"
 
 using std::vector;
 using std::unordered_set;

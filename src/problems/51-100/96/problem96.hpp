@@ -5,8 +5,8 @@
 #ifndef PROJECT_EULER_PROBLEM96_HPP
 #define PROJECT_EULER_PROBLEM96_HPP
 
-#include <vector>
-#include <iostream>
+#include "vector"
+#include "iostream"
 
 namespace problems {
     class problem96 {

@@ -3,7 +3,7 @@
 //
 
 #include "problem20.hpp"
-#include <generics.hpp>
+#include "generics.hpp"
 
 using std::vector;
 using boost::multiprecision::uint1024_t;

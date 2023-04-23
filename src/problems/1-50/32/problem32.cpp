@@ -3,8 +3,8 @@
 //
 
 #include "problem32.hpp"
-#include <unordered_set>
-#include <generics.hpp>
+#include "unordered_set"
+#include "generics.hpp"
 
 using std::vector;
 using std::unordered_set;

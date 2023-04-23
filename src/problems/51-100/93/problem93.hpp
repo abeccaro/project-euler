@@ -5,10 +5,10 @@
 #ifndef PROJECT_EULER_PROBLEM93_HPP
 #define PROJECT_EULER_PROBLEM93_HPP
 
-#include <vector>
-#include <map>
-#include <set>
-#include <string>
+#include "vector"
+#include "map"
+#include "set"
+#include "string"
 
 namespace problems {
     class problem93 {

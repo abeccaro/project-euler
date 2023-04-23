@@ -3,9 +3,9 @@
 //
 
 #include "problem106.hpp"
-#include <input.hpp>
-#include <numeric>
-#include <generics.hpp>
+#include "input.hpp"
+#include "numeric"
+#include "generics.hpp"
 
 using std::vector;
 using std::iota;

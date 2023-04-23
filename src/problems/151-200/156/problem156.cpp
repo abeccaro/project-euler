@@ -4,7 +4,7 @@
 
 #include "problem156.hpp"
 #include "generics.hpp"
-#include <cmath>
+#include "cmath"
 
 using generics::digits;
 using generics::int_pow;
@@ -12,7 +12,7 @@ using generics::int_pow;
 namespace problems {
     uint64_t problem156::f(uint64_t n, uint64_t d) {
         auto digs = digits(n);
-        uint64_t pow_ten = int_pow(10ul, digs.size() - 1);
+        uint64_t pow_ten = int_pow(10ull, digs.size() - 1);
         uint64_t result = 0;
 
         uint64_t factor = 0;

@@ -5,8 +5,8 @@
 #ifndef PROJECT_EULER_PROBLEM110_HPP
 #define PROJECT_EULER_PROBLEM110_HPP
 
-#include <cstdint>
-#include <series/primes.hpp>
+#include "cstdint"
+#include "series/primes.hpp"
 
 namespace problems {
     class problem110 {

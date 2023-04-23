@@ -3,7 +3,7 @@
 //
 
 #include "problem55.hpp"
-#include <generics.hpp>
+#include "generics.hpp"
 
 using generics::digits;
 using generics::from_digits;

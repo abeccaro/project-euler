@@ -3,8 +3,8 @@
 //
 
 #include "problem48.hpp"
-#include <boost/multiprecision/cpp_int.hpp>
-#include <generics.hpp>
+#include "boost/multiprecision/cpp_int.hpp"
+#include "generics.hpp"
 
 using std::vector;
 using boost::multiprecision::cpp_int;

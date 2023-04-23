@@ -3,7 +3,7 @@
 //
 
 #include "problem11.hpp"
-#include <input.hpp>
+#include "input.hpp"
 
 using std::vector;
 using input::read_matrix;

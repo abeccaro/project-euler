@@ -3,7 +3,7 @@
 //
 
 #include "problem33.hpp"
-#include <generics.hpp>
+#include "generics.hpp"
 
 using generics::gcd;
 

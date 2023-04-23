@@ -5,9 +5,9 @@
 #ifndef PROJECT_EULER_PROBLEM98_HPP
 #define PROJECT_EULER_PROBLEM98_HPP
 
-#include <cstdint>
-#include <string>
-#include <vector>
+#include "cstdint"
+#include "string"
+#include "vector"
 
 namespace problems {
     class problem98 {

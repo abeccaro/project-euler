@@ -5,10 +5,10 @@
 #define _USE_MATH_DEFINES
 
 #include "problem143.hpp"
-#include <cmath>
-#include <unordered_set>
-#include <numeric>
-#include <generics.hpp>
+#include "cmath"
+#include "unordered_set"
+#include "numeric"
+#include "generics.hpp"
 
 using std::vector;
 using std::unordered_set;

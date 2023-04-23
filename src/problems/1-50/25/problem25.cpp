@@ -3,7 +3,7 @@
 //
 
 #include "problem25.hpp"
-#include <series/fibonacci.hpp>
+#include "series/fibonacci.hpp"
 
 using boost::multiprecision::cpp_int;
 using series::fibonacci;

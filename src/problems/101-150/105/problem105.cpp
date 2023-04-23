@@ -3,10 +3,10 @@
 //
 
 #include "problem105.hpp"
-#include <input.hpp>
-#include <numeric>
-#include <algorithm>
-#include <generics.hpp>
+#include "input.hpp"
+#include "numeric"
+#include "algorithm"
+#include "generics.hpp"
 
 using std::vector;
 using std::accumulate;

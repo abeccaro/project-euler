@@ -4,7 +4,7 @@
 #ifndef PROJECT_EULER_FRACTION_HPP
 #define PROJECT_EULER_FRACTION_HPP
 
-#include <template_conditions.hpp>
+#include "template_conditions.hpp"
 
 namespace fractions {
 

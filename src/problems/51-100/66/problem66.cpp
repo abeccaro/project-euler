@@ -3,8 +3,8 @@
 //
 
 #include "problem66.hpp"
-#include <fraction.hpp>
-#include <series/sqrt_convergents.hpp>
+#include "fraction.hpp"
+#include "series/sqrt_convergents.hpp"
 
 using boost::multiprecision::uint128_t;
 using boost::multiprecision::uint256_t;

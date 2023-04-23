@@ -2,35 +2,30 @@
 // Created by Alex Beccaro on 22/01/18.
 //
 
-#include <generics.hpp>
+#include "generics.hpp"
+#include "vector"
 #include "problem73.hpp"
 
+using std::vector;
 using fractions::fraction;
 using generics::are_coprime;
 
 namespace problems {
     uint32_t problem73::solve(uint32_t ub, const range& interval) {
-        uint32_t max_num = interval.second.numerator();
-        uint32_t max_den = interval.second.denominator();
-
         uint32_t result = 0;
 
-        for (uint32_t d = 2; d <= ub; d++) {
-            if (d == max_den)
-                continue;
-
-            uint32_t n = d * max_num / max_den;
-            fraction<uint32_t> f(n, d);
-
-            while (!are_coprime(f.numerator(), f.denominator()))
-                f.numerator(f.numerator() - 1);
-
-            while (f > interval.first) {
+        // generate fractions using Farey sequence up to interval end and count from interval start
+        for (fraction prev(0u, 1u), current(1u, ub); current < interval.second;) {
+            if (current > interval.first)
                 result++;
-                f.numerator(f.numerator() - 1);
-                while (!are_coprime(f.numerator(), f.denominator()))
-                    f.numerator(f.numerator() - 1);
-            }
+
+            uint64_t k = (ub + prev.denominator()) / current.denominator();
+            uint64_t temp = prev.numerator();
+            prev.numerator(current.numerator());
+            current.numerator(k * current.numerator() - temp);
+            temp = prev.denominator();
+            prev.denominator(current.denominator());
+            current.denominator(k * current.denominator() - temp);
         }
 
         return result;

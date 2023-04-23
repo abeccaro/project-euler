@@ -3,9 +3,9 @@
 //
 
 #include "problem125.hpp"
-#include <series/figurate_number.hpp>
-#include <generics.hpp>
-#include <numeric>
+#include "series/figurate_number.hpp"
+#include "generics.hpp"
+#include "numeric"
 
 
 using series::figurate_number;

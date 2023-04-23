@@ -6,8 +6,8 @@
 #define PROJECT_EULER_PROBLEM158_HPP
 
 
-#include <cstdint>
-#include <map>
+#include "cstdint"
+#include "map"
 
 namespace problems {
     class problem158 {

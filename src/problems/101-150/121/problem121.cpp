@@ -3,7 +3,7 @@
 //
 
 #include "problem121.hpp"
-#include <fraction.hpp>
+#include "fraction.hpp"
 
 
 using std::string;
@@ -34,6 +34,7 @@ namespace problems {
             } while (next_permutation(bitmask.begin(), bitmask.end()));
         }
 
+        fraction<uint64_t>::auto_reduce(false);
         return win_p.denominator() / win_p.numerator();
     }
 

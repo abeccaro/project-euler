@@ -3,8 +3,8 @@
 //
 
 #include "problem56.hpp"
-#include <boost/multiprecision/cpp_int.hpp>
-#include <generics.hpp>
+#include "boost/multiprecision/cpp_int.hpp"
+#include "generics.hpp"
 
 using boost::multiprecision::uint1024_t;
 using generics::digits;

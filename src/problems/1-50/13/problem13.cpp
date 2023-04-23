@@ -3,8 +3,8 @@
 //
 
 #include "problem13.hpp"
-#include <generics.hpp>
-#include <input.hpp>
+#include "generics.hpp"
+#include "input.hpp"
 
 using std::vector;
 using input::read_vector;

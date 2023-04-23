@@ -3,7 +3,7 @@
 //
 
 #include "problem69.hpp"
-#include <generics.hpp>
+#include "generics.hpp"
 
 using generics::totient;
 using primes::prime_factors;
