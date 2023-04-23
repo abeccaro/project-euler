@@ -1,0 +1,100 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{parskip}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+
+
+% base informations
+\title{Problem 94 solution}
+\author{Alex Beccaro}
+\date{03/06/2018}
+
+% prevents red border around links
+\hypersetup {
+  colorlinks = true,
+  linkcolor  = black
+}
+
+
+\begin{document}
+
+\newpage
+
+\section{Problem 94 solution}
+
+	Heron's formula states that the area of a triangle whose sides have lengths $a$, $b$, and $c$ is:
+	
+	\begin{equation}
+		A= \sqrt{p(p-a)(p-b)(p-c)}
+	\end{equation}\\
+	
+	where $p$ is the semiperimeter ($p = \frac{a + b + c}{2}$).
+	
+	As considered triangles are almost equilateral we know that $b = a$ and $c = a \pm 1$. The two cases are similar, so let's focus on $b = a + 1$. We can write (1) as:
+
+	\begin{equation}
+	\setlength{\jot}{10pt}
+	\begin{split}
+		A & = \sqrt{\left(\frac{3a + 1}{2}\right) \left(\frac{a + 1}{2}\right)^{2} \left(\frac{a-1}{2}\right)} \\
+		& = \sqrt{\frac{(3a + 1)(a + 1)^{2}(a - 1)}{16}} \\
+		& = \frac{a + 1}{4}\sqrt{(3a + 1)(a - 1)}\\
+	\end{split}
+	\end{equation}\\
+	
+	From this we can see that, for the area to be integral, there are two conditions, let $x = \sqrt{(3a + 1)(a - 1)}$ then:\\
+	
+	\begin{enumerate}
+		\item $x \in \mathbb{Z}$
+		\item $\frac{x(a + 1)}{4} \in \mathbb{Z}$ \\
+			or equivalently: $x(a + 1) \equiv 0$ (mod $4$)\\
+	\end{enumerate}
+	
+	While the second condition is easy to test with a computer, the first one might be harder due to floating point precision errors. Also we want a way to enumerate all possible $a$ without checking every time. To do this we need to solve the diophantine equation
+	
+	\begin{equation}
+		(3a + 1)(a - 1) = x^{2}
+	\end{equation}
+	
+	By solving the equation with a solver (like this: \href{https://www.alpertron.com.ar/QUAD.HTM}{\color{blue}{https://www.alpertron.com.ar\allowbreak /QUAD.HTM}}) we can get the recurrence equations for a and x:\\
+	
+	\begin{equation}
+		a_{n+1} = -2 a_{n} -x_{n} + 1
+	\end{equation}
+	\begin{equation}
+		x_{n+1} = -3 a_{n} -2 x_{n} + 1
+	\end{equation}\\
+	
+	Starting from the smallest solution ($a_{0} = 1, x_{0} = 0$) these will give all possible values for integral sides length of all almost equilateral heronian triangles in the form ($a, a, a+1$).\\
+	To get the ones in the form ($a, a, a-1$) the process is the same substituting $c = a - 1$ to (1). In the end we get the following recurrences:\\
+	
+	\begin{equation}
+		a_{n+1} = -2 a_{n} -x_{n} - 1
+	\end{equation}
+	\begin{equation}
+		x_{n+1} = -3 a_{n} -2 x_{n} - 1
+	\end{equation}\\
+	
+	By considering all triangles with sides obtained from positive values of (4) and (6) we can easily calculate the solution to the problem.
+	
+	\subsection{Merging recurrence equations}
+	
+		By expanding any of (4) and (6) we can see that results are the same in absolute value but have opposite sign (they alternate positive and negative $a$ values), so we can merge the two recurrences into one that generates positive values only. To do so we need to make positive the recursive terms and flip $\pm 1$ like this:\\
+		
+		\begin{equation}
+			a_{n+1} = 2 a_{n} + x_{n} + (-1)^{n+1}
+		\end{equation}
+		\begin{equation}
+			x_{n+1} = 3 a_{n} + 2 x_{n} + (-1)^{n+1}
+		\end{equation}\\
+		
+		Note that by starting from $a_{0} = 1, x_{0} = 0$ the first two triangles degenerate into segments and are not considered by the problem.\\
+		Let $u$ be the number of almost equilateral heronian triangles with perimeter that do not exceed $1\,000\,000\,000$, the final solution to the problem is:\\
+		
+		\begin{equation}
+			\sum_{i = 2}^{u}{3a_{i} + (-1)^{i}}
+		\end{equation}
+
+\end{document}
