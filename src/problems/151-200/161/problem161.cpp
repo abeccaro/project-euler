@@ -2,14 +2,13 @@
 // Created by Alex Beccaro on 23/04/2023.
 //
 
-#include "iostream"
 #include "problem161.hpp"
 
-using std::vector;
-using std::unordered_map;
-using std::pair;
-using std::min;
 using std::max;
+using std::min;
+using std::pair;
+using std::unordered_map;
+using std::vector;
 
 namespace problems {
     problem161::grid_state::grid_state(uint32_t rows, uint32_t cols): bitmask(rows * cols, false), first_empty(0), row_size(min(rows, cols)) {}

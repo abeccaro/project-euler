@@ -6,10 +6,10 @@
 #define PROJECT_EULER_PROBLEM161_HPP
 
 
-#include "vector"
-#include "unordered_map"
 #include "cstdint"
 #include "optional"
+#include "unordered_map"
+#include "vector"
 
 namespace problems {
     class problem161 {
