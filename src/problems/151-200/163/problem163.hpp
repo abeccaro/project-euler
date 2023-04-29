@@ -22,9 +22,9 @@ namespace problems {
          static std::vector<uint32_t> coefficients;
     public:
         /**
-         *
-         * @param n
-         * @return
+         * Counts how many triangles there are in an equilateral triangle with medians of size n
+         * @param n The size of the triangle
+         * @return The number of different triangles
          */
         static uint32_t solve(uint32_t n = 36);
     };
