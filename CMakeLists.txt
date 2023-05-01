@@ -15,7 +15,7 @@ find_package (Boost COMPONENTS unit_test_framework REQUIRED)
 SET(PROBLEMS "")
 SET(TESTS "")
 
-SET(CURRENT_PROBLEM "165")
+SET(CURRENT_PROBLEM "166")
 SET(CURRENT_FILE "src/problems/151-200/${CURRENT_PROBLEM}/problem${CURRENT_PROBLEM}")
 
 # problems 1-50
