@@ -18,7 +18,7 @@ namespace template_conditions {
     struct is_any_number : public std::integral_constant<bool,
             is_any_integral<T>::value ||
             std::is_convertible<T, boost::multiprecision::number<boost::multiprecision::cpp_dec_float<
-                    std::numeric_limits<unsigned int>::max()>>>::value> {};
+                    std::numeric_limits<int>::max()>>>::value> {};
 
 }
 
