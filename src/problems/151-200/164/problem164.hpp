@@ -2,8 +2,8 @@
 // Created by Alex Beccaro on 29/04/2023.
 //
 
-#ifndef PROJECT_EULER_problem164_HPP
-#define PROJECT_EULER_problem164_HPP
+#ifndef PROJECT_EULER_PROBLEM164_HPP
+#define PROJECT_EULER_PROBLEM164_HPP
 
 
 #include "cstdint"
@@ -40,4 +40,4 @@ namespace problems {
 }
 
 
-#endif //PROJECT_EULER_problem164_HPP
+#endif //PROJECT_EULER_PROBLEM164_HPP

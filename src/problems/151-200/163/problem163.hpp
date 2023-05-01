@@ -2,8 +2,8 @@
 // Created by Alex Beccaro on 29/04/2023.
 //
 
-#ifndef PROJECT_EULER_problem163_HPP
-#define PROJECT_EULER_problem163_HPP
+#ifndef PROJECT_EULER_PROBLEM163_HPP
+#define PROJECT_EULER_PROBLEM163_HPP
 
 
 #include "series/figurate_number.hpp"
@@ -31,4 +31,4 @@ namespace problems {
 }
 
 
-#endif //PROJECT_EULER_problem163_HPP
+#endif //PROJECT_EULER_PROBLEM163_HPP
