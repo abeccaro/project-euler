@@ -7,9 +7,6 @@
 
 
 #include "cstdint"
-#include "fraction.hpp"
-#include "optional"
-#include "geometry/point.hpp"
 #include "geometry/segment.hpp"
 #include "vector"
 
@@ -25,9 +22,11 @@ namespace problems {
         static uint64_t solve();
 
     private:
-
-
-        static std::vector<geometry::segment<fractions::fraction<int64_t>>> generate_segments();
+        /**
+         * Generates the 5000 segments using the "Blum Blum Shub" rng as described in the problem
+         * @return The vector of segments
+         */
+        static std::vector<geometry::segment<int32_t>> generate_segments();
     };
 }
 

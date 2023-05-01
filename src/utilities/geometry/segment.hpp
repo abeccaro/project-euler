@@ -6,7 +6,7 @@
 
 #include "fraction.hpp"
 #include "point.hpp"
-#include "rect.hpp"
+#include "line.hpp"
 #include "template_conditions.hpp"
 
 namespace geometry {
@@ -14,9 +14,6 @@ namespace geometry {
             template_conditions::is_any_number<T>::value ||
             std::is_convertible<T, fractions::fraction<boost::multiprecision::cpp_int>>::value>>
     class segment {
-    private:
-        std::optional<rect<T>> r;
-
     public:
         point<T> p1, p2;
 
@@ -78,14 +75,7 @@ namespace geometry {
          * Calculates if necessary and returns the rect containing this segment
          * @return The rect containing this segment
          */
-        geometry::rect<T> get_rect();
-
-        /**
-         * Checks if given point is contained in this segment
-         * @param p The point to check
-         * @return True if the point is part of the segment, false otherwise
-         */
-        bool contains(const point<T>& p);
+        geometry::rect<T> line();
     };
 
     /**

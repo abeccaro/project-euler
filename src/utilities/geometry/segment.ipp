@@ -53,16 +53,7 @@ namespace geometry {
     }
 
     template<class T, class V>
-    rect<T> segment<T, V>::get_rect() {
-        if (!r.has_value())
-            r = rect(p1, p2);
-        return r.value();
-    }
-
-    template<class T, class V>
-    bool segment<T, V>::contains(const point<T> &p) {
-        return p.x >= std::min(p1.x, p2.x) && p.x <= std::max(p1.x, p2.x) &&
-                p.y >= std::min(p1.y, p2.y) && p.y <= std::max(p1.y, p2.y) &&
-                get_rect().contains(p);
+    rect<T> segment<T, V>::line() {
+        return rect(p1, p2);
     }
 }
