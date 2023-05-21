@@ -75,7 +75,7 @@ namespace geometry {
          * Calculates if necessary and returns the rect containing this segment
          * @return The rect containing this segment
          */
-        geometry::rect<T> line();
+        geometry::line<T> line();
     };
 
     /**

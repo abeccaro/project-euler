@@ -53,7 +53,7 @@ namespace geometry {
     }
 
     template<class T, class V>
-    rect<T> segment<T, V>::line() {
+    line<T> segment<T, V>::line() {
         return rect(p1, p2);
     }
 }
