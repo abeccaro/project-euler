@@ -209,6 +209,12 @@ namespace generics {
      */
     template<class T, class = typename std::enable_if<template_conditions::is_any_integral<T>::value>::type>
     T mod_pow(T base, T exponent, const T& modulo);
+
+    /**
+     *
+     */
+    template<class T, class = typename std::enable_if<template_conditions::is_any_integral<T>::value>::type>
+    std::vector<T> continued_fraction(T num, T den);
 }
 
 #include "generics.ipp"

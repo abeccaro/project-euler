@@ -333,4 +333,18 @@ namespace generics {
         return result;
     }
 
+    template<class T, class>
+    std::vector<T> continued_fraction(T num, T den) {
+        std::vector<uint32_t> result;
+
+        while (true) {
+            result.push_back(num / den);
+            num %= den;
+            if (num == 0)
+                return result;
+            T tmp = den;
+            den = num;
+            num = tmp;
+        }
+    }
 }
