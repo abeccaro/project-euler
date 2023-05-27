@@ -6,33 +6,26 @@
 #define PROJECT_EULER_PROBLEM169_HPP
 
 
-#include "boost/functional/hash.hpp"
 #include "boost/multiprecision/cpp_int.hpp"
 #include "generics.hpp"
 #include "unordered_map"
 
 namespace problems {
     class problem169 {
-    private:
+    public:
         /**
-         * Memoization values for f(n, p)
+         * Memoization values for f(n)
          */
-        static std::unordered_map<
-                        std::pair<boost::multiprecision::uint128_t, boost::multiprecision::uint128_t>,
-                        uint64_t,
-                        boost::hash<std::pair<boost::multiprecision::uint128_t, boost::multiprecision::uint128_t>>
-                > mem;
+        static std::unordered_map<boost::multiprecision::uint128_t, uint64_t> mem;
 
         /**
-         * Calculates the number of ways to express n as a sum of powers of 2 using each power less than or equal
-         * max_pow no more than twice
+         * Calculates the number of ways to express n as a sum of powers of 2 using each power no more than twice
+         * in a recursive way. Used as a helper for the main solve function.
          * @param n The number
-         * @param max_pow The maximum power of 2 allowed
          * @return The number of ways
          */
-        static uint64_t f(const boost::multiprecision::uint128_t& n, const boost::multiprecision::uint128_t& max_pow);
+        static uint64_t f(const boost::multiprecision::uint128_t& n);
 
-    public:
         /**
          * Calculates the number of ways to express n as a sum of powers of 2 using each power no more than twice
          * @param n The number
