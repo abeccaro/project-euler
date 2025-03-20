@@ -5,6 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM93_HPP
 #define PROJECT_EULER_PROBLEM93_HPP
 
+#include "cstdint"
 #include "vector"
 #include "map"
 #include "set"

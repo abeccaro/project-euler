@@ -77,7 +77,8 @@ namespace primes {
             copy /= 2;
             count++;
         }
-        result.emplace_back(std::pair<T, T>(2, count));
+        if (count > 0)
+            result.emplace_back(std::pair<T, T>(2, count));
 
         for (T i = 3; i * i <= copy; i = i + 2) {
             count = 0;
@@ -85,7 +86,8 @@ namespace primes {
                 copy /= i;
                 count++;
             }
-            result.emplace_back(std::pair<T, T>(i, count));
+            if (count > 0)
+                result.emplace_back(std::pair<T, T>(i, count));
         }
 
         if (copy > 2)
@@ -98,7 +100,8 @@ namespace primes {
     std::vector<T> primes(const T& n) {
         assert (n > 0 && "Number of primes must be positive");
 
-        auto upper_bound = (T) (n * (log(n) + log(log(n))));
+        double lg = log((double) n);
+        auto upper_bound = (T) (n * lg + log(lg));
         std::vector<T> ps = primes_up_to(upper_bound);
         ps.resize(n);
         return ps;

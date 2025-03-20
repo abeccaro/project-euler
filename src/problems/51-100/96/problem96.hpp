@@ -5,6 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM96_HPP
 #define PROJECT_EULER_PROBLEM96_HPP
 
+#include "cstdint"
 #include "vector"
 #include "iostream"
 

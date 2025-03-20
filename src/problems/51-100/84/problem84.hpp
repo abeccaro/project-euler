@@ -5,6 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM84_HPP
 #define PROJECT_EULER_PROBLEM84_HPP
 
+#include "cstdint"
 #include "string"
 
 namespace problems {

@@ -5,6 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM89_HPP
 #define PROJECT_EULER_PROBLEM89_HPP
 
+#include "cstdint"
 #include "string"
 #include "map"
 

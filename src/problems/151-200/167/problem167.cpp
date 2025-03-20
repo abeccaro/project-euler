@@ -5,6 +5,7 @@
 #include "problem167.hpp"
 #include "set"
 #include "vector"
+#include "algorithm"
 
 
 using std::count;

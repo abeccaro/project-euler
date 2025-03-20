@@ -3,6 +3,7 @@
 //
 
 #include "problem161.hpp"
+#include "algorithm"
 
 using std::max;
 using std::min;

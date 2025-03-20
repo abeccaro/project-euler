@@ -5,6 +5,7 @@
 #ifndef PROJECT_EULER_PROBLEM54_HPP
 #define PROJECT_EULER_PROBLEM54_HPP
 
+#include "cstdint"
 #include "vector"
 #include "string"
 

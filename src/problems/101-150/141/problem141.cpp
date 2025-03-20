@@ -6,7 +6,7 @@
 #include "cmath"
 #include "numeric"
 #include "vector"
-
+#include "algorithm"
 
 using std::vector;
 using std::accumulate;
