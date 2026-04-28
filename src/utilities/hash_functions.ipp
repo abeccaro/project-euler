@@ -10,4 +10,9 @@ namespace problems {
     size_t pair_hash<T1, T2>::operator()(const std::pair<T1, T2>& t) const {
         return boost::hash_value(t);
     }
+
+    template<typename ... TT>
+    size_t tuple_hash<TT...>::operator()(const std::tuple<TT...>& t) const {
+        return boost::hash_value(t);
+    }
 }

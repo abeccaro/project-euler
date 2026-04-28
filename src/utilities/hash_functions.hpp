@@ -12,7 +12,12 @@
 namespace problems {
     template<class T1, class T2>
     struct pair_hash {
-        size_t operator()(std::pair<T1, T2> const &t) const;
+        size_t operator()(std::pair<T1, T2> const& t) const;
+    };
+
+    template<typename ... TT>
+    struct tuple_hash {
+        size_t operator()(std::tuple<TT...> const& t) const;
     };
 }
 
